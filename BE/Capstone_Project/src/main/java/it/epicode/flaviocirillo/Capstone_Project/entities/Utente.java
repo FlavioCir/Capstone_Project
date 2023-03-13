@@ -35,6 +35,7 @@ public class Utente {
 	
 	private String nome;
 	private String cognome;
+	private String username;
 	private String password;
 	private String email;
 	private boolean attivo = true;

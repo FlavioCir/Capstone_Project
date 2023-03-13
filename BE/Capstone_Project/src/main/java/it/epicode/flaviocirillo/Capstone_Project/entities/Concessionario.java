@@ -39,6 +39,7 @@ public class Concessionario {
 	private String cap;
 	private String localita;
 	private String email;
+	private String username;
 	private String password;
 	private String telefono;
 	private boolean attivo = true;

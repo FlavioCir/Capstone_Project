@@ -17,19 +17,20 @@ public class Beans {
 
 	@Bean
 	@Scope("prototype")
-	public Utente utente(String nome, String cognome, String password, String email) {
+	public Utente utente(String nome, String cognome, String password, String email, String username) {
 		return Utente.builder()
 				.nome(nome)
 				.cognome(cognome)
 				.password(password)
 				.email(email)
+				.username(username)
 				.attivo(true)
 				.build();
 	}
 	
 	@Bean
 	@Scope("prototype")
-	public Concessionario concessionario(String ragioneSociale, String partitaIva, String indirizzo, String cap, String localita, String email, String password, String telefono) {
+	public Concessionario concessionario(String ragioneSociale, String partitaIva, String indirizzo, String cap, String localita, String email, String username, String password, String telefono) {
 		return Concessionario.builder()
 				.ragioneSociale(ragioneSociale)
 				.partitaIva(partitaIva)
@@ -37,6 +38,7 @@ public class Beans {
 				.cap(cap)
 				.localita(localita)
 				.email(email)
+				.username(username)
 				.password(password)
 				.telefono(telefono)
 				.attivo(true)

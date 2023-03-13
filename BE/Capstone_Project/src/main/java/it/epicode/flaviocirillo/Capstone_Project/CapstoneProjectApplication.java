@@ -30,7 +30,7 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		//popolaDB_Utenti();
+//		popolaDB_Utenti();
 		
 		((AnnotationConfigApplicationContext)ctx).close();
 	}
@@ -48,10 +48,10 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 		Ruolo r1 = (Ruolo)ctx.getBean("ruolo", TipoRuolo.ROLE_ADMIN);
 		Ruolo r2 = (Ruolo)ctx.getBean("ruolo", TipoRuolo.ROLE_USER);
 		
-		Utente u1 = (Utente)ctx.getBean("utente", "Mario", "Rossi", "Mario1234", "mario.rossi@gmail.com"); 
-		Utente u2 = (Utente)ctx.getBean("utente", "Flavio", "Cirillo", "Flavio1234", "flavio.cirillo@gmail.com"); 
+		Utente u1 = (Utente)ctx.getBean("utente", "Mario", "Rossi", "Mario1234", "mario.rossi@gmail.com", "mrossi"); 
+		Utente u2 = (Utente)ctx.getBean("utente", "Flavio", "Cirillo", "Flavio1234", "flavio.cirillo@gmail.com", "fcirillo"); 
 		
-		Concessionario c1 = (Concessionario)ctx.getBean("concessionario", "MotorShop", "12345678900", "Viale Marconi 10", "00146", "Roma", "motorshop@info.com", "MotorShop1234", "+39 3390137889");
+		Concessionario c1 = (Concessionario)ctx.getBean("concessionario", "MotorShop", "12345678900", "Viale Marconi 10", "00146", "Roma", "motorshop@info.com", "Motorshop", "MotorShop1234", "+39 3390137889");
 		
 		rs.save(r1);
 		rs.save(r2);
