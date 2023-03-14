@@ -42,6 +42,7 @@ public class Annuncio {
 	private Tipologia tipologia;
 	
 	private int cilindrata;
+	private int cavalli;
 	private long kilometri;
 	private String immatricolazione;
 	private String localita;

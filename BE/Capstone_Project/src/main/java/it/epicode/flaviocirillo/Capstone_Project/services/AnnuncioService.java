@@ -37,24 +37,26 @@ public class AnnuncioService {
 		ar.delete(a);
 	}
 	
-	public List<Annuncio> findByMarca(String marca) {
-		return ar.findByMarca(marca);
-	}
+	//FILTRI
 	
-	public List<Annuncio> findByModello(String modello) {
-		return ar.findByModello(modello);
-	}
-	
-	public List<Annuncio> findByAnnoImmatricolazione(String min, String max) {
-		return ar.findByAnnoImmatricolazione(min, max);
-	}
-	
-	public List<Annuncio> findByKilometri(long min, long max) {
-		return ar.findByKilometri(min, max);
-	}
-	
-	public List<Annuncio> findByPrezzo(double prezzo) {
-		return ar.findByPrezzo(prezzo);
-	}
+//	public List<Annuncio> findByMarca(String marca) {
+//		return ar.findByMarca(marca);
+//	}
+//	
+//	public List<Annuncio> findByModello(String modello) {
+//		return ar.findByModello(modello);
+//	}
+//	
+//	public List<Annuncio> findByAnnoImmatricolazione(String min, String max) {
+//		return ar.findByAnnoImmatricolazione(min, max);
+//	}
+//	
+//	public List<Annuncio> findByKilometri(long min, long max) {
+//		return ar.findByKilometri(min, max);
+//	}
+//	
+//	public List<Annuncio> findByPrezzo(double prezzo) {
+//		return ar.findByPrezzo(prezzo);
+//	}
 	
 }

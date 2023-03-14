@@ -82,6 +82,7 @@ public class AnnuncioController {
 		annuncio.setTipoVeicolo(_annuncio.getTipoVeicolo());
 		annuncio.setTipologia(_annuncio.getTipologia());
 		annuncio.setCilindrata(_annuncio.getCilindrata());
+		annuncio.setCavalli(_annuncio.getCavalli());
 		annuncio.setKilometri(_annuncio.getKilometri());
 		annuncio.setImmatricolazione(_annuncio.getImmatricolazione());
 		annuncio.setLocalita(_annuncio.getLocalita());
@@ -108,30 +109,32 @@ public class AnnuncioController {
 		);
 	}
 	
-	@GetMapping("annunci/cercaImmatricolazione")
-	public List<Annuncio> getAllAnnunciByAnnoImmatricolazione(@RequestParam("min") String min, @RequestParam("max") String max) {
-		return as.findByAnnoImmatricolazione(min, max);
-	}
+	//FILTRI
 	
-	@GetMapping("annunci/cercaKilometri")
-	public List<Annuncio> getAllAnnunciByKilometri(@RequestParam("min") long min, @RequestParam("max") long max) {
-		return as.findByKilometri(min, max);
-	}
-	
-	@GetMapping("annunci/cercaPrezzo")
-	public List<Annuncio> getAllAnnunciByPrezzo(@RequestParam("prezzo") double prezzo) {
-		return as.findByPrezzo(prezzo);
-	}
-	
-	@GetMapping("annunci/cercaMarca")
-	public List<Annuncio> getAllAnnunciByMarca(@RequestParam("marca") String marca) {
-		return as.findByMarca(marca);
-	}
-	
-	@GetMapping("annunci/cercaMarca")
-	public List<Annuncio> getAllAnnunciByModello(@RequestParam("modello") String modello) {
-		return as.findByModello(modello);
-	}
+//	@GetMapping("annunci/cercaImmatricolazione")
+//	public List<Annuncio> getAllAnnunciByAnnoImmatricolazione(@RequestParam("min") String min, @RequestParam("max") String max) {
+//		return as.findByAnnoImmatricolazione(min, max);
+//	}
+//	
+//	@GetMapping("annunci/cercaKilometri")
+//	public List<Annuncio> getAllAnnunciByKilometri(@RequestParam("min") long min, @RequestParam("max") long max) {
+//		return as.findByKilometri(min, max);
+//	}
+//	
+//	@GetMapping("annunci/cercaPrezzo")
+//	public List<Annuncio> getAllAnnunciByPrezzo(@RequestParam("prezzo") double prezzo) {
+//		return as.findByPrezzo(prezzo);
+//	}
+//	
+//	@GetMapping("annunci/cercaMarca")
+//	public List<Annuncio> getAllAnnunciByMarca(@RequestParam("marca") String marca) {
+//		return as.findByMarca(marca);
+//	}
+//	
+//	@GetMapping("annunci/cercaMarca")
+//	public List<Annuncio> getAllAnnunciByModello(@RequestParam("modello") String modello) {
+//		return as.findByModello(modello);
+//	}
 	
 	private ResponseEntity<Object> checkExists(Optional<Annuncio> obj) {
 		if( !obj.isPresent() ) {

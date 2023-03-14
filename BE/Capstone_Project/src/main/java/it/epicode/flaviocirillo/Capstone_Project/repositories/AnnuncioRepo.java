@@ -12,19 +12,20 @@ import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
 @Repository
 public interface AnnuncioRepo extends JpaRepository<Annuncio, Integer> {
 
-	List<Annuncio> findByAnnoImmatricolazione(@Param("min") String min, @Param("max") String max);
-	List<Annuncio> findByKilometri(@Param("min") long min, @Param("max") long max);
-	List<Annuncio> findByPrezzo(double prezzo);
+//	List<Annuncio> findByAnnoImmatricolazione(@Param("min") String min, @Param("max") String max);
+//	List<Annuncio> findByKilometri(@Param("min") long min, @Param("max") long max);
+//	List<Annuncio> findByPrezzo(double prezzo);
+//	
+//	@Query(
+//			nativeQuery = true,
+//			value = "SELECT * FROM annunci WHERE LOWER(marca) LIKE LOWER(CONCAT('%', :fn, '%'))"
+//		)
+//	List<Annuncio> findByMarca(@Param("fn") String marca);
+//	
+//	@Query(
+//			nativeQuery = true,
+//			value = "SELECT * FROM annunci WHERE LOWER(modello) LIKE LOWER(CONCAT('%', :fn, '%'))"
+//			)
+//	List<Annuncio> findByModello(@Param("fn") String modello);
 	
-	@Query(
-			nativeQuery = true,
-			value = "SELECT * FROM annunci WHERE LOWER(marca) LIKE LOWER(CONCAT('%', :fn, '%'))"
-		)
-	List<Annuncio> findByMarca(@Param("fn") String marca);
-	
-	@Query(
-			nativeQuery = true,
-			value = "SELECT * FROM annunci WHERE LOWER(modello) LIKE LOWER(CONCAT('%', :fn, '%'))"
-			)
-	List<Annuncio> findByModello(@Param("fn") String modello);
 }
