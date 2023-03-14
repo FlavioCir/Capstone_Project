@@ -81,10 +81,24 @@ public class UtenteController {
 	@Autowired
 	RuoloService rs;
 	
-	@PostMapping("utenti")
+	@PostMapping("registrazioneUtente")
 	public ResponseEntity<Object> createUtente(@RequestBody Utente u) {
 		String password = u.getPassword();
 		Optional<Ruolo> userOp = rs.getById(2);
+		Ruolo user = userOp.get();
+		u.setRuoli(new HashSet<>() {{
+			add(user);
+		}});
+		u.setPassword(pwEncoder.encode(password));
+		Utente utente = us.save(u);
+		
+		return new ResponseEntity<Object>(utente, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("registrazioneConcessionario")
+	public ResponseEntity<Object> createConcessionario(@RequestBody Utente u) {
+		String password = u.getPassword();
+		Optional<Ruolo> userOp = rs.getById(1);
 		Ruolo user = userOp.get();
 		u.setRuoli(new HashSet<>() {{
 			add(user);

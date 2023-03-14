@@ -1,0 +1,66 @@
+<div class="container-fluid d-flex justify-content-center align-items-center">
+    <div class="card shadow text-center p-5 m-5">
+        <div class="card-body text-danger">
+            <h1 class="card-title mb-4 logo fw-bold">Registrati</h1>
+            <form #form="ngForm" (ngSubmit)="onsubmit(form)">
+                <div class="d-flex flex-row">
+                    <div class="form-floating form-group mb-3 me-3">
+                        <input name="ragioneSociale" type="text" class="form-control" id="ragioneSociale" placeholder="Ragione Sociale" required ngModel>
+                        <label for="ragioneSociale"><i class="bi bi-person"></i> Ragione Sociale</label>
+                    </div>
+                    <div class="form-floating form-group mb-3">
+                        <input name="partitaIva" type="text" class="form-control" id="partitaIva" placeholder="Partita Iva" required
+                            ngModel>
+                        <label for="partitaIva"><i class="bi bi-file-earmark-lock"></i> Partita Iva</label>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div class="form-floating form-group mb-3 me-3">
+                        <input name="indirizzo" type="text" class="form-control" id="indirizzo" placeholder="Indirizzo" required
+                            ngModel>
+                        <label for="partitaIva"><i class="bi bi-geo-alt"></i> Indirizzo</label>
+                    </div>
+                    <div class="form-floating form-group mb-3">
+                        <input name="cap" type="text" class="form-control" id="cap" placeholder="Cap" required
+                            ngModel>
+                        <label for="cap"><i class="bi bi-geo-alt"></i> Cap</label>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div class="form-floating form-group mb-3 me-3">
+                        <input name="localita" type="text" class="form-control" id="localita" placeholder="Località" required
+                            ngModel>
+                        <label for="localita"><i class="bi bi-geo-alt"></i> Località</label>
+                    </div>
+                    <div class="form-floating form-group mb-3">
+                        <input name="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono" required
+                            ngModel>
+                        <label for="telefono"><i class="bi bi-telephone"></i> Telefono</label>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div class="form-floating form-group mb-3 me-3">
+                        <input name="username" type="text" class="form-control" id="username" placeholder="Username"
+                            required ngModel>
+                        <label for="username"><i class="bi bi-person"></i> Username</label>
+                    </div>
+                    <div class="form-floating form-group mb-3">
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Email" required
+                            ngModel>
+                        <label for="email"><i class="bi bi-envelope"></i> Email</label>
+                    </div>
+                </div>
+                <div class="form-floating form-group mb-3">
+                    <input name="password" type="password" class="form-control" id="password" placeholder="password"
+                        required ngModel>
+                    <label for="password"><i class="bi bi-key"></i> Password</label>
+                </div>
+                <button type="submit" class="btn btn-danger rounded-5 px-5 mt-3"
+                    [disabled]="form.invalid">Registrati</button>
+            </form>
+        </div>
+        <hr class="border border-secondary">
+        <p class="text-black">Sei già registrato? <a class="text-danger" [routerLink]="['/login']">Effettua il Login</a>
+        </p>
+    </div>
+</div>

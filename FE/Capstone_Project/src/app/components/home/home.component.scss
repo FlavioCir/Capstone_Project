@@ -1,0 +1,79 @@
+.container-fluid {
+    background-image: url('../../../assets/rettilineoPista.jpeg');
+    width: 100vw;
+    height: 100vh;
+}
+
+.ricerca {
+    margin: 0;
+    padding: 0;
+    margin-top: 120px;
+    background-color: #FF101F;
+    height: 825px;
+    width: 500px;
+    border-radius: 10px;
+
+    p {
+        font-size: 25px;
+        margin-top: 20px;
+    }
+
+    hr {
+        margin: 0 20px;
+        border-top: 5px solid white;
+        opacity: 100;
+    }
+
+    .ricercaItem {
+        font-size: 22px;
+        margin-bottom: 2px;
+        margin-top: 35px;
+    }
+
+    .ricercaItemFirst {
+        font-size: 22px;
+        margin-bottom: 2px;
+        margin-top: 10pxpx;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        color: #FF101F;
+    }
+
+    button {
+        border: 3px solid white;
+        background-color: #FF101F;
+        color: white;
+        padding: 9px;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: white;
+            color: #FF101F;
+        }
+    }
+}
+
+.annuncio {
+    margin: 0;
+    padding: 0;
+    margin-top: 120px;
+    background-color: #FF101F;
+    height: 825px;
+    width: 1400px;
+    border-radius: 10px;
+
+    p {
+        font-size: 25px;
+        margin-top: 20px;
+    }
+
+    hr {
+        margin: 0 20px;
+        border-top: 5px solid white;
+        opacity: 100;
+    }
+}

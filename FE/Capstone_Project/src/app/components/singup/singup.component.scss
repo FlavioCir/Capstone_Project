@@ -1,0 +1,27 @@
+.container-fluid {
+    background-image: url('../../../assets/rettilineoPista.jpeg');
+    width: 100vw;
+    height: 100vh;
+}
+
+.card {
+    width: fit-content;
+    min-width: 400px;
+
+    .text-danger {
+        color: #FF101F !important;
+    }
+
+    .btn-danger {
+        background-color: #FF101F !important;
+    }
+
+    .text-black {
+        a {
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
