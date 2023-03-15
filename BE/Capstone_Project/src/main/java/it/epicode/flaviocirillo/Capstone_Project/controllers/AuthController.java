@@ -50,7 +50,7 @@ public class AuthController {
 				.collect(Collectors.toList());
 
 		return ResponseEntity.ok(
-				new LoginResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles, userDetails.getExpirationTime()));
+				new LoginResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles, userDetails.getExpirationTime(), userDetails.getNome(), userDetails.getCognome(), userDetails.getRagioneSociale()));
 	}
 	
 	@GetMapping("/logout")

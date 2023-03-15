@@ -5,10 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
+import it.epicode.flaviocirillo.Capstone_Project.entities.Foto;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Ruolo;
 import it.epicode.flaviocirillo.Capstone_Project.entities.TipoRuolo;
-import it.epicode.flaviocirillo.Capstone_Project.entities.TipoVeicolo;
-import it.epicode.flaviocirillo.Capstone_Project.entities.Tipologia;
+import it.epicode.flaviocirillo.Capstone_Project.entities.StatoVeicolo;
+import it.epicode.flaviocirillo.Capstone_Project.entities.TipoMoto;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Utente;
 
 @Configuration
@@ -46,9 +47,8 @@ public class Beans {
 	
 	@Bean
 	@Scope("prototype")
-	public Annuncio annuncio(String foto, String marca, String modello, TipoVeicolo tipoVeicolo, Tipologia tipologia, int cilindrata, int cavalli, long kilometri, String immatricolazione, String localita, double prezzo, String descrizione) {
+	public Annuncio annuncio(String marca, String modello, StatoVeicolo tipoVeicolo, TipoMoto tipologia, int cilindrata, int cavalli, long kilometri, String immatricolazione, String localita, double prezzo, String descrizione, Utente utente) {
 		return Annuncio.builder()
-				.foto(foto)
 				.marca(marca)
 				.modello(modello)
 				.tipoVeicolo(tipoVeicolo)
@@ -60,6 +60,7 @@ public class Beans {
 				.localita(localita)
 				.prezzo(prezzo)
 				.descrizione(descrizione)
+				.utente(utente)
 				.build();
 	}
 	
@@ -68,6 +69,14 @@ public class Beans {
 	public Ruolo ruolo(TipoRuolo tr) {
 		return Ruolo.builder()
 				.tipoRuolo(tr)
+				.build();
+	}
+	
+	@Bean
+	@Scope("prototype")
+	public Foto foto(String url) {
+		return Foto.builder()
+				.url(url)
 				.build();
 	}
 	

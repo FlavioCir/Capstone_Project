@@ -13,6 +13,9 @@ export class NavbarComponent implements OnInit {
     isLoginFailed = false;
     errorMessage = '';
     roles: string[] = [];
+    nome: string | undefined;
+    cognome: string | undefined;
+    ragioneSociale: string | undefined;
 
     constructor(private router: Router, private storagesrv: StorageService) { }
 
@@ -20,11 +23,28 @@ export class NavbarComponent implements OnInit {
         if (this.storagesrv.isLoggedIn()) {
             this.isLoggedIn = true;
             this.roles = this.storagesrv.getUser().roles;
+            this.getUser();
+            this.getAdmin();
         }
     }
 
-    getUserById(): void {
+    getUser(): void {
+        const user = this.storagesrv.getUser();
+        if(user && user.id) {
+            this.nome = user.nome;
+            this.cognome = user.cognome;
+        }
+    }
 
+    getAdmin(): void {
+        const user = this.storagesrv.getUser();
+        if(user && user.id) {
+            this.ragioneSociale = user.ragioneSociale;
+        }
+    }
+
+    isAdmin(): boolean {
+        return this.storagesrv.isAdmin();
     }
 
     logout(): void {

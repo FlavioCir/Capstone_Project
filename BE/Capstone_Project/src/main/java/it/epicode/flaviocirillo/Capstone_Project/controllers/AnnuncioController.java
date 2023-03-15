@@ -48,7 +48,7 @@ public class AnnuncioController {
 	}
 	
 	@GetMapping("annunci_page")
-	public ResponseEntity<Object> getUtentiInPages(Pageable pageable) {
+	public ResponseEntity<Object> getAnnunciInPages(Pageable pageable) {
 		Page<Annuncio> annuncio = as.getAll_page(pageable);
 		
 		if(annuncio.isEmpty()) {
@@ -68,7 +68,7 @@ public class AnnuncioController {
 	
 	@PutMapping("annunci/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Object> updateUtente(@PathVariable int id, @RequestBody Annuncio _annuncio) {
+	public ResponseEntity<Object> updateAnnuncio(@PathVariable int id, @RequestBody Annuncio _annuncio) {
 		Optional<Annuncio> annuancioObj = as.getById(id);
 		
 		ResponseEntity<Object> check = checkExists(annuancioObj);
@@ -96,7 +96,7 @@ public class AnnuncioController {
 	
 	@DeleteMapping("annunci/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Object> deleteUtente(@PathVariable int id) {
+	public ResponseEntity<Object> deleteAnnuncio(@PathVariable int id) {
 		Optional<Annuncio> annuancioObj = as.getById(id);
 		
 		ResponseEntity<Object> check = checkExists(annuancioObj);

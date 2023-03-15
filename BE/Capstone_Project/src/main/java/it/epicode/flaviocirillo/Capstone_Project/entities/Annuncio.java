@@ -2,13 +2,19 @@ package it.epicode.flaviocirillo.Capstone_Project.entities;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,15 +37,19 @@ public class Annuncio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String foto;
+	@Column(nullable = true)
+	@JsonManagedReference
+	@OneToMany(mappedBy = "annuncio")
+	private Set<Foto> foto;
+	
 	private String marca;
 	private String modello;
 	
 	@Enumerated(EnumType.STRING)
-	private TipoVeicolo tipoVeicolo;
+	private StatoVeicolo tipoVeicolo;
 	
 	@Enumerated(EnumType.STRING)
-	private Tipologia tipologia;
+	private TipoMoto tipologia;
 	
 	private int cilindrata;
 	private int cavalli;
@@ -48,5 +58,9 @@ public class Annuncio {
 	private String localita;
 	private double prezzo;
 	private String descrizione;
+	
+	 @ManyToOne
+	 @JoinColumn(name = "utente_id")
+	 private Utente utente;
 	
 }

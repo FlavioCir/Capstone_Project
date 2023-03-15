@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <div class="creaAnnuncio">
+            <p class="text-white text-center title">Crea Annuncio</p>
+            <hr>
+            <div class="foto">
+
+            </div>
+            <div class="container">
+                <form #form="ngForm" (ngSubmit)="onsubmit(form)">
+                    <div class="row">
+                        <div class="col form-floating form-group">
+                            <input name="marca" type="text" class="form-control" id="marca" placeholder="marca" required
+                                ngModel>
+                            <label for="marca">Marca</label>
+                        </div>
+                        <div class="col form-floating form-group">
+                            <input name="modello" type="text" class="form-control" id="modello" placeholder="modello"
+                                required ngModel>
+                            <label for="modello">Modello</label>
+                        </div>
+                        <div class="col form-group">
+                            <select class="form-select" aria-label="statoVeicolo" name="statoVeicolo"
+                                required>
+                                <option selected>Seleziona lo stato del veicolo</option>
+                                <option *ngFor="let statoVeicolo of statoVeicolo" [value]="statoVeicolo">{{ statoVeicolo
+                                    }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col form-group">
+                            <select class="form-select" aria-label="tipoMoto" name="tipoMoto" required>
+                                <option selected>Seleziona il tipo di moto</option>
+                                <option *ngFor="let tipoMoto of tipoMoto" [value]="tipoMoto">{{ tipoMoto }}</option>
+                            </select>
+                        </div>
+                        <div class="col form-floating form-group">
+                            <input name="cilindrata" type="number" class="form-control" id="cilindrata"
+                                placeholder="cilindrata" required ngModel>
+                            <label for="cilindrata">Cilindrata</label>
+                        </div>
+                        <div class="col form-floating form-group">
+                            <input name="cavalli" type="number" class="form-control" id="cavalli" placeholder="cavalli"
+                                required ngModel>
+                            <label for="cavalli">Cavalli</label>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col form-floating form-group">
+                            <input name="kilometri" type="number" class="form-control" id="kilometri"
+                                placeholder="kilometri" required ngModel>
+                            <label for="kilometri">Kilometri</label>
+                        </div>
+                        <div class="col form-floating form-group">
+                            <input name="immatricolazione" type="text" class="form-control" id="immatricolazione"
+                                placeholder="immatricolazione" required ngModel>
+                            <label for="immatricolazione">Anno d'immatricolazione</label>
+                        </div>
+                        <div class="col form-floating form-group">
+                            <input name="localita" type="text" class="form-control" id="localita" placeholder="localita"
+                                required ngModel>
+                            <label for="localita">Località</label>
+                        </div>
+                    </div>
+                    <div class="row mt-4 justify-content-center">
+                        <div class="col-4 form-floating form-group">
+                            <input name="prezzo" type="number" class="form-control" id="prezzo" placeholder="prezzo"
+                                required ngModel>
+                            <label for="prezzo">Prezzo €</label>
+                        </div>
+                        <div class="col-4 form-floating form-group">
+                            <textarea name="descrizione" type="text" class="form-control" id="descrizione"
+                                placeholder="descrizione" required ngModel></textarea>
+                            <label for="descrizione">Descrizione</label>
+                        </div>
+                    </div>
+                    <button type="submit">Aggiungi annuncio</button>
+                    <!-- [disabled]="form.invalid" -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

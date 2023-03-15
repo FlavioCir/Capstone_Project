@@ -20,4 +20,8 @@ public class LoginResponse {
 	private List<String> roles;
 	private Date expirationTime;
 	
+	private String nome;
+	private String cognome;
+	private String ragioneSociale;
+	
 }

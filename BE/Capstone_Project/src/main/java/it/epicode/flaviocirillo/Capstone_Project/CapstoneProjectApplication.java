@@ -10,9 +10,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import it.epicode.flaviocirillo.Capstone_Project.config.Beans;
+import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
+import it.epicode.flaviocirillo.Capstone_Project.entities.Foto;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Ruolo;
 import it.epicode.flaviocirillo.Capstone_Project.entities.TipoRuolo;
+import it.epicode.flaviocirillo.Capstone_Project.entities.StatoVeicolo;
+import it.epicode.flaviocirillo.Capstone_Project.entities.TipoMoto;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Utente;
+import it.epicode.flaviocirillo.Capstone_Project.services.AnnuncioService;
+import it.epicode.flaviocirillo.Capstone_Project.services.FotoService;
 import it.epicode.flaviocirillo.Capstone_Project.services.RuoloService;
 import it.epicode.flaviocirillo.Capstone_Project.services.UtenteService;
 
@@ -28,7 +34,7 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-//		popolaDB_Utenti();
+//		popolaDB();
 		
 		((AnnotationConfigApplicationContext)ctx).close();
 	}
@@ -39,7 +45,13 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 	@Autowired
 	private RuoloService rs;
 	
-	public void popolaDB_Utenti() {
+	@Autowired
+	private AnnuncioService as;
+	
+	@Autowired
+	private FotoService fs;
+	
+	public void popolaDB() {
 		Ruolo r1 = (Ruolo)ctx.getBean("ruolo", TipoRuolo.ROLE_ADMIN);
 		Ruolo r2 = (Ruolo)ctx.getBean("ruolo", TipoRuolo.ROLE_USER);
 		
@@ -66,6 +78,36 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 		us.save(u1);
 		us.save(u2);
 		us.save(u3);
+		
+		Annuncio a1 = (Annuncio)ctx.getBean("annuncio", "Yamaha", "yzf-r1", StatoVeicolo.USATO, TipoMoto.SUPERSPORTIVA, 1000, 150, 12000L, "2022", "Roma", 10000.00, "Descrizione Prova 1", u3);
+		Annuncio a2 = (Annuncio)ctx.getBean("annuncio", "Suzuki", "gsx-r", StatoVeicolo.NUOVO, TipoMoto.SUPERSPORTIVA, 600, 100, 15000L, "2022", "Milano", 6000.00, "Descrizione Prova 2", u3);
+		
+		as.save(a1);
+		as.save(a2);
+		
+		Foto f1 = (Foto)ctx.getBean("foto", "url1");
+		Foto f2 = (Foto)ctx.getBean("foto", "url2");
+		Foto f3 = (Foto)ctx.getBean("foto", "url3");
+		
+		f1.setAnnuncio(a1);
+		f2.setAnnuncio(a1);
+		f3.setAnnuncio(a2);
+		
+		fs.save(f1);
+		fs.save(f2);
+		fs.save(f3);
+		
+		a1.setFoto(new HashSet<>() {{
+			add(f1);
+			add(f2);
+		}});
+		
+		a2.setFoto(new HashSet<>() {{
+			add(f3);
+		}});
+		
+		as.save(a1);
+		as.save(a2);
 		
 		System.out.println("Db popolato");
 		

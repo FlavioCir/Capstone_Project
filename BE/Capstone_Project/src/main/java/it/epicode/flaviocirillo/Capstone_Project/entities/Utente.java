@@ -76,6 +76,6 @@ public class Utente {
 			joinColumns = @JoinColumn(name = "utente_id"),
 			inverseJoinColumns = @JoinColumn(name = "annuncio_id")
 	)
-	private List<Annuncio> annunci;
+	private List<Annuncio> preferiti;
 
 }

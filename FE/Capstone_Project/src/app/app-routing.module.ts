@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SingupComponent } from './components/singup/singup.component';
 import { HomeComponent } from './components/home/home.component';
 import { SingupConcessionarioComponent } from './components/singup-concessionario/singup-concessionario.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.component';
 
 const routes: Routes = [
     {
@@ -21,6 +23,14 @@ const routes: Routes = [
     {
         path: 'registerConcessionario',
         component: SingupConcessionarioComponent
+    },
+    {
+        path: 'userDashboard',
+        component: UserDashboardComponent
+    },
+    {
+        path: 'addAnnuncio',
+        component: AddAnnuncioComponent
     }
 ];
 

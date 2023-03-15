@@ -1,4 +1,4 @@
-.ricerca {
+.utente {
     margin: 120px 0 0 0;
     padding: 0;
     background-color: #0267C1;
@@ -10,6 +10,7 @@
     p {
         font-size: 25px;
         margin-top: 20px;
+        color: white;
     }
 
     hr {
@@ -18,40 +19,13 @@
         opacity: 100;
     }
 
-    .ricercaItem {
-        font-size: 22px;
-        margin-bottom: 2px;
-        margin-top: 35px;
+    i {
+        font-size: 120px;
     }
 
-    .ricercaItemFirst {
-        font-size: 22px;
-        margin-bottom: 2px;
-        margin-top: 10pxpx;
-    }
-
-    input {
-        padding: 10px;
-        border-radius: 10px;
-        border: none;
-        color: red;
-    }
-
-    button {
-        border: 3px solid white;
-        background-color: #0267C1;
-        color: white;
-        padding: 9px;
-        border-radius: 10px;
-
-        &:hover {
-            background-color: white;
-            color: #0267C1;
-        }
-    }
 }
 
-.annuncio {
+.preferiti {
     margin: 120px 0 0 0;
     padding: 0;
     background-color: #0267C1;

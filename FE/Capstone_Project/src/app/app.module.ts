@@ -11,6 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SingupComponent } from './components/singup/singup.component';
 import { SingupConcessionarioComponent } from './components/singup-concessionario/singup-concessionario.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.component';
+import { TokenInterceptor } from './auth/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginComponent,
     SingupComponent,
     SingupConcessionarioComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserDashboardComponent,
+    AddAnnuncioComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    TokenInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

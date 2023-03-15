@@ -1,6 +1,6 @@
 package it.epicode.flaviocirillo.Capstone_Project.entities;
 
-public enum TipoVeicolo {
+public enum StatoVeicolo {
 
 	USATO,
 	NUOVO

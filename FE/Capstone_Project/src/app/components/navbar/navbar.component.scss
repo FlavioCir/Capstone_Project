@@ -1,10 +1,10 @@
 .navbar {
-    background-color: #FF101F;
-    height: 100px;
+    background-color: red;
+    height: fit-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 20px 20px;
 
     a {
         text-decoration: none;
@@ -13,7 +13,7 @@
     }
 
     button {
-        background-color: #FF101F;
+        background-color: red;
         border: 3px solid white;
         color: white;
         padding: 7px 15px;
@@ -22,13 +22,19 @@
 
         &:hover {
             background-color: white;
-            color: #FF101F;
+            color: red;
         }
     }
 
     .utente {
-        text-decoration: none;
-        color: white;
-        font-size: 20px;
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 25px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
