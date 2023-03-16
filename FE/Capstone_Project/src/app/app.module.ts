@@ -15,6 +15,10 @@ import { UserDashboardComponent } from './components/user-dashboard/user-dashboa
 import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.component';
 import { TokenInterceptor } from './auth/token.interceptor';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
+import { AnnuncioCardComponent } from './components/annuncio-card/annuncio-card.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +29,8 @@ import { TokenInterceptor } from './auth/token.interceptor';
     NavbarComponent,
     UserDashboardComponent,
     AddAnnuncioComponent,
+    ConcessionarioDashboardComponent,
+    AnnuncioCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,11 @@ import { TokenInterceptor } from './auth/token.interceptor';
     FormsModule
   ],
   providers: [
-    TokenInterceptor
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptor,
+        multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
-import { StatoVeicolo } from "../enum/stato-veicolo.enum";
-import { TipoMoto } from "../enum/tipo-moto.enum";
 import { Utente } from "./utente.interface";
+import { StatoVeicolo } from "./stato-veicolo.interface";
+import { TipoMoto } from "./tipo-moto.interface";
 
 export interface Annuncio {
 

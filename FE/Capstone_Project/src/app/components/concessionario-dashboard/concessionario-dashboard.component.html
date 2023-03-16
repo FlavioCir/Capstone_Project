@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="d-flex flex-row">
+        <div class="utente">
+            <p class="text-white text-center">Profilo utente</p>
+            <hr>
+            <div *ngIf="concessionarioLoggato">
+                <p class="text-center"><i class="bi bi-person-circle text-white"></i></p>
+                <p class="text-center utenteItem">Ragione sociale: {{ concessionarioLoggato.ragioneSociale }}</p>
+                <p class="text-center utenteItem">Partita IVA: {{ concessionarioLoggato.partitaIva }}</p>
+                <p class="text-center utenteItem">Indirizzo: {{ concessionarioLoggato.indirizzo }}</p>
+                <p class="text-center utenteItem">Cap: {{ concessionarioLoggato.cap }}</p>
+                <p class="text-center utenteItem">Località: {{ concessionarioLoggato.localita }}</p>
+                <p class="text-center utenteItem">Telefono: {{ concessionarioLoggato.telefono }}</p>
+                <p class="text-center utenteItem">Username: {{ concessionarioLoggato.username }}</p>
+                <p class="text-center utenteItem">Email: {{ concessionarioLoggato.email }}</p>
+                <p class="text-center mt-5"><a>Impostazioni <i class="bi bi-gear ms-3"></i></a></p>
+            </div>
+        </div>
+        <div class="annunci ms-4">
+            <div class="d-flex justify-content-around align-items-center">
+                <p class="text-white text-center">I miei annunci</p>
+                <div>
+                    <button type="button" class="add" [routerLink]="['/addAnnuncio']">Crea annuncio <i
+                            class="bi bi-plus-lg"></i></button>
+                </div>
+            </div>
+            <hr>
+            <div class="annunci-card mt-4 px-5">
+                <div class="card mb-3" *ngFor="let annuncio of annunci">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="../../../assets/pistaMugello.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ annuncio.marca }} {{ annuncio.modello }}</h3>
+                                <h5 class="card-title">{{ annuncio.prezzo }} &euro;</h5>
+                                <div class="card-body-item mt-3">
+                                    <p class="card-text me-3"><i class="fa-solid fa-road"></i> {{ annuncio.kilometri }} Kw</p>
+                                    <p class="card-text me-3"><i class="fa-regular fa-calendar"></i> {{ annuncio.immatricolazione }}
+                                    </p>
+                                    <p class="card-text"><i class="fa-sharp fa-solid fa-gauge-simple-high"></i> {{ annuncio.cilindrata }} ({{
+                                        annuncio.cavalli }} CV)</p>
+                                </div>
+                                <div class="card-body-item">
+                                    <p class="card-text me-3"><i class="fa-solid fa-location-dot"></i> {{ annuncio.localita }}</p>
+                                    <p class="card-text"><i class="fa-solid fa-motorcycle"></i> {{ annuncio.tipoMoto.tipoMoto }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

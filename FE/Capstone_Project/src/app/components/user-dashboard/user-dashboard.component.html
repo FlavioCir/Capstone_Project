@@ -4,13 +4,13 @@
         <div class="utente">
             <p class="text-white text-center">Profilo utente</p>
             <hr>
-            <div class="mt-5">
+            <div class="mt-5" *ngIf="utenteLoggato">
                 <p class="text-center"><i class="bi bi-person-circle text-white"></i></p>
-                <p class="text-center">Nome: </p>
-                <p class="text-center">Cognome: </p>
-                <p class="text-center">Username: </p>
-                <p class="text-center">Email: </p>
-                <p class="text-center">Ruolo: </p>
+                <p class="text-center">Nome: {{ utenteLoggato.nome }}</p>
+                <p class="text-center">Cognome: {{ utenteLoggato.cognome }}</p>
+                <p class="text-center">Username: {{ utenteLoggato.username }}</p>
+                <p class="text-center">Email: {{ utenteLoggato.email }}</p>
+                <p class="text-center mt-5"><a>Impostazioni <i class="bi bi-gear ms-3"></i></a></p>
             </div>
         </div>
         <div class="preferiti ms-4">

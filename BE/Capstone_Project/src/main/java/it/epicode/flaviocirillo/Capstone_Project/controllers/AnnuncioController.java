@@ -79,8 +79,8 @@ public class AnnuncioController {
 		annuncio.setFoto(_annuncio.getFoto());
 		annuncio.setMarca(_annuncio.getMarca());
 		annuncio.setModello(_annuncio.getModello());
-		annuncio.setTipoVeicolo(_annuncio.getTipoVeicolo());
-		annuncio.setTipologia(_annuncio.getTipologia());
+		annuncio.setTipoMoto(_annuncio.getTipoMoto());
+		annuncio.setStatoVeicolo(_annuncio.getStatoVeicolo());
 		annuncio.setCilindrata(_annuncio.getCilindrata());
 		annuncio.setCavalli(_annuncio.getCavalli());
 		annuncio.setKilometri(_annuncio.getKilometri());

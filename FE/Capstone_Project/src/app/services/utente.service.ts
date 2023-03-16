@@ -18,6 +18,10 @@ export class UtenteService {
         return this.http.delete(`http://localhost:8080/utenti/${id}`);
     }
 
+    getUtenteById(id: number): Observable<Utente> {
+        return this.http.get<Utente>(`http://localhost:8080/utenti/${id}`);
+    }
+
     addUtente(utente: any): Observable<Object> {
         return this.http.post('http://localhost:8080/utenti/', utente);
     }

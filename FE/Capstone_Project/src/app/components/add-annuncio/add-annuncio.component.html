@@ -22,18 +22,18 @@
                         </div>
                         <div class="col form-group">
                             <select class="form-select" aria-label="statoVeicolo" name="statoVeicolo"
-                                required>
-                                <option selected>Seleziona lo stato del veicolo</option>
-                                <option *ngFor="let statoVeicolo of statoVeicolo" [value]="statoVeicolo">{{ statoVeicolo
+                                required ngModel>
+                                <!-- <option selected>Seleziona lo stato del veicolo</option> -->
+                                <option *ngFor="let sV of listaStatoVeicolo" [value]="sV | json">{{ sV.statoVeicolo
                                     }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col form-group">
-                            <select class="form-select" aria-label="tipoMoto" name="tipoMoto" required>
-                                <option selected>Seleziona il tipo di moto</option>
-                                <option *ngFor="let tipoMoto of tipoMoto" [value]="tipoMoto">{{ tipoMoto }}</option>
+                            <select class="form-select" aria-label="tipoMoto" name="tipoMoto" required ngModel>
+                                <!-- <option selected>Seleziona il tipo di moto</option> -->
+                                <option *ngFor="let tM of listaTipoMoto" [value]="tM | json">{{ tM.tipoMoto }}</option>
                             </select>
                         </div>
                         <div class="col form-floating form-group">

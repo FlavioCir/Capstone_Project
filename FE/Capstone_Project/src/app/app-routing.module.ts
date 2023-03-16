@@ -6,6 +6,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SingupConcessionarioComponent } from './components/singup-concessionario/singup-concessionario.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.component';
+import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
+import { AnnuncioCardComponent } from './components/annuncio-card/annuncio-card.component';
 
 const routes: Routes = [
     {
@@ -29,8 +31,16 @@ const routes: Routes = [
         component: UserDashboardComponent
     },
     {
+        path: 'concessionarioDashboard',
+        component: ConcessionarioDashboardComponent
+    },
+    {
         path: 'addAnnuncio',
         component: AddAnnuncioComponent
+    },
+    {
+        path: 'annuncioCard',
+        component: AnnuncioCardComponent
     }
 ];
 

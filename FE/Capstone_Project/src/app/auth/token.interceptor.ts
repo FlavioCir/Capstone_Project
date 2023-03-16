@@ -31,8 +31,6 @@ export class TokenInterceptor implements HttpInterceptor {
             } else {
                 console.log("errore")
             }
-        } else {
-            console.log("errore")
         }
 
         return next.handle(request);
