@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
     isLoggedIn = false;
     isLoginFailed = false;
-    errorMessage = '';
+    errorMessage: string | undefined;
     roles: string[] = [];
 
     constructor(private usrsrv: AuthService, private router: Router, private storageService: StorageService) { }
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/'])
                 }
             })
-        } catch (error) {
+        } catch(error) {
             console.error(error);
         }
     }

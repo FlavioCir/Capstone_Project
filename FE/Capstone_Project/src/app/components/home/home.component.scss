@@ -24,18 +24,18 @@
         margin-top: 35px;
     }
 
-    .ricercaItemFirst {
-        font-size: 22px;
-        margin-bottom: 2px;
-        margin-top: 10pxpx;
-    }
-
     input {
         padding: 10px;
         border-radius: 10px;
         border: none;
         color: red;
     }
+
+    .ricercaItemFirst {
+        font-size: 22px;
+        margin-bottom: 2px;
+    }
+
 
     button {
         border: 3px solid white;
@@ -60,6 +60,8 @@
     border-radius: 10px;
     box-shadow: 10px 10px 30px #363537;
 
+    overflow-y: scroll;
+
     p {
         font-size: 25px;
         margin-top: 20px;
@@ -69,5 +71,34 @@
         margin: 0 20px;
         border-top: 5px solid white;
         opacity: 100;
+    }
+
+    .card {
+
+        width: fit-content;
+
+        background-color: #0267C1;
+        border: 3px solid white;
+        color: white;
+        border-radius: 10px;
+
+        img {
+            height: 100%;
+        }
+
+        .card-text {
+            font-size: 20px;
+        }
+
+        .card-body-item {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .miPiace, .dettagli-post {
+            font-size: 25px;
+            color: white;
+        }
+
     }
 }

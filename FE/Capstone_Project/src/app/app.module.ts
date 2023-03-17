@@ -17,7 +17,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
-import { AnnuncioCardComponent } from './components/annuncio-card/annuncio-card.component';
+import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { AnnuncioCardComponent } from './components/annuncio-card/annuncio-card.
     UserDashboardComponent,
     AddAnnuncioComponent,
     ConcessionarioDashboardComponent,
-    AnnuncioCardComponent,
+    DettagliPostComponent
   ],
   imports: [
     BrowserModule,

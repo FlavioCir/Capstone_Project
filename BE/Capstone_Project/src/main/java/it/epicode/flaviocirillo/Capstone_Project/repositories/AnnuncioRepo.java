@@ -11,21 +11,43 @@ import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
 
 @Repository
 public interface AnnuncioRepo extends JpaRepository<Annuncio, Integer> {
-
-//	List<Annuncio> findByAnnoImmatricolazione(@Param("min") String min, @Param("max") String max);
-//	List<Annuncio> findByKilometri(@Param("min") long min, @Param("max") long max);
-//	List<Annuncio> findByPrezzo(double prezzo);
-//	
-//	@Query(
-//			nativeQuery = true,
-//			value = "SELECT * FROM annunci WHERE LOWER(marca) LIKE LOWER(CONCAT('%', :fn, '%'))"
-//		)
-//	List<Annuncio> findByMarca(@Param("fn") String marca);
-//	
-//	@Query(
-//			nativeQuery = true,
-//			value = "SELECT * FROM annunci WHERE LOWER(modello) LIKE LOWER(CONCAT('%', :fn, '%'))"
-//			)
-//	List<Annuncio> findByModello(@Param("fn") String modello);
+	
+	// filtra gli annunci per marca della moto
+	@Query(
+			nativeQuery = true,
+			value = "SELECT * FROM annunci WHERE LOWER(marca) LIKE LOWER(CONCAT('%', :fn, '%'))"
+		)
+	List<Annuncio> findByMarca(@Param("fn") String marca);
+		
+		
+	// filtra gli annunci per modello della moto
+	@Query(
+			nativeQuery = true,
+			value = "SELECT * FROM annunci WHERE LOWER(modello) LIKE LOWER(CONCAT('%', :fn, '%'))"
+		)
+	List<Annuncio> findByModello(@Param("fn") String modello);
+	
+	
+	// filtra gli annunci che hanno l'anno d'immatricolazione tra min e max
+	@Query(
+			nativeQuery = true,
+			value = "SELECT * FROM annunci a WHERE a.immatricolazione BETWEEN :min AND :max"
+		)
+	List<Annuncio> findByAnnoImmatricolazione(@Param("min") String min, @Param("max") String max);
+	
+	
+	// filtra gli annunci che hanno i kilometri tra min e max
+	@Query(
+			nativeQuery = true,
+			value = "SELECT * FROM annunci a WHERE a.kilometri BETWEEN :min AND :max"
+		)
+	List<Annuncio> findByKilometri(@Param("min") long min, @Param("max") long max);
+	
+	// filtra gli annunci che hanno il prezzo minore e uguale a quello inserito
+	@Query(
+			nativeQuery = true,
+			value = "SELECT * FROM annunci a WHERE a.prezzo <= :fn"
+		)
+	List<Annuncio> findByPrezzo(@Param("fn") double prezzo);
 	
 }

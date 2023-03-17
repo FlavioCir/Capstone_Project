@@ -47,13 +47,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	// inserire eventualmente queste path in antMatchers per evitare di fare il login
-	// "/utenti", "/utenti_page", "/utenti/**", "/annunci", "/annunci_page", "/annunci/**"
+	// "/utenti", "/utenti_page", "/utenti/**", "/annunci_page", "/annunci/**"
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/auth/login", "/home", "/registrazioneUtente", "/registrazioneConcessionario", "/auth/update_user_pw").permitAll()
+				.antMatchers("/auth/login", "/home", "/registrazioneUtente", "/registrazioneConcessionario", "/auth/update_user_pw", "/annunci", "/annunci/cercaMarca", "/annunci/cercaModello", "/annunci/cercaPrezzo", "/annunci/cercaKilometri", "/annunci/cercaImmatricolazione").permitAll()
 				.antMatchers("/**").authenticated();
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

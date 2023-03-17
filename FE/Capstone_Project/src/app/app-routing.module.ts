@@ -7,7 +7,7 @@ import { SingupConcessionarioComponent } from './components/singup-concessionari
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.component';
 import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
-import { AnnuncioCardComponent } from './components/annuncio-card/annuncio-card.component';
+import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.component';
 
 const routes: Routes = [
     {
@@ -39,8 +39,8 @@ const routes: Routes = [
         component: AddAnnuncioComponent
     },
     {
-        path: 'annuncioCard',
-        component: AnnuncioCardComponent
+        path: 'dettagliPost/:id',
+        component: DettagliPostComponent
     }
 ];
 

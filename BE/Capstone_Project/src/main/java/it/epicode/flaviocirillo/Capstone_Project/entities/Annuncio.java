@@ -48,19 +48,9 @@ public class Annuncio {
 	private String modello;
 	
 	@OneToOne
-//	@JoinTable(
-//			name = "tipo_di_moto",
-//			joinColumns = @JoinColumn(name = "annuncio_id"),
-//			inverseJoinColumns = @JoinColumn(name = "tipologia_moto_id")
-//	)
 	private TipologiaMoto tipoMoto;
 	
 	@OneToOne
-//	@JoinTable(
-//			name = "stato_del_veicolo",
-//			joinColumns = @JoinColumn(name = "annuncio_id"),
-//			inverseJoinColumns = @JoinColumn(name = "stato_del_veicolo_id")
-//	)
 	private StatoDelVeicolo statoVeicolo;
 	
 	private int cilindrata;

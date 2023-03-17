@@ -111,30 +111,30 @@ public class AnnuncioController {
 	
 	//FILTRI
 	
-//	@GetMapping("annunci/cercaImmatricolazione")
-//	public List<Annuncio> getAllAnnunciByAnnoImmatricolazione(@RequestParam("min") String min, @RequestParam("max") String max) {
-//		return as.findByAnnoImmatricolazione(min, max);
-//	}
-//	
-//	@GetMapping("annunci/cercaKilometri")
-//	public List<Annuncio> getAllAnnunciByKilometri(@RequestParam("min") long min, @RequestParam("max") long max) {
-//		return as.findByKilometri(min, max);
-//	}
-//	
-//	@GetMapping("annunci/cercaPrezzo")
-//	public List<Annuncio> getAllAnnunciByPrezzo(@RequestParam("prezzo") double prezzo) {
-//		return as.findByPrezzo(prezzo);
-//	}
-//	
-//	@GetMapping("annunci/cercaMarca")
-//	public List<Annuncio> getAllAnnunciByMarca(@RequestParam("marca") String marca) {
-//		return as.findByMarca(marca);
-//	}
-//	
-//	@GetMapping("annunci/cercaMarca")
-//	public List<Annuncio> getAllAnnunciByModello(@RequestParam("modello") String modello) {
-//		return as.findByModello(modello);
-//	}
+	@GetMapping("annunci/cercaMarca")
+	public List<Annuncio> getAllAnnunciByMarca(@RequestParam("marca") String marca) {
+		return as.findByMarca(marca);
+	}
+	
+	@GetMapping("annunci/cercaModello")
+	public List<Annuncio> getAllAnnunciByModello(@RequestParam("modello") String modello) {
+		return as.findByModello(modello);
+	}
+	
+	@GetMapping("annunci/cercaImmatricolazione")
+	public List<Annuncio> getAllAnnunciByAnnoImmatricolazione(@RequestParam("min") String min, @RequestParam("max") String max) {
+		return as.findByAnnoImmatricolazione(min, max);
+	}
+	
+	@GetMapping("annunci/cercaKilometri")
+	public List<Annuncio> getAllAnnunciByKilometri(@RequestParam("min") long min, @RequestParam("max") long max) {
+		return as.findByKilometri(min, max);
+	}
+	
+	@GetMapping("annunci/cercaPrezzo")
+	public List<Annuncio> getAllAnnunciByPrezzo(@RequestParam("prezzo") double prezzo) {
+		return as.findByPrezzo(prezzo);
+	}
 	
 	private ResponseEntity<Object> checkExists(Optional<Annuncio> obj) {
 		if( !obj.isPresent() ) {
