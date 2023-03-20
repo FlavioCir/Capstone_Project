@@ -10,12 +10,48 @@
                 <p class="text-center">Cognome: {{ utenteLoggato.cognome }}</p>
                 <p class="text-center">Username: {{ utenteLoggato.username }}</p>
                 <p class="text-center">Email: {{ utenteLoggato.email }}</p>
-                <p class="text-center mt-5"><a>Impostazioni <i class="bi bi-gear ms-3"></i></a></p>
+                <p class="impostazioni text-center mt-5"><a>Impostazioni <i class="bi bi-gear ms-3"></i></a></p>
+                <p class="back text-center mt-5" [routerLink]="['/']"><a><i class="bi bi-arrow-left"></i> Back</a></p>
             </div>
         </div>
         <div class="preferiti ms-4">
             <p class="text-white text-center">Preferiti</p>
             <hr>
+            <div class="annunci-card mt-4 px-5">
+                <div class="card mb-3" *ngFor="let preferito of preferitiUtente">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="../../../assets/pistaMugello.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <h3 class="card-title">{{ preferito.marca }} {{ preferito.modello }}</h3>
+                                    <a class="dettagli-post me-3" [routerLink]="['/dettagliPost', preferito.id]"><i
+                                            class="bi bi-arrow-right"></i></a>
+                                </div>
+                                <h5 class="card-title">{{ preferito.prezzo }} &euro;</h5>
+                                <div class="card-body-item mt-3">
+                                    <p class="card-text me-4"><i class="fa-solid fa-road"></i> {{ preferito.kilometri }}
+                                        Kw</p>
+                                    <p class="card-text me-4"><i class="fa-regular fa-calendar"></i> {{
+                                        preferito.immatricolazione }}
+                                    </p>
+                                    <p class="card-text"><i class="fa-sharp fa-solid fa-gauge-simple-high"></i> {{
+                                        preferito.cilindrata }} ({{
+                                            preferito.cavalli }} CV)</p>
+                                </div>
+                                <div class="card-body-item">
+                                    <p class="card-text me-4"><i class="fa-solid fa-location-dot"></i> {{
+                                        preferito.localita }}</p>
+                                    <p class="card-text"><i class="fa-solid fa-motorcycle"></i> {{
+                                        preferito.tipoMoto.tipoMoto }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Annuncio } from 'src/app/models/annuncio.interface';
 import { AnnuncioService } from 'src/app/services/annuncio.service';
 import { StorageService } from 'src/app/auth/storage.service';
+import { UtenteService } from 'src/app/services/utente.service';
+import { Utente } from 'src/app/models/utente.interface';
 
 @Component({
     selector: 'app-home',
@@ -11,11 +13,14 @@ import { StorageService } from 'src/app/auth/storage.service';
 export class HomeComponent implements OnInit {
 
     annunci: Annuncio[] | undefined;
+    preferiti: any;
+    utenteLoggato: Utente | undefined;
+    annuncioEsistente: Annuncio | undefined;
 
     isLoggigIn = false;
     roles: string[] = [];
 
-    constructor(private asrv: AnnuncioService, private ssrv: StorageService) { }
+    constructor(private asrv: AnnuncioService, private ssrv: StorageService, private usrv: UtenteService) { }
 
     ngOnInit(): void {
         if (this.ssrv.isLoggedIn()) {
@@ -34,6 +39,24 @@ export class HomeComponent implements OnInit {
 
     isAdmin(): boolean {
         return this.ssrv.isAdmin();
+    }
+
+    aggiungiPreferiti(annuncio: Annuncio): void {
+        console.log(annuncio);
+        let utenteLoggatoId = this.ssrv.getUser().id;
+        this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
+            let utente: Utente = resp;
+            this.annuncioEsistente = utente.preferiti.find(a => a.id === annuncio.id);
+            if (this.annuncioEsistente) {
+                console.log("Annuncio rimosso dai preferiti");
+                return;
+            } else {
+                utente.preferiti.push(annuncio);
+                this.usrv.updateUtente(utente, utenteLoggatoId).subscribe(resp => {
+                    console.log(resp);
+                });
+            }
+        });
     }
 
     // FILTRI ----------------------------------------------------------------

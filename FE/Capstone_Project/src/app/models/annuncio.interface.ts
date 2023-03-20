@@ -18,4 +18,6 @@ export interface Annuncio {
     descrizione: string
     utente: Utente
 
+    like: boolean
+
 }

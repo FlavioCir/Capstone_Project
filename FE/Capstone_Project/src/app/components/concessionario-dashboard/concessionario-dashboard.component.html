@@ -36,7 +36,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <h3 class="card-title">{{ annuncio.marca }} {{ annuncio.modello }}</h3>
-                                    <a class="dettagli-post me-3"><i class="bi bi-arrow-right"></i></a>
+                                    <a class="dettagli-post me-3" [routerLink]="['/dettagliPost', annuncio.id]"><i class="bi bi-arrow-right"></i></a>
                                 </div>
                                 <h5 class="card-title">{{ annuncio.prezzo }} &euro;</h5>
                                 <div class="card-body-item mt-3">

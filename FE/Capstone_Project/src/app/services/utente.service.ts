@@ -27,6 +27,6 @@ export class UtenteService {
     }
 
     updateUtente(utente: any, id: number): Observable<Object> {
-        return this.http.put(`http://localhost:8080/utente/${id}`, utente);
+        return this.http.put(`http://localhost:8080/utenti/${id}`, utente);
     }
 }

@@ -4,8 +4,8 @@
         <div class="dettagliAnnuncio">
             <p class="text-white text-center title">Dettagli annuncio</p>
             <hr>
-            <h1 class="text-center mb-4 text-white">{{ annuncio!.marca }} - {{ annuncio!.modello }}</h1>
-            <h3 class="text-center mb-4 text-white">{{ annuncio!.prezzo }} &euro;</h3>
+            <h1 class="text-center mb-4 text-white">{{ annuncio?.marca }} - {{ annuncio?.modello }}</h1>
+            <h3 class="text-center mb-4 text-white">{{ annuncio?.prezzo }} &euro;</h3>
             <div class="foto mb-4">
                 <img src="../../../assets/pistaMugello.jpg" alt="">
             </div>
@@ -13,8 +13,8 @@
             <div class="container mb-4">
                 <div class="infoDettaglio">
                     <p class="dati"><i class="fa-solid fa-motorcycle me-2"></i> Dati di base</p>
-                    <p class="dettagli">Carrozzeria <span>{{ annuncio!.tipoMoto.tipoMoto }}</span></p>
-                    <p class="dettagli">Stato del veicolo <span>{{ annuncio!.statoVeicolo.statoVeicolo
+                    <p class="dettagli">Carrozzeria <span>{{ annuncio?.tipoMoto?.tipoMoto }}</span></p>
+                    <p class="dettagli">Stato del veicolo <span>{{ annuncio?.statoVeicolo?.statoVeicolo
                             }}</span></p>
                 </div>
             </div>
@@ -22,15 +22,15 @@
             <div class="container mb-4">
                 <div class="infoDettaglio">
                     <p class="dati"><i class="fa-solid fa-file-pen me-2"></i> Cronologia del veicolo</p>
-                    <p class="dettagli">Chilometraggio <span>{{ annuncio!.kilometri }} Km</span></p>
-                    <p class="dettagli">Anno <span>{{ annuncio!.immatricolazione }}</span></p>
+                    <p class="dettagli">Chilometraggio <span>{{ annuncio?.kilometri }} Km</span></p>
+                    <p class="dettagli">Anno <span>{{ annuncio?.immatricolazione }}</span></p>
                 </div>
             </div>
             <hr class="secondLine">
             <div class="container mb-4">
                 <div class="infoDettaglio">
                     <p class="dati"><i class="fa-solid fa-wrench me-2"></i> Dati tecnici</p>
-                    <p class="dettagli">Potenza <span>{{ annuncio!.cilindrata }} ({{ annuncio!.cavalli }}
+                    <p class="dettagli">Potenza <span>{{ annuncio?.cilindrata }} ({{ annuncio?.cavalli }}
                             CV)</span></p>
                 </div>
             </div>
@@ -38,14 +38,14 @@
             <div class="container mb-4">
                 <div class="infoDettaglio">
                     <p class="dati"><i class="fa-solid fa-book me-2"></i> Descrizione</p>
-                    <p class="dettagli text-center">{{ annuncio!.descrizione }}</p>
+                    <p class="dettagli text-center">{{ annuncio?.descrizione }}</p>
                 </div>
             </div>
             <hr class="secondLine">
             <div class="container mb-4">
                 <div class="infoDettaglio">
                     <p class="dati"><i class="fa-solid fa-location-dot me-2"></i> Posizione annuncio</p>
-                    <p class="dettagli">Località <span>{{ annuncio!.localita }}</span></p>
+                    <p class="dettagli">Località <span>{{ annuncio?.localita }}</span></p>
                 </div>
             </div>
             <div *ngIf="!isAdmin()">
@@ -54,14 +54,14 @@
                     <div class="infoDettaglio">
                         <p class="dati"><i class="fa-solid fa-user me-2"></i> Venditore</p>
                         <p class="dettagli"><i class="fa-solid fa-user me-2"></i>Ragione Sociale <span>{{
-                                annuncio!.utente.ragioneSociale }}</span></p>
-                        <p class="dettagli"><i class="fa-solid fa-envelope me-2"></i>Email <span>{{ annuncio!.utente.email
+                                annuncio?.utente?.ragioneSociale }}</span></p>
+                        <p class="dettagli"><i class="fa-solid fa-envelope me-2"></i>Email <span>{{ annuncio?.utente?.email
                                 }}</span></p>
-                        <p class="dettagli"><i class="fa-solid fa-phone me-2"></i>Telefono <span>{{ annuncio!.utente.telefono
+                        <p class="dettagli"><i class="fa-solid fa-phone me-2"></i>Telefono <span>{{ annuncio?.utente?.telefono
                                 }}</span></p>
-                        <p class="dettagli"><i class="fa-solid fa-map-pin me-2"></i>Indirizzo <span>{{ annuncio!.utente.indirizzo
+                        <p class="dettagli"><i class="fa-solid fa-map-pin me-2"></i>Indirizzo <span>{{ annuncio?.utente?.indirizzo
                                 }}</span></p>
-                        <p class="dettagli"><i class="fa-solid fa-map me-2"></i>Località <span>{{ annuncio!.utente.localita
+                        <p class="dettagli"><i class="fa-solid fa-map me-2"></i>Località <span>{{ annuncio?.utente?.localita
                                 }}</span></p>
                     </div>
                 </div>
@@ -72,8 +72,11 @@
                 <div *ngIf="isAdmin()">
                     <button type="button">Modifica annuncio <i class="fa-regular fa-pen-to-square ms-2"></i></button>
                 </div>
+                <div *ngIf="isAdmin()">
+                    <button type="button">Elimina annuncio <i class="bi bi-trash3"></i></button>
+                </div>
                 <div *ngIf="!isAdmin()">
-                    <button type="button">Aggiungi ai preferiti <i class="fa-solid fa-heart ms-2"></i></button>
+                    <button (click)="aggiungiPreferiti(annuncio!)">Aggiungi ai preferiti <i class="fa-solid fa-heart ms-2"></i></button>
                 </div>
             </div>
         </div>

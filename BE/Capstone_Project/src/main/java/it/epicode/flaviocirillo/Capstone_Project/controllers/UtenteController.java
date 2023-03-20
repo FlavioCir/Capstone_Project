@@ -118,8 +118,21 @@ public class UtenteController {
 		
 		Utente utente = utenteObj.get();
 		
+		//concessionario
+		utente.setRagioneSociale(_utente.getRagioneSociale());
+		utente.setPartitaIva(_utente.getPartitaIva());
+		utente.setIndirizzo(_utente.getIndirizzo());
+		utente.setCap(_utente.getCap());
+		utente.setLocalita(_utente.getLocalita());
+		utente.setTelefono(_utente.getTelefono());
+		
+		//utente
 		utente.setNome(_utente.getNome());
 		utente.setCognome(_utente.getCognome());
+		
+		utente.setPreferiti(_utente.getPreferiti());
+		
+		utente.setUsername(_utente.getUsername());
 		utente.setPassword(_utente.getPassword());
 		utente.setEmail(_utente.getEmail());
 		

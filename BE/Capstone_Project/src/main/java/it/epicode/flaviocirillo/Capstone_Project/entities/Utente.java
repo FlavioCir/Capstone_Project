@@ -70,7 +70,7 @@ public class Utente {
 	)
 	private Set<Ruolo> ruoli;
 	
-	@OneToMany
+	@ManyToMany
 	@JoinTable(
 			name = "preferiti",
 			joinColumns = @JoinColumn(name = "utente_id"),
