@@ -10,7 +10,7 @@
                 <p class="text-center">Cognome: {{ utenteLoggato.cognome }}</p>
                 <p class="text-center">Username: {{ utenteLoggato.username }}</p>
                 <p class="text-center">Email: {{ utenteLoggato.email }}</p>
-                <p class="impostazioni text-center mt-5"><a>Impostazioni <i class="bi bi-gear ms-3"></i></a></p>
+                <p class="impostazioni text-center mt-5" [routerLink]="['/editProfile']"><a>Impostazioni <i class="bi bi-gear ms-3"></i></a></p>
                 <p class="back text-center mt-5" [routerLink]="['/']"><a><i class="bi bi-arrow-left"></i> Back</a></p>
             </div>
         </div>
@@ -28,7 +28,7 @@
                                 <div class="d-flex justify-content-between">
                                     <h3 class="card-title">{{ preferito.marca }} {{ preferito.modello }}</h3>
                                     <a class="dettagli-post me-3" [routerLink]="['/dettagliPost', preferito.id]"><i
-                                            class="bi bi-arrow-right"></i></a>
+                                            class="bi bi-arrow-right text-white"></i></a>
                                 </div>
                                 <h5 class="card-title">{{ preferito.prezzo }} &euro;</h5>
                                 <div class="card-body-item mt-3">
@@ -47,6 +47,9 @@
                                     <p class="card-text"><i class="fa-solid fa-motorcycle"></i> {{
                                         preferito.tipoMoto.tipoMoto }}</p>
                                 </div>
+                            </div>
+                            <div class="d-flex justify-content-end me-4 mb-4">
+                                <a class="miPiace" (click)="aggiungiPreferiti(preferito)"><i class="fa-solid fa-heart"></i></a>
                             </div>
                         </div>
                     </div>

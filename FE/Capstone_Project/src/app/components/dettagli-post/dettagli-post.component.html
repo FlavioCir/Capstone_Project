@@ -70,13 +70,10 @@
             <div class="container mb-4 d-flex justify-content-around">
                 <button type="button" [routerLink]="['/']"><i class="bi bi-arrow-left"></i> Back</button>
                 <div *ngIf="isAdmin()">
-                    <button type="button">Modifica annuncio <i class="fa-regular fa-pen-to-square ms-2"></i></button>
+                    <button type="button" class="modifica">Modifica annuncio <i class="fa-regular fa-pen-to-square ms-2"></i></button>
                 </div>
                 <div *ngIf="isAdmin()">
-                    <button type="button">Elimina annuncio <i class="bi bi-trash3"></i></button>
-                </div>
-                <div *ngIf="!isAdmin()">
-                    <button (click)="aggiungiPreferiti(annuncio!)">Aggiungi ai preferiti <i class="fa-solid fa-heart ms-2"></i></button>
+                    <button type="button" class="elimina" (click)="eliminaAnnuncio(annuncio!.id)">Elimina annuncio <i class="bi bi-trash3 ms-2"></i></button>
                 </div>
             </div>
         </div>

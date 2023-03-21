@@ -95,9 +95,17 @@
             flex-direction: row;
         }
 
-        #miPiace, .dettagli-post {
+        .miPiace, .dettagli-post {
             font-size: 25px;
+        }
+
+        .miPiace {
             color: white;
+            cursor: pointer;
+        }
+
+        .preferito {
+            color: red;
         }
 
     }

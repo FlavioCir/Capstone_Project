@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 
 import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
+import it.epicode.flaviocirillo.Capstone_Project.entities.Utente;
 import it.epicode.flaviocirillo.Capstone_Project.services.AnnuncioService;
+import it.epicode.flaviocirillo.Capstone_Project.services.UtenteService;
 
 @RestController
 @RequestMapping("/")
@@ -29,6 +31,9 @@ public class AnnuncioController {
 
 	@Autowired
 	private AnnuncioService as;
+	
+	@Autowired
+	private UtenteService us;
 	
 	@GetMapping("annunci")
 	public ResponseEntity<List<Annuncio>> getAnnunci() {
@@ -39,12 +44,12 @@ public class AnnuncioController {
 	
 	@GetMapping("annunci/{id}")
 	public ResponseEntity<Object> getAnnunciById(@PathVariable int id) {
-		Optional<Annuncio> annuancioObj = as.getById(id);
+		Optional<Annuncio> annuncioObj = as.getById(id);
 		
-		ResponseEntity<Object> check = checkExists(annuancioObj);
+		ResponseEntity<Object> check = checkExists(annuncioObj);
 		if(check != null) return check;
 		
-		return new ResponseEntity<>(annuancioObj.get(), HttpStatus.OK);
+		return new ResponseEntity<>(annuncioObj.get(), HttpStatus.OK);
 	}
 	
 	@GetMapping("annunci_page")
@@ -69,12 +74,12 @@ public class AnnuncioController {
 	@PutMapping("annunci/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Object> updateAnnuncio(@PathVariable int id, @RequestBody Annuncio _annuncio) {
-		Optional<Annuncio> annuancioObj = as.getById(id);
+		Optional<Annuncio> annuncioObj = as.getById(id);
 		
-		ResponseEntity<Object> check = checkExists(annuancioObj);
+		ResponseEntity<Object> check = checkExists(annuncioObj);
 		if(check != null) return check;
 		
-		Annuncio annuncio = annuancioObj.get();
+		Annuncio annuncio = annuncioObj.get();
 		
 		annuncio.setFoto(_annuncio.getFoto());
 		annuncio.setMarca(_annuncio.getMarca());
@@ -97,12 +102,19 @@ public class AnnuncioController {
 	@DeleteMapping("annunci/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Object> deleteAnnuncio(@PathVariable int id) {
-		Optional<Annuncio> annuancioObj = as.getById(id);
+		Optional<Annuncio> annuncioObj = as.getById(id);
 		
-		ResponseEntity<Object> check = checkExists(annuancioObj);
+		ResponseEntity<Object> check = checkExists(annuncioObj);
 		if(check != null) return check;
 		
-		as.delete(annuancioObj.get());
+		// rimuovi la l'annuncio con quell'id che sta anche nella lista dei preferiti di ogni utente
+		List<Utente> utentiConPreferiti = us.getPreferitiAggiunti(annuncioObj.get());
+		for(Utente utente : utentiConPreferiti) {
+			utente.getPreferiti().remove(annuncioObj.get());
+			us.save(utente);
+		}
+		
+		as.delete(annuncioObj.get());
 		
 		return new ResponseEntity<>(
 			String.format("L'annuncio con id %d è stato eliminato!", id), HttpStatus.OK	

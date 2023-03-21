@@ -10,14 +10,14 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class SingupComponent implements OnInit {
 
-    constructor(private usrv: AuthService, private router: Router) { }
+    constructor(private asrv: AuthService, private router: Router) { }
 
     ngOnInit(): void {
     }
 
     async onsubmit(form: NgForm) {
         try {
-            await this.usrv.registerUser(form.value).subscribe({
+            await this.asrv.registerUser(form.value).subscribe({
                 next: data => {
                     console.log(data);
                     this.router.navigate(['/login'])

@@ -10,14 +10,14 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class SingupConcessionarioComponent implements OnInit {
 
-    constructor(private usrv: AuthService, private router: Router) { }
+    constructor(private asrv: AuthService, private router: Router) { }
 
     ngOnInit(): void {
     }
 
     async onsubmit(form: NgForm) {
         try {
-            await this.usrv.registerConcessionario(form.value).subscribe({
+            await this.asrv.registerConcessionario(form.value).subscribe({
                 next: data => {
                     console.log(data);
                     this.router.navigate(['/login'])

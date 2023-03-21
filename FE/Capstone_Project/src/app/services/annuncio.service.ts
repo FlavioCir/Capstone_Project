@@ -18,7 +18,6 @@ export class AnnuncioService {
         return this.http.get<Annuncio>(`http://localhost:8080/annunci/${id}`);
     }
 
-
     deleteAnnuncio(id: number): Observable<Object> {
         return this.http.delete(`http://localhost:8080/annunci/${id}`);
     }

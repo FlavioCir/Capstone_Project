@@ -4,6 +4,7 @@ import { AnnuncioService } from 'src/app/services/annuncio.service';
 import { StorageService } from 'src/app/auth/storage.service';
 import { UtenteService } from 'src/app/services/utente.service';
 import { Utente } from 'src/app/models/utente.interface';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -17,46 +18,91 @@ export class HomeComponent implements OnInit {
     utenteLoggato: Utente | undefined;
     annuncioEsistente: Annuncio | undefined;
 
-    isLoggigIn = false;
+    isLoggedIn = false;
     roles: string[] = [];
 
-    constructor(private asrv: AnnuncioService, private ssrv: StorageService, private usrv: UtenteService) { }
+    constructor(private asrv: AnnuncioService, private ssrv: StorageService, private usrv: UtenteService, private router: Router) { }
 
     ngOnInit(): void {
         if (this.ssrv.isLoggedIn()) {
-            this.isLoggigIn = true;
+            this.isLoggedIn = true;
             this.roles = this.ssrv.getUser().roles;
         }
         this.getAnnuncio();
+        this.getAnnunciPreferiti();
+    }
+
+    getAnnunciPreferiti(): void {
+        let utenteLoggatoId = this.ssrv.getUser().id;
+        this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
+            this.utenteLoggato = resp;
+            this.preferiti = this.utenteLoggato.preferiti.map(a => a.id);
+            if (this.annunci) {
+                this.annunci.forEach(a => {
+                    if (this.preferiti.includes(a.id)) {
+                        a.preferito = true;
+                    }
+                });
+            }
+        });
     }
 
     getAnnuncio(): void {
         this.asrv.getAnnuncio().subscribe(resp => {
             this.annunci = resp;
             console.log(resp);
-        })
+        });
+        this.getAnnunciPreferiti();
     }
 
     isAdmin(): boolean {
         return this.ssrv.isAdmin();
     }
 
-    aggiungiPreferiti(annuncio: Annuncio): void {
+    mostraAlert(titolo: string, descrizione: string) {
+        alert(titolo + '\n\n' + descrizione);
+    }
+
+    rimuoviPreferiti(annuncio: Annuncio): void {
         console.log(annuncio);
         let utenteLoggatoId = this.ssrv.getUser().id;
         this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
             let utente: Utente = resp;
             this.annuncioEsistente = utente.preferiti.find(a => a.id === annuncio.id);
             if (this.annuncioEsistente) {
-                console.log("Annuncio rimosso dai preferiti");
-                return;
-            } else {
-                utente.preferiti.push(annuncio);
+                utente.preferiti = utente.preferiti.filter(a => a.id !== annuncio.id);
                 this.usrv.updateUtente(utente, utenteLoggatoId).subscribe(resp => {
                     console.log(resp);
                 });
             }
+            annuncio.preferito = false;
         });
+    }
+
+    aggiungiPreferiti(annuncio: Annuncio): void {
+        if (!this.ssrv.isLoggedIn()) {
+            this.router.navigate(['/login']);
+            return;
+        } else {
+            console.log(annuncio);
+            let utenteLoggatoId = this.ssrv.getUser().id;
+            this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
+                let utente: Utente = resp;
+                this.annuncioEsistente = utente.preferiti.find(a => a.id === annuncio.id);
+                if (this.annuncioEsistente) {
+                    this.rimuoviPreferiti(annuncio);
+                    this.mostraAlert("Annuncio rimosso dai preferiti", "Hai appena rimosso l'annuncio dai preferiti, premi ok per procedere all'operazione");
+                    return;
+                } else {
+                    utente.preferiti.push(annuncio);
+                    this.usrv.updateUtente(utente, utenteLoggatoId).subscribe(resp => {
+                        console.log(resp);
+                    });
+                    annuncio.preferito = true;
+                    this.mostraAlert("Annuncio aggiunto ai preferiti", "Hai appena aggiunto questo annuncio ai preferiti. Puoi visualizzare tutti gli annunci a cui hai messo mi piace entrando del tuo profilo!");
+                }
+            });
+        }
     }
 
     // FILTRI ----------------------------------------------------------------
@@ -66,10 +112,14 @@ export class HomeComponent implements OnInit {
 
         const marca = marcaInput.value;
 
-        this.asrv.getAnnuncioPerMarca(marca).subscribe(resp => {
-            this.annunci = [];
-            this.annunci = resp
-        });
+        if(marca) {
+            this.asrv.getAnnuncioPerMarca(marca).subscribe(resp => {
+                this.annunci = [];
+                this.annunci = resp
+            });
+        } else {
+            this.getAnnuncio();
+        }
     }
 
     getAnnuncioPerModello(): void {
@@ -77,10 +127,14 @@ export class HomeComponent implements OnInit {
 
         const modello = modelloInput.value;
 
-        this.asrv.getAnnuncioPerModello(modello).subscribe(resp => {
-            this.annunci = [];
-            this.annunci = resp
-        });
+        if(modello) {
+            this.asrv.getAnnuncioPerModello(modello).subscribe(resp => {
+                this.annunci = [];
+                this.annunci = resp
+            });
+        } else {
+            this.getAnnuncio();
+        }
     }
 
     getAnnuncioPerImmatricolazione(): void {
@@ -90,10 +144,14 @@ export class HomeComponent implements OnInit {
         const annoMin = annoMinInput.value;
         const annoMax = annoMaxInput.value;
 
-        this.asrv.getAnnuncioPerImmatricolazione(annoMin, annoMax).subscribe(resp => {
-            this.annunci = [];
-            this.annunci = resp;
-        });
+        if(annoMin && annoMax) {
+            this.asrv.getAnnuncioPerImmatricolazione(annoMin, annoMax).subscribe(resp => {
+                this.annunci = [];
+                this.annunci = resp;
+            });
+        } else {
+            this.getAnnuncio();
+        }
     }
 
     getAnnuncioPerKilometri(): void {
@@ -103,10 +161,14 @@ export class HomeComponent implements OnInit {
         const kilometriMin = parseInt(kilometriMinInput.value);
         const kilometriMax = parseInt(kilometriMaxInput.value);
 
-        this.asrv.getAnnuncioPerKilometri(kilometriMin, kilometriMax).subscribe(resp => {
-            this.annunci = [];
-            this.annunci = resp;
-        });
+        if(kilometriMin && kilometriMax) {
+            this.asrv.getAnnuncioPerKilometri(kilometriMin, kilometriMax).subscribe(resp => {
+                this.annunci = [];
+                this.annunci = resp;
+            });
+        } else {
+            this.getAnnuncio();
+        }
     }
 
     getAnnuncioPerPrezzo(): void {
@@ -114,10 +176,14 @@ export class HomeComponent implements OnInit {
 
         const prezzo = parseInt(prezzoInput.value);
 
-        this.asrv.getAnnuncioPerPrezzo(prezzo).subscribe(resp => {
-            this.annunci = [];
-            this.annunci = resp;
-        });
+        if(prezzo) {
+            this.asrv.getAnnuncioPerPrezzo(prezzo).subscribe(resp => {
+                this.annunci = [];
+                this.annunci = resp;
+            });
+        } else {
+            this.getAnnuncio();
+        }
     }
 
 }

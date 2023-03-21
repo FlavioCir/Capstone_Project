@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Utente;
 import it.epicode.flaviocirillo.Capstone_Project.repositories.UtenteRepo;
 
@@ -35,6 +36,10 @@ public class UtenteService {
 	
 	public void delete(Utente u) {
 		ur.delete(u);
+	}
+	
+	public List<Utente> getPreferitiAggiunti(Annuncio annuncio) {
+		return ur.findByPreferiti(annuncio);
 	}
 	
 }

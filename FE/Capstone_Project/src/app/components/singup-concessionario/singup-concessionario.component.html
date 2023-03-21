@@ -1,7 +1,7 @@
 <div class="container-fluid d-flex justify-content-center align-items-center">
     <div class="card shadow text-center p-5 m-5">
         <div class="card-body text-danger">
-            <h1 class="card-title mb-4 logo fw-bold">Registrati</h1>
+            <h1 class="card-title mb-4 fw-bold">Registrati</h1>
             <form #form="ngForm" (ngSubmit)="onsubmit(form)">
                 <div class="d-flex flex-row">
                     <div class="form-floating form-group mb-3 me-3">
@@ -18,7 +18,7 @@
                     <div class="form-floating form-group mb-3 me-3">
                         <input name="indirizzo" type="text" class="form-control" id="indirizzo" placeholder="Indirizzo" required
                             ngModel>
-                        <label for="partitaIva"><i class="bi bi-geo-alt"></i> Indirizzo</label>
+                        <label for="indirizzo"><i class="bi bi-geo-alt"></i> Indirizzo</label>
                     </div>
                     <div class="form-floating form-group mb-3">
                         <input name="cap" type="text" class="form-control" id="cap" placeholder="Cap" required

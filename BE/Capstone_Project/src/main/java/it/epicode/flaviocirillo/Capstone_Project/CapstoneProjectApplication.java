@@ -96,7 +96,7 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 		TipologiaMoto t2 = (TipologiaMoto)ctx.getBean("tipologiaMoto", TipoMoto.SUPERSPORTIVA);
 		TipologiaMoto t3 = (TipologiaMoto)ctx.getBean("tipologiaMoto", TipoMoto.ADVENTURE);
 		TipologiaMoto t4 = (TipologiaMoto)ctx.getBean("tipologiaMoto", TipoMoto.TOURING);
-		TipologiaMoto t5 = (TipologiaMoto)ctx.getBean("tipologiaMoto", TipoMoto.ENDURTO);
+		TipologiaMoto t5 = (TipologiaMoto)ctx.getBean("tipologiaMoto", TipoMoto.ENDURO);
 		TipologiaMoto t6 = (TipologiaMoto)ctx.getBean("tipologiaMoto", TipoMoto.CRUISER);
 		TipologiaMoto t7 = (TipologiaMoto)ctx.getBean("tipologiaMoto", TipoMoto.MOTARD);
 		

@@ -79,5 +79,13 @@
                 color: #0267C1;
             }
         }
+
+        .elimina{
+            &:hover {
+                border: 3px solid red;
+                background-color: red;
+                color: white;
+            }
+        }
     }
 }

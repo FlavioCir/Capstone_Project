@@ -4,6 +4,7 @@ import { Annuncio } from 'src/app/models/annuncio.interface';
 import { AnnuncioService } from 'src/app/services/annuncio.service';
 import { ActivatedRoute } from '@angular/router';
 import { UtenteService } from 'src/app/services/utente.service';
+import { Router } from '@angular/router';
 import { Utente } from 'src/app/models/utente.interface';
 
 @Component({
@@ -15,17 +16,24 @@ export class DettagliPostComponent implements OnInit {
 
     annuncio: Annuncio | undefined;
 
+    utenteLoggato: Utente | undefined;
+
     preferiti: any;
     annuncioEsistente: Annuncio | undefined;
 
-    constructor(private ssrv: StorageService, private asrv: AnnuncioService, private ar: ActivatedRoute, private usrv: UtenteService) { }
+    constructor(private ssrv: StorageService, private asrv: AnnuncioService, private ar: ActivatedRoute, private usrv: UtenteService, private router: Router) { }
 
     ngOnInit(): void {
-        this.getAnnuncio();
+        this.getAnnuncio()
     }
 
     isAdmin(): boolean {
-        return this.ssrv.isAdmin();
+        this.utenteLoggato = this.ssrv.getUser().id;
+        if(this.utenteLoggato === this.annuncio?.utente.id) {
+            return true;
+        }
+
+        return false;
     }
 
     getAnnuncio(): void {
@@ -36,34 +44,10 @@ export class DettagliPostComponent implements OnInit {
         });
     }
 
-    aggiungiPreferiti(annuncio: Annuncio): void {
-        console.log(annuncio);
-        let utenteLoggatoId = this.ssrv.getUser().id;
-        this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
-            let utente: Utente = resp;
-            this.annuncioEsistente = utente.preferiti.find(a => a.id === annuncio.id);
-            if (this.annuncioEsistente) {
-                console.log("Annuncio rimosso dai preferiti");
-                return;
-            } else {
-                utente.preferiti.push(annuncio);
-                this.usrv.updateUtente(utente, utenteLoggatoId).subscribe(resp => {
-                    console.log(resp);
-                });
-            }
+    eliminaAnnuncio(id: number): void {
+        this.asrv.deleteAnnuncio(id).subscribe(resp => {
+            this.router.navigate(['/concessionarioDashboard']);
         });
     }
-
-    // elimindaPreferito(annuncio: Annuncio): void {
-    //     console.log(annuncio);
-    //     let utenteLoggatoId = this.ssrv.getUser().id;
-    //     this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
-    //         let utente: Utente = resp;
-    //         utente.preferiti.delete(annuncio);
-    //         this.usrv.updateUtente(utente, utenteLoggatoId).subscribe(resp => {
-    //             console.log(resp);
-    //         });
-    //     });
-    // }
 
 }

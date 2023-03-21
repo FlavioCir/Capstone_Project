@@ -18,6 +18,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
 import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.component';
+import { ModificaUtenteOConcessionarioComponent } from './components/modifica-utente-oconcessionario/modifica-utente-oconcessionario.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.
     UserDashboardComponent,
     AddAnnuncioComponent,
     ConcessionarioDashboardComponent,
-    DettagliPostComponent
+    DettagliPostComponent,
+    ModificaUtenteOConcessionarioComponent
   ],
   imports: [
     BrowserModule,

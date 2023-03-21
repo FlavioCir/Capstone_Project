@@ -87,9 +87,13 @@
             flex-direction: row;
         }
 
-        #miPiace, .dettagli-post {
+        .miPiace, .dettagli-post {
             font-size: 25px;
-            color: white;
+        }
+
+        .miPiace {
+            color: red;
+            cursor: pointer;
         }
 
     }

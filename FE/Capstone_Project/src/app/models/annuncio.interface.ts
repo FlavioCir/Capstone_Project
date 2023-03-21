@@ -15,9 +15,9 @@ export interface Annuncio {
     immatricolazione: string,
     localita: string,
     prezzo: number,
-    descrizione: string
-    utente: Utente
+    descrizione: string,
+    utente: Utente,
 
-    like: boolean
+    preferito: boolean
 
 }

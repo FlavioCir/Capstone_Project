@@ -8,6 +8,7 @@ import { UserDashboardComponent } from './components/user-dashboard/user-dashboa
 import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.component';
 import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
 import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.component';
+import { ModificaUtenteOConcessionarioComponent } from './components/modifica-utente-oconcessionario/modifica-utente-oconcessionario.component';
 
 const routes: Routes = [
     {
@@ -41,6 +42,10 @@ const routes: Routes = [
     {
         path: 'dettagliPost/:id',
         component: DettagliPostComponent
+    },
+    {
+        path: 'editProfile',
+        component: ModificaUtenteOConcessionarioComponent
     }
 ];
 

@@ -10,7 +10,7 @@
 
             <p class="text-white ms-3 ricercaItem">Modello:</p>
             <input name="modello" type="text" id="modello" placeholder="es. yxf-r1" class="ms-3">
-            <button type="button" class="ms-3" (click)="getAnnuncioPerModello()">Cerca</button>
+            <button type="button" class="ms-3" (click)="getAnnuncioPerModello()" >Cerca</button>
 
             <p class="text-white ms-3 ricercaItem">Anno:</p>
             <input name="minAnno" type="text" id="minAnno" placeholder="es. 2015" class="ms-3">
@@ -40,7 +40,7 @@
                                 <div class="d-flex justify-content-between">
                                     <h3 class="card-title">{{ annuncio.marca }} {{ annuncio.modello }}</h3>
                                     <a class="dettagli-post me-3" [routerLink]="['/dettagliPost', annuncio.id]"><i
-                                            class="bi bi-arrow-right"></i></a>
+                                            class="bi bi-arrow-right text-white"></i></a>
                                 </div>
                                 <h5 class="card-title">{{ annuncio.prezzo }} &euro;</h5>
                                 <div class="card-body-item mt-3">
@@ -61,8 +61,8 @@
                                 </div>
                             </div>
                             <div *ngIf="!isAdmin()" class="d-flex justify-content-end me-4 mb-4">
-                                <a id="miPiace" (click)="aggiungiPreferiti(annuncio)"><i
-                                        class="fa-solid fa-heart"></i></a>
+                                <a class="miPiace" (click)="aggiungiPreferiti(annuncio)"
+                                    [ngClass]="{'preferito': annuncio.preferito}"><i class="fa-solid fa-heart"></i></a>
                             </div>
                         </div>
                     </div>

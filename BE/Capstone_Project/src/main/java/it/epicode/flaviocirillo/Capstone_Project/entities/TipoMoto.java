@@ -6,7 +6,7 @@ public enum TipoMoto {
 	SUPERSPORTIVA,
 	ADVENTURE,
 	TOURING,
-	ENDURTO,
+	ENDURO,
 	CRUISER,
 	MOTARD
 	

@@ -36,4 +36,15 @@ export class ConcessionarioDashboardComponent implements OnInit {
         });
     }
 
+    mostraAlert(titolo: string) {
+        alert(titolo);
+    }
+
+    eliminaAnnuncio(id: number): void {
+        this.asrv.deleteAnnuncio(id).subscribe(resp => {
+        });
+        this.mostraAlert("Annuncio eliminato con successo");
+        this.getAnnuncio();
+    }
+
 }
