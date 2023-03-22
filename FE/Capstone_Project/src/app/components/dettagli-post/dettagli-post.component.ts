@@ -44,10 +44,14 @@ export class DettagliPostComponent implements OnInit {
         });
     }
 
+    mostraAlert(titolo: string) {
+        alert(titolo);
+    }
+
     eliminaAnnuncio(id: number): void {
-        this.asrv.deleteAnnuncio(id).subscribe(resp => {
-            this.router.navigate(['/concessionarioDashboard']);
-        });
+        this.asrv.deleteAnnuncio(id).subscribe();
+        this.mostraAlert("Annuncio eliminato con successo!");
+        this.router.navigate(['/concessionarioDashboard']);
     }
 
 }

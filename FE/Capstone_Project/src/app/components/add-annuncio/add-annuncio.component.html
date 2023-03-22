@@ -5,7 +5,12 @@
             <p class="text-white text-center title">Crea Annuncio</p>
             <hr>
             <div class="foto">
-
+                <ngx-dropzone (change)="onSelect($event)">
+                    <ngx-dropzone-label>Trascina o clicca per caricare le foto del tuo annuncio!</ngx-dropzone-label>
+                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                        [removable]="true" (removed)="onRemove(f)">
+                    </ngx-dropzone-image-preview>
+                </ngx-dropzone>
             </div>
             <div class="container">
                 <form #form="ngForm" (ngSubmit)="onsubmit(form)">
@@ -21,9 +26,10 @@
                             <label for="modello">Modello</label>
                         </div>
                         <div class="col form-floating form-group">
-                            <select class="form-select" id="floatingSelect" aria-label="statoVeicolo" name="statoVeicolo" required ngModel>
+                            <select class="form-select" id="floatingSelect" aria-label="statoVeicolo"
+                                name="statoVeicolo" required ngModel>
                                 <option *ngFor="let sV of listaStatoVeicolo" [value]="sV | json">{{ sV.statoVeicolo
-                                }}</option>
+                                    }}</option>
                             </select>
                             <label for="floatingSelect">Seleziona le condizioni della moto</label>
                         </div>
@@ -31,10 +37,10 @@
                     <div class="row mt-4">
                         <div class="col form-floating form-group">
                             <select class="form-select" id="floatingSelect" aria-label="tipoMoto" name="tipoMoto"
-                            required ngModel>
-                            <option *ngFor="let tM of listaTipoMoto" [value]="tM | json">{{ tM.tipoMoto }}</option>
-                        </select>
-                        <label for="floatingSelect">Seleziona la tipologia di moto</label>
+                                required ngModel>
+                                <option *ngFor="let tM of listaTipoMoto" [value]="tM | json">{{ tM.tipoMoto }}</option>
+                            </select>
+                            <label for="floatingSelect">Seleziona la tipologia di moto</label>
                         </div>
                         <div class="col form-floating form-group">
                             <input name="cilindrata" type="number" class="form-control" id="cilindrata"
@@ -76,8 +82,10 @@
                             <label for="descrizione">Descrizione</label>
                         </div>
                     </div>
-                    <button type="submit">Aggiungi annuncio</button>
-                    <!-- [disabled]="form.invalid" -->
+                    <div class="d-flex justify-content-around">
+                        <button type="button" [routerLink]="['/concessionarioDashboard']"><i class="bi bi-arrow-left me-2"></i>Back</button>
+                        <button type="submit" [disabled]="form.invalid">Aggiungi annuncio</button>
+                    </div>
                 </form>
             </div>
         </div>

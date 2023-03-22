@@ -22,8 +22,8 @@ export class AnnuncioService {
         return this.http.delete(`http://localhost:8080/annunci/${id}`);
     }
 
-    addAnnunci(annuncio: any): Observable<Object> {
-        return this.http.post('http://localhost:8080/annunci', annuncio);
+    addAnnunci(annuncio: any): Observable<Annuncio> {
+        return this.http.post<Annuncio>('http://localhost:8080/annunci', annuncio);
     }
 
     updateAnnuncio(annuncio: any, id: number): Observable<Object> {

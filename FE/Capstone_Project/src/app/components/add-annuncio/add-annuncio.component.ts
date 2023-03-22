@@ -10,20 +10,30 @@ import { StatoVeicolo } from 'src/app/models/stato-veicolo.interface';
 import { TipoMoto } from 'src/app/models/tipo-moto.interface';
 import { UtenteService } from 'src/app/services/utente.service';
 import { Utente } from 'src/app/models/utente.interface';
+import { UploadService } from 'src/app/services/upload.service';
+import { FotoService } from 'src/app/services/foto.service';
+import { Foto } from 'src/app/models/foto.interface';
 
 @Component({
     selector: 'app-add-annuncio',
     templateUrl: './add-annuncio.component.html',
-    styleUrls: ['./add-annuncio.component.scss']
+    styleUrls: ['./add-annuncio.component.scss'],
+    providers: [UploadService]
 })
 export class AddAnnuncioComponent implements OnInit {
 
     listaStatoVeicolo: StatoVeicolo[] = [];
     listaTipoMoto: TipoMoto[] = [];
-    utenteLoggato: Utente| undefined;
+    utenteLoggato: Utente | undefined;
     annunci: Annuncio[] | undefined;
 
-    constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService) { }
+    files: File[] = [];
+
+    annuncio: any | undefined;
+
+    urlImg: string | undefined
+
+    constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService, private ups: UploadService, private fsrv: FotoService) { }
 
     ngOnInit(): void {
         this.getStatoVeicolo();
@@ -53,9 +63,45 @@ export class AddAnnuncioComponent implements OnInit {
         });
     }
 
+    // UPLOAD foto annunci
+    onSelect(event: any) {
+        console.log(event);
+        this.files.push(...event.addedFiles);
+    }
+
+    onRemove(event: any) {
+        console.log(event);
+        this.files.splice(this.files.indexOf(event), 1);
+    }
+
+    onUpload(annuncio_id: number) {
+        if (this.files.length < 1) {
+            alert('Inserisci almeno una foto prima di continuare')
+        }
+        for (let i = 0; i < this.files.length; i++) {
+            const data = new FormData();
+            data.append('file', this.files[i]);
+            data.append('upload_preset', 'RideResale');
+            data.append('cloud_name', 'do3bktftk');
+
+            this.ups.uploadImage(data).subscribe(response => {
+                if (response) {
+                    console.log(response);
+                    const nuovaFoto: Partial<Foto> = {
+                        url: response.secure_url,
+                        annuncio_id: annuncio_id
+                    }
+                    this.fsrv.addFoto(nuovaFoto).subscribe(resp => {
+                        console.log("foto aggiunta con successo", resp)
+                    });
+                }
+            });
+        }
+    }
+
+    // Funzione per l'aggiunta di un annuncio
     async onsubmit(form: NgForm) {
         let statoDelVeicolo: StatoVeicolo = JSON.parse(form.value.statoVeicolo);
-        console.log(statoDelVeicolo);
         let tipoDiMoto: TipoMoto = JSON.parse(form.value.tipoMoto);
         let data = {
             marca: form.value.marca,
@@ -71,16 +117,15 @@ export class AddAnnuncioComponent implements OnInit {
             descrizione: form.value.descrizione,
             utente: this.utenteLoggato
         }
-        console.log(data);
         try {
-            console.log(data);
             this.asrv.addAnnunci(data).subscribe({
-                next: data => {
-                    console.log(data);
+                next: newAnnuncio => {
+                    console.log(newAnnuncio);
+                    this.onUpload(newAnnuncio.id);
                     this.router.navigate(['/']);
                     form.reset();
                 }
-            })
+            });
         } catch (error) {
             console.error(error)
         }

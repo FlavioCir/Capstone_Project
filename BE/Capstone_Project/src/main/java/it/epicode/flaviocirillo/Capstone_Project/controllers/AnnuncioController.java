@@ -116,6 +116,10 @@ public class AnnuncioController {
 		
 		as.delete(annuncioObj.get());
 		
+//		if (annuncioObj.get().getFoto() != null) {
+//		    annuncioObj.get().getFoto().removeAll(annuncioObj.get().getFoto());
+//		}
+		
 		return new ResponseEntity<>(
 			String.format("L'annuncio con id %d è stato eliminato!", id), HttpStatus.OK	
 		);

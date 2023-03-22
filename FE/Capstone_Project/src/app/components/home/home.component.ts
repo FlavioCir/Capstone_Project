@@ -27,9 +27,9 @@ export class HomeComponent implements OnInit {
         if (this.ssrv.isLoggedIn()) {
             this.isLoggedIn = true;
             this.roles = this.ssrv.getUser().roles;
+            this.getAnnunciPreferiti();
         }
         this.getAnnuncio();
-        this.getAnnunciPreferiti();
     }
 
     getAnnunciPreferiti(): void {

@@ -28,18 +28,48 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
         }
     }
 
-    async onsubmit(form: NgForm) {
+    async editConcessionario(form: NgForm) {
+        let utenteLoggatoId = this.ssrv.getUser().id;
+        this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
+            this.utenteLoggato = resp;
+        })
+        let data = {
+            ragioneSociale: form.value.ragioneSociale,
+            partitaIva: form.value.partitaIva,
+            indirizzo: form.value.indirizzo,
+            cap: form.value.cap,
+            localita: form.value.localita,
+            telefono: form.value.telefono,
+            username: form.value.username,
+            email: form.value.email,
+            password: this.utenteLoggato?.password
+        }
         try {
-            let utenteLoggatoId = this.ssrv.getUser().id;
-            this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
-                this.utenteLoggato = resp;
-                const updatedUtente = { ...this.utenteLoggato, ...form.value };
-                this.usrv.updateUtente(updatedUtente, utenteLoggatoId).subscribe({
-                    next: data => {
-                        console.log(data);
-                        // this.router.navigate(['/']);
-                    }
-                });
+            this.usrv.updateUtente(data, utenteLoggatoId).subscribe({
+                next: data => {
+                    console.log(data);
+                    this.router.navigate(['/']);
+                }
+            });
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async editUtente(form: NgForm) {
+        let data = {
+            ragioneSociale: form.value.ragioneSociale,
+
+        }
+        try {
+            const utenteLoggatoId = this.ssrv.getUser().id;
+            const formValues = form.value;
+            const updatedUtente = { ...formValues };
+            this.usrv.updateUtente(updatedUtente, utenteLoggatoId).subscribe({
+                next: data => {
+                    console.log(data);
+                    // this.router.navigate(['/']);
+                }
             });
         } catch (error) {
             console.error(error)

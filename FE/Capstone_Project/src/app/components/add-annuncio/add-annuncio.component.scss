@@ -13,21 +13,30 @@
     }
 
     hr {
-        margin: 0 20px 20px 20px;
+        margin: 0 20px 40px 20px;
         border-top: 5px solid white;
         opacity: 100;
     }
 
     .foto {
-        background-color: #363537;
-        height: 400px;
+        height: 300px;
         width: 600px;
         margin: auto;
         border-radius: 10px;
+
+        ngx-dropzone {
+            height: 100%;
+            border: 2px dashed white;
+            background-color: #3079b9;
+            border-radius: 10px;
+            ngx-dropzone-label {
+                color: white;
+            }
+        }
     }
 
     .container {
-        margin-top: 30px;
+        margin-top: 70px;
 
         form {
 
@@ -52,6 +61,7 @@
                     color: #0267C1;
                 }
             }
+
         }
     }
 }

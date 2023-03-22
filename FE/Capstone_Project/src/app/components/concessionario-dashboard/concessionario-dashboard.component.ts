@@ -41,9 +41,8 @@ export class ConcessionarioDashboardComponent implements OnInit {
     }
 
     eliminaAnnuncio(id: number): void {
-        this.asrv.deleteAnnuncio(id).subscribe(resp => {
-        });
-        this.mostraAlert("Annuncio eliminato con successo");
+        this.asrv.deleteAnnuncio(id).subscribe();
+        this.mostraAlert("Annuncio eliminato con successo!");
         this.getAnnuncio();
     }
 

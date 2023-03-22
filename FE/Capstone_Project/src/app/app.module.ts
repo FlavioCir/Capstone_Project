@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
+import { TokenInterceptor } from './auth/token.interceptor';
+
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SingupComponent } from './components/singup/singup.component';
@@ -13,12 +18,10 @@ import { SingupConcessionarioComponent } from './components/singup-concessionari
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.component';
-import { TokenInterceptor } from './auth/token.interceptor';
-
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
 import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.component';
 import { ModificaUtenteOConcessionarioComponent } from './components/modifica-utente-oconcessionario/modifica-utente-oconcessionario.component';
+import { UploadFotoComponent } from './components/upload-foto/upload-foto.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +35,16 @@ import { ModificaUtenteOConcessionarioComponent } from './components/modifica-ut
     AddAnnuncioComponent,
     ConcessionarioDashboardComponent,
     DettagliPostComponent,
-    ModificaUtenteOConcessionarioComponent
+    ModificaUtenteOConcessionarioComponent,
+    UploadFotoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxDropzoneModule
   ],
   providers: [
     {

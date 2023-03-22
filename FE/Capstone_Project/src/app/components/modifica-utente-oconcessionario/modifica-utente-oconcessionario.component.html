@@ -3,7 +3,7 @@
         <div class="card-body text-danger">
             <h1 class="card-title mb-4 fw-bold">Impostazioni <i class="bi bi-gear ms-3"></i></h1>
             <hr class="border border-secondary mb-4">
-            <form #form="ngForm" (ngSubmit)="onsubmit(form)">
+            <form #form="ngForm" (ngSubmit)="editUtente(form)">
                 <div class="form-floating form-group mb-3">
                     <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" required ngModel>
                     <label for="nome"><i class="bi bi-person"></i> Nome</label>
@@ -40,56 +40,49 @@
         <div class="card-body text-danger">
             <h1 class="card-title mb-4 fw-bold">Impostazioni <i class="bi bi-gear ms-3"></i></h1>
             <hr class="border border-secondary mb-4">
-            <form #form="ngForm" (ngSubmit)="onsubmit(form)">
+            <form #form="ngForm" *ngIf="utenteLoggato" (ngSubmit)="editConcessionario(form)">
                 <div class="d-flex flex-row">
                     <div class="form-floating form-group mb-3 me-3">
-                        <input name="ragioneSociale" type="text" class="form-control" id="ragioneSociale" placeholder="Ragione Sociale" [(ngModel)]="utenteLoggato!.ragioneSociale" [ngModelOptions]="{ standalone: true }" ngModel>
+                        <input name="ragioneSociale" type="text" class="form-control" id="ragioneSociale" placeholder="Ragione Sociale" [(ngModel)]="utenteLoggato.ragioneSociale">
                         <label for="ragioneSociale"><i class="bi bi-person"></i> Ragione Sociale</label>
                     </div>
                     <div class="form-floating form-group mb-3">
-                        <input name="partitaIva" type="text" class="form-control" id="partitaIva" placeholder="Partita Iva" [(ngModel)]="utenteLoggato!.partitaIva" [ngModelOptions]="{ standalone: true }"
-                            ngModel>
+                        <input name="partitaIva" type="text" class="form-control" id="partitaIva" placeholder="Partita Iva" [(ngModel)]="utenteLoggato.partitaIva">
                         <label for="partitaIva"><i class="bi bi-file-earmark-lock"></i> Partita Iva</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row">
                     <div class="form-floating form-group mb-3 me-3">
-                        <input name="indirizzo" type="text" class="form-control" id="indirizzo" placeholder="Indirizzo" [(ngModel)]="utenteLoggato!.indirizzo" [ngModelOptions]="{ standalone: true }"
-                            ngModel>
+                        <input name="indirizzo" type="text" class="form-control" id="indirizzo" placeholder="Indirizzo" [(ngModel)]="utenteLoggato.indirizzo">
                         <label for="indirizzo"><i class="bi bi-geo-alt"></i> Indirizzo</label>
                     </div>
                     <div class="form-floating form-group mb-3">
-                        <input name="cap" type="text" class="form-control" id="cap" placeholder="Cap" [(ngModel)]="utenteLoggato!.cap" [ngModelOptions]="{ standalone: true }"
-                            ngModel>
+                        <input name="cap" type="text" class="form-control" id="cap" placeholder="Cap" [(ngModel)]="utenteLoggato.cap">
                         <label for="cap"><i class="bi bi-geo-alt"></i> Cap</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row">
                     <div class="form-floating form-group mb-3 me-3">
-                        <input name="localita" type="text" class="form-control" id="localita" placeholder="Località" [(ngModel)]="utenteLoggato!.localita" [ngModelOptions]="{ standalone: true }"
-                            ngModel>
+                        <input name="localita" type="text" class="form-control" id="localita" placeholder="Località" [(ngModel)]="utenteLoggato.localita">
                         <label for="localita"><i class="bi bi-geo-alt"></i> Località</label>
                     </div>
                     <div class="form-floating form-group mb-3">
-                        <input name="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono" [(ngModel)]="utenteLoggato!.telefono" [ngModelOptions]="{ standalone: true }"
-                            ngModel>
+                        <input name="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono" [(ngModel)]="utenteLoggato.telefono">
                         <label for="telefono"><i class="bi bi-telephone"></i> Telefono</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row">
                     <div class="form-floating form-group mb-3 me-3">
                         <input name="username" type="text" class="form-control" id="username" placeholder="Username"
-                        [(ngModel)]="utenteLoggato!.username" [ngModelOptions]="{ standalone: true }" ngModel>
+                        [(ngModel)]="utenteLoggato.username">
                         <label for="username"><i class="bi bi-person"></i> Username</label>
                     </div>
                     <div class="form-floating form-group mb-3">
-                        <input name="email" type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="utenteLoggato!.email" [ngModelOptions]="{ standalone: true }"
-                            ngModel>
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="utenteLoggato.email">
                         <label for="email"><i class="bi bi-envelope"></i> Email</label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-danger rounded-5 px-5 mt-3"
-                    [disabled]="form.invalid">Modifica account</button>
+                <button type="submit" class="btn btn-danger rounded-5 px-5 mt-3">Modifica account</button>
             </form>
         </div>
         <hr class="border border-secondary">
