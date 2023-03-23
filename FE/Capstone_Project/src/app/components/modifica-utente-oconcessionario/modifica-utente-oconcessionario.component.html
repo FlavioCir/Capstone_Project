@@ -3,28 +3,26 @@
         <div class="card-body text-danger">
             <h1 class="card-title mb-4 fw-bold">Impostazioni <i class="bi bi-gear ms-3"></i></h1>
             <hr class="border border-secondary mb-4">
-            <form #form="ngForm" (ngSubmit)="editUtente(form)">
+            <form #form="ngForm" (ngSubmit)="edit(form)" *ngIf="utenteLoggato">
                 <div class="form-floating form-group mb-3">
-                    <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" required ngModel>
+                    <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" [(ngModel)]="utenteLoggato.nome">
                     <label for="nome"><i class="bi bi-person"></i> Nome</label>
                 </div>
                 <div class="form-floating form-group mb-3">
-                    <input name="cognome" type="text" class="form-control" id="cognome" placeholder="Cognome" required
-                        ngModel>
+                    <input name="cognome" type="text" class="form-control" id="cognome" placeholder="Cognome" [(ngModel)]="utenteLoggato.cognome">
                     <label for="cognome"><i class="bi bi-person"></i> Cognome</label>
                 </div>
                 <div class="form-floating form-group mb-3">
                     <input name="username" type="text" class="form-control" id="username" placeholder="Username"
-                        required ngModel>
+                    [(ngModel)]="utenteLoggato.username">
                     <label for="username"><i class="bi bi-person"></i> Username</label>
                 </div>
                 <div class="form-floating form-group mb-3">
                     <input name="email" type="email" class="form-control" id="email" placeholder="Email"
-                        required ngModel>
+                    [(ngModel)]="utenteLoggato.email">
                     <label for="email"><i class="bi bi-envelope"></i> Email</label>
                 </div>
-                <button type="submit" class="btn btn-danger rounded-5 px-5 mt-3"
-                    [disabled]="form.invalid">Modifica account</button>
+                <button type="submit" class="btn btn-danger rounded-5 px-5 mt-3">Modifica account</button>
             </form>
         </div>
         <hr class="border border-secondary">
@@ -40,7 +38,7 @@
         <div class="card-body text-danger">
             <h1 class="card-title mb-4 fw-bold">Impostazioni <i class="bi bi-gear ms-3"></i></h1>
             <hr class="border border-secondary mb-4">
-            <form #form="ngForm" *ngIf="utenteLoggato" (ngSubmit)="editConcessionario(form)">
+            <form #form="ngForm" *ngIf="utenteLoggato" (ngSubmit)="edit(form)">
                 <div class="d-flex flex-row">
                     <div class="form-floating form-group mb-3 me-3">
                         <input name="ragioneSociale" type="text" class="form-control" id="ragioneSociale" placeholder="Ragione Sociale" [(ngModel)]="utenteLoggato.ragioneSociale">

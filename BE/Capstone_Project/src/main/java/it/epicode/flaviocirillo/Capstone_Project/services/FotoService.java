@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Foto;
 import it.epicode.flaviocirillo.Capstone_Project.repositories.FotoRepo;
 
@@ -35,6 +36,10 @@ public class FotoService {
 	
 	public void delete(Foto f) {
 		fr.delete(f);
+	}
+	
+	public List<Foto> getFotoAnnuncio(Annuncio annuncio) {
+		return fr.findByAnnuncio(annuncio);
 	}
 	
 }

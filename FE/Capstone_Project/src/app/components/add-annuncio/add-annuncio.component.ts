@@ -29,9 +29,9 @@ export class AddAnnuncioComponent implements OnInit {
 
     files: File[] = [];
 
-    annuncio: any | undefined;
+    urlImg: string | undefined;
 
-    urlImg: string | undefined
+    annuncio: any | undefined;
 
     constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService, private ups: UploadService, private fsrv: FotoService) { }
 
@@ -74,10 +74,7 @@ export class AddAnnuncioComponent implements OnInit {
         this.files.splice(this.files.indexOf(event), 1);
     }
 
-    onUpload(annuncio_id: number) {
-        if (this.files.length < 1) {
-            alert('Inserisci almeno una foto prima di continuare')
-        }
+    onUpload(annuncio: Annuncio) {
         for (let i = 0; i < this.files.length; i++) {
             const data = new FormData();
             data.append('file', this.files[i]);
@@ -87,9 +84,10 @@ export class AddAnnuncioComponent implements OnInit {
             this.ups.uploadImage(data).subscribe(response => {
                 if (response) {
                     console.log(response);
+                    this.urlImg = response.secure_url;
                     const nuovaFoto: Partial<Foto> = {
-                        url: response.secure_url,
-                        annuncio_id: annuncio_id
+                        url: this.urlImg,
+                        annuncio: annuncio
                     }
                     this.fsrv.addFoto(nuovaFoto).subscribe(resp => {
                         console.log("foto aggiunta con successo", resp)
@@ -115,17 +113,24 @@ export class AddAnnuncioComponent implements OnInit {
             localita: form.value.localita,
             prezzo: form.value.prezzo,
             descrizione: form.value.descrizione,
-            utente: this.utenteLoggato
+            utente: this.utenteLoggato,
+            foto: this.urlImg
         }
         try {
-            this.asrv.addAnnunci(data).subscribe({
-                next: newAnnuncio => {
-                    console.log(newAnnuncio);
-                    this.onUpload(newAnnuncio.id);
-                    this.router.navigate(['/']);
-                    form.reset();
-                }
-            });
+            if (this.files.length < 1) {
+                alert('Inserisci almeno una foto prima di continuare');
+                return;
+            } else {
+                this.asrv.addAnnunci(data).subscribe({
+                    next: newAnnuncio => {
+                        console.log(newAnnuncio);
+                        this.annuncio = newAnnuncio;
+                        this.onUpload(this.annuncio);
+                        this.router.navigate(['/']);
+                        form.reset();
+                    }
+                });
+            }
         } catch (error) {
             console.error(error)
         }

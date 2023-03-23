@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 
 import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
+import it.epicode.flaviocirillo.Capstone_Project.entities.Foto;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Utente;
 import it.epicode.flaviocirillo.Capstone_Project.services.AnnuncioService;
+import it.epicode.flaviocirillo.Capstone_Project.services.FotoService;
 import it.epicode.flaviocirillo.Capstone_Project.services.UtenteService;
 
 @RestController
@@ -34,6 +36,9 @@ public class AnnuncioController {
 	
 	@Autowired
 	private UtenteService us;
+	
+	@Autowired
+	private FotoService fs;
 	
 	@GetMapping("annunci")
 	public ResponseEntity<List<Annuncio>> getAnnunci() {
@@ -114,11 +119,12 @@ public class AnnuncioController {
 			us.save(utente);
 		}
 		
-		as.delete(annuncioObj.get());
+		List<Foto> fotoAnnuncio = fs.getFotoAnnuncio(annuncioObj.get());
+		for(Foto foto : fotoAnnuncio) {
+			fs.delete(foto);
+		}
 		
-//		if (annuncioObj.get().getFoto() != null) {
-//		    annuncioObj.get().getFoto().removeAll(annuncioObj.get().getFoto());
-//		}
+		as.delete(annuncioObj.get());
 		
 		return new ResponseEntity<>(
 			String.format("L'annuncio con id %d è stato eliminato!", id), HttpStatus.OK	

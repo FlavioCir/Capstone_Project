@@ -28,7 +28,7 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
         }
     }
 
-    async editConcessionario(form: NgForm) {
+    async edit(form: NgForm) {
         let utenteLoggatoId = this.ssrv.getUser().id;
         this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
             this.utenteLoggato = resp;
@@ -40,6 +40,10 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
             cap: form.value.cap,
             localita: form.value.localita,
             telefono: form.value.telefono,
+
+            nome: form.value.nome,
+            cognome: form.value.cognome,
+
             username: form.value.username,
             email: form.value.email,
             password: this.utenteLoggato?.password
@@ -49,26 +53,6 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
                 next: data => {
                     console.log(data);
                     this.router.navigate(['/']);
-                }
-            });
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    async editUtente(form: NgForm) {
-        let data = {
-            ragioneSociale: form.value.ragioneSociale,
-
-        }
-        try {
-            const utenteLoggatoId = this.ssrv.getUser().id;
-            const formValues = form.value;
-            const updatedUtente = { ...formValues };
-            this.usrv.updateUtente(updatedUtente, utenteLoggatoId).subscribe({
-                next: data => {
-                    console.log(data);
-                    // this.router.navigate(['/']);
                 }
             });
         } catch (error) {

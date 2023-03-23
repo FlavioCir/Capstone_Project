@@ -1,6 +1,7 @@
 import { Utente } from "./utente.interface";
 import { StatoVeicolo } from "./stato-veicolo.interface";
 import { TipoMoto } from "./tipo-moto.interface";
+import { Foto } from "./foto.interface";
 
 export interface Annuncio {
 
@@ -17,6 +18,7 @@ export interface Annuncio {
     prezzo: number,
     descrizione: string,
     utente: Utente,
+    foto: Foto[],
 
     preferito: boolean
 

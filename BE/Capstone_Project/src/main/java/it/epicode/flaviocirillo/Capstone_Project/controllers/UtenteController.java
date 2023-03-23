@@ -64,7 +64,7 @@ public class UtenteController {
 		return new ResponseEntity<>(utenti, HttpStatus.OK);
 	}
 	
-	// Metodo per criptare la password dell'utente
+	// Metodo per criptare la password dell'utente creato nel main
 	@GetMapping("auth/update_user_pw")
 	@ResponseBody
 	public String auth_update_user_pw() {

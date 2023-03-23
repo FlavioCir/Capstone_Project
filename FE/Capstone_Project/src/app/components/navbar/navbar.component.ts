@@ -51,7 +51,6 @@ export class NavbarComponent implements OnInit {
         window.sessionStorage.removeItem('auth-user');
         this.isLoggedIn = false;
         this.router.navigate(['/']);
-
     }
 
 }

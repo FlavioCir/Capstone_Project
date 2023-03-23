@@ -39,7 +39,6 @@ public class Annuncio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = true)
 	@JsonManagedReference
 	@OneToMany(mappedBy = "annuncio")
 	private Set<Foto> foto;
