@@ -75,7 +75,14 @@
 
     .card {
 
-        width: fit-content;
+        width: 100%;
+
+        .foto {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            background-size: cover;
+            background-position: center;
+        }
 
         background-color: #0267C1;
         border: 3px solid white;

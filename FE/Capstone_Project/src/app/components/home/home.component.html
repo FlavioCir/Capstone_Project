@@ -32,8 +32,8 @@
             <div class="annunci-card mt-4 px-5">
                 <div class="card mb-3" *ngFor="let annuncio of annunci">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="../../../assets/pistaMugello.jpg" class="img-fluid rounded-start" alt="...">
+                        <div class="col-md-4 foto" style=" background-image: url('{{annuncio.foto[0].url}}');">
+
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

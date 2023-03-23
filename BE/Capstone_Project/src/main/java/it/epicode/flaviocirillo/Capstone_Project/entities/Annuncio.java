@@ -41,7 +41,7 @@ public class Annuncio {
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "annuncio")
-	private Set<Foto> foto;
+	private List<Foto> foto;
 	
 	private String marca;
 	private String modello;
