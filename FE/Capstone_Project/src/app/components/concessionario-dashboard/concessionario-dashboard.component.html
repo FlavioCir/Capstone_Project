@@ -5,7 +5,7 @@
             <p class="text-white text-center">Profilo utente</p>
             <hr>
             <div *ngIf="concessionarioLoggato">
-                <p class="text-center"><i class="bi bi-person-circle text-white"></i></p>
+                <p class="text-center imgProfile"><i class="bi bi-person-circle text-white"></i></p>
                 <p class="text-center utenteItem">Ragione sociale: {{ concessionarioLoggato.ragioneSociale }}</p>
                 <p class="text-center utenteItem">Partita IVA: {{ concessionarioLoggato.partitaIva }}</p>
                 <p class="text-center utenteItem">Indirizzo: {{ concessionarioLoggato.indirizzo }}</p>
@@ -20,7 +20,7 @@
         <div class="annunci ms-4">
             <div class="d-flex justify-content-around align-items-center">
                 <div>
-                    <button type="button" class="back" [routerLink]="['/']"><i class="bi bi-arrow-left"></i> Back</button>
+                    <button type="button" class="back" [routerLink]="['/']"><i class="bi bi-arrow-left"></i> Indietro</button>
                 </div>
                 <p class="text-white text-center">I miei annunci</p>
                 <div>
@@ -32,8 +32,8 @@
             <div class="annunci-card my-4 px-5">
                 <div class="card mb-3" *ngFor="let annuncio of annunci">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="../../../assets/pistaMugello.jpg" class="img-fluid rounded-start" alt="...">
+                        <div class="col-md-4 foto" style="background-image: url('{{annuncio.foto[0].url}}');">
+
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

@@ -6,6 +6,8 @@ import { UtenteService } from 'src/app/services/utente.service';
 import { Utente } from 'src/app/models/utente.interface';
 import { Router } from '@angular/router';
 
+import { NgToastService } from 'ng-angular-popup';
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -21,7 +23,15 @@ export class HomeComponent implements OnInit {
     isLoggedIn = false;
     roles: string[] = [];
 
-    constructor(private asrv: AnnuncioService, private ssrv: StorageService, private usrv: UtenteService, private router: Router) { }
+    searchMarca: string = "";
+    searchModello: string = "";
+    searchMinAnno: string = "";
+    searchMaxAnno: string = "";
+    searchMinKilometri: string = "";
+    searchMaxKilometri: string = "";
+    searchPrezzo: string = "";
+
+    constructor(private asrv: AnnuncioService, private ssrv: StorageService, private usrv: UtenteService, private router: Router, private toast: NgToastService) { }
 
     ngOnInit(): void {
         if (this.ssrv.isLoggedIn()) {
@@ -59,10 +69,6 @@ export class HomeComponent implements OnInit {
         return this.ssrv.isAdmin();
     }
 
-    mostraAlert(titolo: string, descrizione: string) {
-        alert(titolo + '\n\n' + descrizione);
-    }
-
     rimuoviPreferiti(annuncio: Annuncio): void {
         console.log(annuncio);
         let utenteLoggatoId = this.ssrv.getUser().id;
@@ -75,6 +81,7 @@ export class HomeComponent implements OnInit {
                     console.log(resp);
                 });
             }
+            this.toast.warning({detail: "Annungio rimosso dai preferiti", summary: "Annuncio rimosso dalla lista dei preferiti!", duration: 5000});
             annuncio.preferito = false;
         });
     }
@@ -91,15 +98,14 @@ export class HomeComponent implements OnInit {
                 this.annuncioEsistente = utente.preferiti.find(a => a.id === annuncio.id);
                 if (this.annuncioEsistente) {
                     this.rimuoviPreferiti(annuncio);
-                    this.mostraAlert("Annuncio rimosso dai preferiti", "Hai appena rimosso l'annuncio dai preferiti, premi ok per procedere all'operazione");
                     return;
                 } else {
                     utente.preferiti.push(annuncio);
                     this.usrv.updateUtente(utente, utenteLoggatoId).subscribe(resp => {
                         console.log(resp);
                     });
+                    this.toast.success({detail: "Annungio aggiunto ai preferiti", summary: "Ottima scelta!", duration: 5000});
                     annuncio.preferito = true;
-                    this.mostraAlert("Annuncio aggiunto ai preferiti", "Hai appena aggiunto questo annuncio ai preferiti. Puoi visualizzare tutti gli annunci a cui hai messo mi piace entrando del tuo profilo!");
                 }
             });
         }
@@ -120,6 +126,17 @@ export class HomeComponent implements OnInit {
         } else {
             this.getAnnuncio();
         }
+    }
+
+    reset(): void {
+        this.searchMarca = '';
+        this.searchModello = '';
+        this.searchMinAnno = '';
+        this.searchMaxAnno = '';
+        this.searchMinKilometri = '';
+        this.searchMaxKilometri = '';
+        this.searchPrezzo = '';
+        this.getAnnuncio();
     }
 
     getAnnuncioPerModello(): void {

@@ -6,6 +6,8 @@ import { StorageService } from 'src/app/auth/storage.service';
 import { Utente } from 'src/app/models/utente.interface';
 import { UtenteService } from 'src/app/services/utente.service';
 
+import { NgToastService } from 'ng-angular-popup';
+
 @Component({
     selector: 'app-modifica-utente-oconcessionario',
     templateUrl: './modifica-utente-oconcessionario.component.html',
@@ -18,7 +20,7 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
     isLoggedIn = false;
     roles: string[] = [];
 
-    constructor(private asrv: AuthService, private router: Router, private ssrv: StorageService, private usrv: UtenteService) { }
+    constructor(private asrv: AuthService, private router: Router, private ssrv: StorageService, private usrv: UtenteService, private toast: NgToastService) { }
 
     ngOnInit(): void {
         this.getUtente();
@@ -53,6 +55,7 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
                 next: data => {
                     console.log(data);
                     this.router.navigate(['/']);
+                    this.toast.info({detail: "Se hai modificato l'username", summary: "Ricordati di effettuare di nuovo il login", duration: 5000});
                 }
             });
         } catch (error) {

@@ -7,7 +7,27 @@
             <h1 class="text-center mb-4 text-white">{{ annuncio?.marca }} - {{ annuncio?.modello }}</h1>
             <h3 class="text-center mb-4 text-white">{{ annuncio?.prezzo }} &euro;</h3>
             <div class="foto mb-4">
-                <img src="../../../assets/pistaMugello.jpg" alt="">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button *ngFor="let foto of annuncio?.foto; let i = index" type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i" [class.active]="i===0" aria-current="true" title="Slide {{i+1}}"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let foto of annuncio?.foto; let i = index"
+                            [class.active]="i===0">
+                            <img src="{{foto.url}}" class="d-block w-100 h-100" alt="Foto {{i + 1}}">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span aria-hidden="true"><i class="bi bi-caret-left"></i></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span aria-hidden="true"><i class="bi bi-caret-right"></i></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
             <hr class="secondLine">
             <div class="container mb-4">
@@ -55,13 +75,17 @@
                         <p class="dati"><i class="fa-solid fa-user me-2"></i> Venditore</p>
                         <p class="dettagli"><i class="fa-solid fa-user me-2"></i>Ragione Sociale <span>{{
                                 annuncio?.utente?.ragioneSociale }}</span></p>
-                        <p class="dettagli"><i class="fa-solid fa-envelope me-2"></i>Email <span>{{ annuncio?.utente?.email
+                        <p class="dettagli"><i class="fa-solid fa-envelope me-2"></i>Email <span>{{
+                                annuncio?.utente?.email
                                 }}</span></p>
-                        <p class="dettagli"><i class="fa-solid fa-phone me-2"></i>Telefono <span>{{ annuncio?.utente?.telefono
+                        <p class="dettagli"><i class="fa-solid fa-phone me-2"></i>Telefono <span>{{
+                                annuncio?.utente?.telefono
                                 }}</span></p>
-                        <p class="dettagli"><i class="fa-solid fa-map-pin me-2"></i>Indirizzo <span>{{ annuncio?.utente?.indirizzo
+                        <p class="dettagli"><i class="fa-solid fa-map-pin me-2"></i>Indirizzo <span>{{
+                                annuncio?.utente?.indirizzo
                                 }}</span></p>
-                        <p class="dettagli"><i class="fa-solid fa-map me-2"></i>Località <span>{{ annuncio?.utente?.localita
+                        <p class="dettagli"><i class="fa-solid fa-map me-2"></i>Località <span>{{
+                                annuncio?.utente?.localita
                                 }}</span></p>
                     </div>
                 </div>
@@ -70,10 +94,12 @@
             <div class="container mb-4 d-flex justify-content-around">
                 <button type="button" [routerLink]="['/']"><i class="bi bi-arrow-left"></i> Back</button>
                 <div *ngIf="isAdmin()">
-                    <button type="button" class="modifica">Modifica annuncio <i class="fa-regular fa-pen-to-square ms-2"></i></button>
+                    <button type="button" class="modifica">Modifica annuncio <i
+                            class="fa-regular fa-pen-to-square ms-2"></i></button>
                 </div>
                 <div *ngIf="isAdmin()">
-                    <button type="button" class="elimina" (click)="eliminaAnnuncio(annuncio!.id)">Elimina annuncio <i class="bi bi-trash3 ms-2"></i></button>
+                    <button type="button" class="elimina" (click)="eliminaAnnuncio(annuncio!.id)">Elimina annuncio <i
+                            class="bi bi-trash3 ms-2"></i></button>
                 </div>
             </div>
         </div>

@@ -14,6 +14,8 @@ import { UploadService } from 'src/app/services/upload.service';
 import { FotoService } from 'src/app/services/foto.service';
 import { Foto } from 'src/app/models/foto.interface';
 
+import { NgToastService } from 'ng-angular-popup';
+
 @Component({
     selector: 'app-add-annuncio',
     templateUrl: './add-annuncio.component.html',
@@ -33,7 +35,7 @@ export class AddAnnuncioComponent implements OnInit {
 
     annuncio: any | undefined;
 
-    constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService, private ups: UploadService, private fsrv: FotoService) { }
+    constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService, private ups: UploadService, private fsrv: FotoService, private toast: NgToastService) { }
 
     ngOnInit(): void {
         this.getStatoVeicolo();
@@ -126,8 +128,7 @@ export class AddAnnuncioComponent implements OnInit {
                         console.log(newAnnuncio);
                         this.annuncio = newAnnuncio;
                         this.onUpload(this.annuncio);
-                        this.router.navigate(['/']);
-                        form.reset();
+                        this.toast.success({detail: "Annungio inserito corretamente!", summary: "Torna indietro per visualizzarlo!", duration: 5000});
                     }
                 });
             }

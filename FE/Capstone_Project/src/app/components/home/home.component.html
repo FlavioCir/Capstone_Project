@@ -5,26 +5,31 @@
             <p class="text-white text-center"><i class="bi bi-search"></i> Ricerca per</p>
             <hr>
             <p class="text-white ms-3 ricercaItemFirst">Marca:</p>
-            <input name="marca" type="text" id="marca" placeholder="es. Yamaha" class="ms-3">
-            <button type="button" class="ms-3" (click)="getAnnuncioPerMarca()">Cerca</button>
+            <input name="marca" type="text" id="marca" placeholder="es. Yamaha" class="ms-3" [(ngModel)]="searchMarca">
+            <button type="button" class="mx-3" (click)="getAnnuncioPerMarca()">Cerca</button>
+            <button type="button" (click)="reset()">Reset</button>
 
             <p class="text-white ms-3 ricercaItem">Modello:</p>
-            <input name="modello" type="text" id="modello" placeholder="es. yxf-r1" class="ms-3">
-            <button type="button" class="ms-3" (click)="getAnnuncioPerModello()" >Cerca</button>
+            <input name="modello" type="text" id="modello" placeholder="es. yxf-r1" class="ms-3" [(ngModel)]="searchModello">
+            <button type="button" class="mx-3" (click)="getAnnuncioPerModello()">Cerca</button>
+            <button type="button" (click)="reset()">Reset</button>
 
             <p class="text-white ms-3 ricercaItem">Anno:</p>
-            <input name="minAnno" type="text" id="minAnno" placeholder="es. 2015" class="ms-3">
-            <input name="maxAnno" type="text" id="maxAnno" placeholder="es. 2020" class="ms-3">
-            <button type="button" class="ms-3 mt-3" (click)="getAnnuncioPerImmatricolazione()">Cerca</button>
+            <input name="minAnno" type="text" id="minAnno" placeholder="es. 2015" class="ms-3" [(ngModel)]="searchMinAnno">
+            <input name="maxAnno" type="text" id="maxAnno" placeholder="es. 2020" class="ms-3" [(ngModel)]="searchMaxAnno">
+            <button type="button" class="mx-3 mt-3" (click)="getAnnuncioPerImmatricolazione()">Cerca</button>
+            <button type="button" (click)="reset()">Reset</button>
 
             <p class="text-white ms-3 ricercaItem">Kilometri:</p>
-            <input name="minKilometri" type="number" id="minKilometri" placeholder="es. 5000" class="ms-3">
-            <input name="maxKilometri" type="number" id="maxKilometri" placeholder="es. 10000" class="ms-3">
-            <button type="button" class="ms-3 mt-3" (click)="getAnnuncioPerKilometri()">Cerca</button>
+            <input name="minKilometri" type="number" id="minKilometri" placeholder="es. 5000" class="ms-3" [(ngModel)]="searchMinKilometri">
+            <input name="maxKilometri" type="number" id="maxKilometri" placeholder="es. 10000" class="ms-3" [(ngModel)]="searchMaxKilometri">
+            <button type="button" class="mx-3 mt-3" (click)="getAnnuncioPerKilometri()">Cerca</button>
+            <button type="button" (click)="reset()">Reset</button>
 
             <p class="text-white ms-3 ricercaItem">Prezzo:</p>
-            <input name="prezzo" type="number" id="prezzo" placeholder="es. 12.000€" class="ms-3">
-            <button type="button" class="ms-3" (click)="getAnnuncioPerPrezzo()">Cerca</button>
+            <input name="prezzo" type="number" id="prezzo" placeholder="es. 12.000€" class="ms-3" [(ngModel)]="searchPrezzo">
+            <button type="button" class="mx-3" (click)="getAnnuncioPerPrezzo()">Cerca</button>
+            <button type="button" (click)="reset()">Reset</button>
         </div>
         <div class="annuncio ms-4">
             <p class="text-white text-center">Annunci</p>
@@ -32,7 +37,7 @@
             <div class="annunci-card mt-4 px-5">
                 <div class="card mb-3" *ngFor="let annuncio of annunci">
                     <div class="row g-0">
-                        <div class="col-md-4 foto" style=" background-image: url('{{annuncio.foto[0].url}}');">
+                        <div class="col-md-4 foto" style="background-image: url('{{annuncio.foto[0].url}}');">
 
                         </div>
                         <div class="col-md-8">

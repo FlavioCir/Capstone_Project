@@ -1,53 +1,4 @@
-.utente {
-    margin: 120px 0 0 0;
-    padding: 0;
-    background-color: #0267C1;
-    height: 825px;
-    width: 500px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 30px #363537;
-
-    p {
-        font-size: 25px;
-        margin-top: 20px;
-        color: white;
-    }
-
-    .utenteItem {
-        font-size: 22px;
-    }
-
-    hr {
-        margin: 0 20px;
-        border-top: 5px solid white;
-        opacity: 100;
-    }
-
-    .imgProfile {
-        font-size: 120px;
-    }
-
-    a {
-        background-color: #0267C1;
-        border: 3px solid white;
-        color: white;
-        padding: 5px 15px;
-        font-size: 20px;
-        border-radius: 10px;
-
-        &:hover {
-            background-color: white;
-            color: #0267C1;
-        }
-    }
-
-    .impostazioni {
-        cursor: pointer;
-    }
-
-}
-
-.annunci {
+.preferiti {
     margin: 120px 0 0 0;
     padding: 0;
     background-color: #0267C1;
@@ -112,13 +63,15 @@
             flex-direction: row;
         }
 
-        .elimina, .dettagli-post {
+        .miPiace,
+        .dettagli-post {
             font-size: 25px;
+        }
+
+        .miPiace {
+            color: red;
             cursor: pointer;
         }
 
-        .elimina {
-            color: red;
-        }
     }
 }

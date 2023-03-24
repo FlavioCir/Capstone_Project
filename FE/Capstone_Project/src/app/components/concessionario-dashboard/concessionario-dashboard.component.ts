@@ -5,6 +5,9 @@ import { StorageService } from 'src/app/auth/storage.service';
 import { Annuncio } from 'src/app/models/annuncio.interface';
 import { AnnuncioService } from 'src/app/services/annuncio.service';
 
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
+
 @Component({
     selector: 'app-concessionario-dashboard',
     templateUrl: './concessionario-dashboard.component.html',
@@ -15,11 +18,11 @@ export class ConcessionarioDashboardComponent implements OnInit {
     concessionarioLoggato: Utente | undefined;
     annunci: Annuncio[] | undefined;
 
-    constructor(private usrv: UtenteService, private ssrv: StorageService, private asrv: AnnuncioService) { }
+    constructor(private usrv: UtenteService, private ssrv: StorageService, private asrv: AnnuncioService, private toast: NgToastService, private router: Router) { }
 
     ngOnInit(): void {
-       this.getConcessionario();
-       this.getAnnuncio();
+        this.getConcessionario();
+        this.getAnnuncio();
     }
 
     getConcessionario(): void {
@@ -36,13 +39,9 @@ export class ConcessionarioDashboardComponent implements OnInit {
         });
     }
 
-    mostraAlert(titolo: string) {
-        alert(titolo);
-    }
-
     eliminaAnnuncio(id: number): void {
         this.asrv.deleteAnnuncio(id).subscribe();
-        this.mostraAlert("Annuncio eliminato con successo!");
+        alert("Annuncio eliminato con successo!");
         this.getAnnuncio();
     }
 

@@ -21,38 +21,41 @@ import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.com
 import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
 import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.component';
 import { ModificaUtenteOConcessionarioComponent } from './components/modifica-utente-oconcessionario/modifica-utente-oconcessionario.component';
-import { UploadFotoComponent } from './components/upload-foto/upload-foto.component';
+import { PreferitiComponent } from './components/preferiti/preferiti.component';
+
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    SingupComponent,
-    SingupConcessionarioComponent,
-    NavbarComponent,
-    UserDashboardComponent,
-    AddAnnuncioComponent,
-    ConcessionarioDashboardComponent,
-    DettagliPostComponent,
-    ModificaUtenteOConcessionarioComponent,
-    UploadFotoComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    NgxDropzoneModule
-  ],
-  providers: [
-    {
-        provide: HTTP_INTERCEPTORS,
-        useClass: TokenInterceptor,
-        multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        LoginComponent,
+        SingupComponent,
+        SingupConcessionarioComponent,
+        NavbarComponent,
+        UserDashboardComponent,
+        AddAnnuncioComponent,
+        ConcessionarioDashboardComponent,
+        DettagliPostComponent,
+        ModificaUtenteOConcessionarioComponent,
+        PreferitiComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        NgxDropzoneModule,
+        NgToastModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

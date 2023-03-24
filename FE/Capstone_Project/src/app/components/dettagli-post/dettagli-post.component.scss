@@ -19,17 +19,36 @@
     }
 
     .foto {
-        background-color: #363537;
         height: 400px;
         width: 600px;
         margin: auto;
-        border-radius: 10px;
 
-        img {
-            width: 100%;
-            height: auto;
-            overflow: hidden;
+        .carousel-indicators button {
+            background-color: red;
+            border-color: 1px solid red;
         }
+
+        .carousel-inner {
+            .carousel-item {
+                height: 400px;
+
+                img {
+                    height: 100%;
+                    width: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            i {
+                font-size: 25px;
+                color: red;
+            }
+        }
+
     }
 
     .secondLine {
@@ -80,7 +99,7 @@
             }
         }
 
-        .elimina{
+        .elimina {
             &:hover {
                 border: 3px solid red;
                 background-color: red;

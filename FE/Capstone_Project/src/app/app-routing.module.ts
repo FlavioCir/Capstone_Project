@@ -9,6 +9,7 @@ import { AddAnnuncioComponent } from './components/add-annuncio/add-annuncio.com
 import { ConcessionarioDashboardComponent } from './components/concessionario-dashboard/concessionario-dashboard.component';
 import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.component';
 import { ModificaUtenteOConcessionarioComponent } from './components/modifica-utente-oconcessionario/modifica-utente-oconcessionario.component';
+import { PreferitiComponent } from './components/preferiti/preferiti.component';
 
 const routes: Routes = [
     {
@@ -46,6 +47,10 @@ const routes: Routes = [
     {
         path: 'editProfile',
         component: ModificaUtenteOConcessionarioComponent
+    },
+    {
+        path: 'preferiti',
+        component: PreferitiComponent
     }
 ];
 
