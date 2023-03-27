@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/auth/login", "/home", "/registrazioneUtente", "/registrazioneConcessionario", "/auth/update_user_pw", "/annunci", "/annunci/cercaMarca", "/annunci/cercaModello", "/annunci/cercaPrezzo", "/annunci/cercaKilometri", "/annunci/cercaImmatricolazione").permitAll()
+				.antMatchers("/auth/login", "/home", "/registrazioneUtente", "/registrazioneConcessionario", "/auth/update_user_pw", "/annunci", "/annunci/cercaMarca", "/annunci/cercaModello", "/annunci/cercaPrezzo", "/annunci/cercaKilometri", "/annunci/cercaImmatricolazione", "/annunci/{id}").permitAll()
 				.antMatchers("/**").authenticated();
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

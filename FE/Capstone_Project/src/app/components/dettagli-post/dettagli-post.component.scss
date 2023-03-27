@@ -1,5 +1,5 @@
 .dettagliAnnuncio {
-    margin: 120px 0 30px 0;
+    margin-bottom: 20px;
     padding: 0;
     background-color: #0267C1;
     height: fit-content;
@@ -16,6 +16,10 @@
         margin: 0 20px 20px 20px;
         border-top: 5px solid white;
         opacity: 100;
+    }
+
+    p {
+        color: white;
     }
 
     .foto {

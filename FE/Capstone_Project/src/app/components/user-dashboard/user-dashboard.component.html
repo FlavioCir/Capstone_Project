@@ -5,14 +5,14 @@
             <p class="text-white text-center">Profilo utente</p>
             <hr>
             <div class="infoUtente" *ngIf="utenteLoggato">
-                <p class="text-center imgProfile"><i class="bi bi-person-circle text-white"></i></p>
+                <p class="text-center imgProfile"><img src="../../../assets/user.png" alt="img_User"></p>
                 <p class="text-center">Nome: {{ utenteLoggato.nome }}</p>
                 <p class="text-center">Cognome: {{ utenteLoggato.cognome }}</p>
                 <p class="text-center">Username: {{ utenteLoggato.username }}</p>
                 <p class="text-center">Email: {{ utenteLoggato.email }}</p>
             </div>
             <hr>
-            <div class="d-flex justify-content-around mt-5">
+            <div class="d-flex justify-content-around">
                 <button [routerLink]="['/']"><i class="bi bi-arrow-left me-3"></i>Indietro</button>
                 <button [routerLink]="['/editProfile']">Impostazioni<i class="bi bi-gear ms-3"></i></button>
             </div>

@@ -59,7 +59,7 @@ export class PreferitiComponent implements OnInit {
             this.annuncioEsistente = utente.preferiti.find(a => a.id === annuncio.id);
             if (this.annuncioEsistente) {
                 this.rimuoviPreferiti(annuncio);
-                this.mostraAlert("Annuncio rimosso dai preferiti", "Hai appena rimosso l'annuncio dai preferiti, premi ok per procedere all'operazione");
+                this.mostraAlert("Annuncio rimosso dai preferiti", "Hai appena rimosso questo annuncio dai tuoi preferiti, premi ok per procedere all'operazione");
                 return;
             } else {
                 utente.preferiti.push(annuncio);
@@ -67,7 +67,6 @@ export class PreferitiComponent implements OnInit {
                     console.log(resp);
                 });
                 annuncio.preferito = true;
-                this.mostraAlert("Annuncio aggiunto ai preferiti", "Hai appena aggiunto questo annuncio ai preferiti. Puoi visualizzare tutti gli annunci a cui hai messo mi piace entrando del tuo profilo!");
             }
         });
     }

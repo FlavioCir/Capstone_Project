@@ -1,124 +1,132 @@
-.utente {
-    margin: 120px 0 0 0;
-    padding: 0;
-    background-color: #0267C1;
-    height: 825px;
-    width: 500px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 30px #363537;
+.concessionario-dashboard {
 
-    p {
-        font-size: 25px;
-        margin-top: 20px;
-        color: white;
-    }
-
-    .utenteItem {
-        font-size: 22px;
-    }
-
-    hr {
-        margin: 0 20px;
-        border-top: 5px solid white;
-        opacity: 100;
-    }
-
-    .imgProfile {
-        font-size: 120px;
-    }
-
-    a {
+    .utente {
+        padding: 0;
         background-color: #0267C1;
-        border: 3px solid white;
-        color: white;
-        padding: 5px 15px;
-        font-size: 20px;
+        height: 825px;
+        width: 500px;
         border-radius: 10px;
+        box-shadow: 10px 10px 30px #363537;
 
-        &:hover {
-            background-color: white;
-            color: #0267C1;
-        }
-    }
-
-    .impostazioni {
-        cursor: pointer;
-    }
-
-}
-
-.annunci {
-    margin: 120px 0 0 0;
-    padding: 0;
-    background-color: #0267C1;
-    height: 825px;
-    width: 1400px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 30px #363537;
-
-    overflow-y: scroll;
-
-    p {
-        font-size: 25px;
-        margin-top: 20px;
-    }
-
-    hr {
-        margin: 0 20px;
-        border-top: 5px solid white;
-        opacity: 100;
-    }
-
-    button {
-        background-color: #0267C1;
-        border: 3px solid white;
-        color: white;
-        padding: 5px 15px;
-        font-size: 20px;
-        border-radius: 10px;
-
-        &:hover {
-            background-color: white;
-            color: #0267C1;
-        }
-    }
-
-    .card {
-
-        width: 100%;
-
-        .foto {
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        background-color: #0267C1;
-        border: 3px solid white;
-        color: white;
-        border-radius: 10px;
-
-        img {
-            height: 100%;
-        }
-
-        .card-text {
-            font-size: 20px;
-        }
-
-        .card-body-item {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .elimina, .dettagli-post {
+        p {
             font-size: 25px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .utenteItem {
+            font-size: 22px;
+        }
+
+        hr {
+            margin: 0 20px;
+            border-top: 5px solid white;
+            opacity: 100;
+        }
+
+        .imgProfile {
+            margin-top: 40px;
+
+            img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        a {
+            background-color: #0267C1;
+            border: 3px solid white;
+            color: white;
+            padding: 5px 15px;
+            font-size: 20px;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: white;
+                color: #0267C1;
+            }
+        }
+
+        .impostazioni {
             cursor: pointer;
         }
 
-        .elimina {
-            color: red;
+    }
+
+    .annunci {
+        padding: 0;
+        background-color: #0267C1;
+        height: 825px;
+        width: 1400px;
+        border-radius: 10px;
+        box-shadow: 10px 10px 30px #363537;
+
+        overflow-y: scroll;
+
+        p {
+            font-size: 25px;
+            margin-top: 20px;
+        }
+
+        hr {
+            margin: 0 20px;
+            border-top: 5px solid white;
+            opacity: 100;
+        }
+
+        button {
+            background-color: #0267C1;
+            border: 3px solid white;
+            color: white;
+            padding: 5px 15px;
+            font-size: 20px;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: white;
+                color: #0267C1;
+            }
+        }
+
+        .card {
+
+            width: 100%;
+
+            .foto {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                background-size: cover;
+                background-position: center;
+            }
+
+            background-color: #0267C1;
+            border: 3px solid white;
+            color: white;
+            border-radius: 10px;
+
+            img {
+                height: 100%;
+            }
+
+            .card-text {
+                font-size: 20px;
+            }
+
+            .card-body-item {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .elimina,
+            .dettagli-post {
+                font-size: 25px;
+                cursor: pointer;
+            }
+
+            .elimina {
+                color: red;
+            }
         }
     }
+
 }

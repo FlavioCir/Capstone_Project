@@ -24,7 +24,7 @@ export class DettagliPostComponent implements OnInit {
     constructor(private ssrv: StorageService, private asrv: AnnuncioService, private ar: ActivatedRoute, private usrv: UtenteService, private router: Router) { }
 
     ngOnInit(): void {
-        this.getAnnuncio()
+        this.getAnnuncio();
     }
 
     isAdmin(): boolean {

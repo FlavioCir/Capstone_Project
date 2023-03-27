@@ -24,6 +24,7 @@ import { ModificaUtenteOConcessionarioComponent } from './components/modifica-ut
 import { PreferitiComponent } from './components/preferiti/preferiti.component';
 
 import { NgToastModule } from 'ng-angular-popup';
+import { ModificaPostComponent } from './components/modifica-post/modifica-post.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { NgToastModule } from 'ng-angular-popup';
         ConcessionarioDashboardComponent,
         DettagliPostComponent,
         ModificaUtenteOConcessionarioComponent,
-        PreferitiComponent
+        PreferitiComponent,
+        ModificaPostComponent
     ],
     imports: [
         BrowserModule,

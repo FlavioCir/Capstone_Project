@@ -1,21 +1,38 @@
-<nav class="navbar fixed-top">
-    <a class="fw-bold" [routerLink]="['/']">RideResale <img src="../../../assets/logo_app.png" alt="" style="width: 60px;"></a>
-    <div *ngIf="!isLoggedIn">
-        <button type="button" [routerLink]="['/login']" class="login">Login<i class="bi bi-arrow-bar-left ms-2"></i></button>
-    </div>
-    <div class="d-flex flex-row" *ngIf="isLoggedIn">
-        <div class="utente" *ngIf="!isAdmin()">
-            <i class="bi bi-person-circle fs-2 text-white" [routerLink]="['/userDashboard']"></i>
-            <a class="mx-2" [routerLink]="['/userDashboard']">{{nome}} {{cognome}}</a>
-            <i class="fa-solid fa-heart fs-3 text-white ms-3" [routerLink]="['/preferiti']"></i>
-            <a class="mx-2" [routerLink]="['/preferiti']">Preferiti</a>
-        </div>
-        <div class="utente" *ngIf="isAdmin()">
-            <i class="bi bi-person-circle fs-2 text-white"></i>
-            <a class="mx-2" [routerLink]="['/concessionarioDashboard']">{{ragioneSociale}}</a>
-        </div>
-        <div>
-            <button type="button" (click)="logout()" class="logout ms-3">Logout<i class="bi bi-arrow-bar-right ms-2"></i></button>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="fw-bold" [routerLink]="['/']">RideResale <img src="../../../assets/logo_app.png" alt=""
+                style="width: 60px;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav" *ngIf="isLoggedIn">
+                <li class="nav-item my-2" *ngIf="!isAdmin()">
+                    <img src="../../../assets/user.png" alt="img_User" class="imgProfile"
+                        [routerLink]="['/userDashboard']">
+                    <a class="ms-2 me-3" [routerLink]="['/userDashboard']">{{nome}} {{cognome}}</a>
+                </li>
+                <li class="nav-item my-2" *ngIf="!isAdmin()">
+                    <i class="fa-solid fa-heart text-white preferiti" [routerLink]="['/preferiti']"></i>
+                    <a class="ms-2 me-3" [routerLink]="['/preferiti']">Preferiti</a>
+                </li>
+                <li class="nav-item my-2" *ngIf="isAdmin()">
+                    <img src="../../../assets/admin.png" alt="img_User" class="imgProfile"
+                        [routerLink]="['/concessionarioDashboard']">
+                    <a class="ms-2 me-3" [routerLink]="['/concessionarioDashboard']">{{ragioneSociale}}</a>
+                </li>
+                <li class="nav-item my-2">
+                    <button type="button" (click)="logout()" class="logout ">Logout<i
+                        class="bi bi-arrow-bar-right ms-2"></i></button>
+                </li>
+            </ul>
+            <ul class="navbar-nav" *ngIf="!isLoggedIn">
+                <li class="nav-item my-2">
+                    <button type="button" [routerLink]="['/login']" class="login">Login<i
+                            class="bi bi-arrow-bar-left ms-2"></i></button>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

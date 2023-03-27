@@ -1,10 +1,8 @@
 .navbar {
     background-color: red;
     height: fit-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 20px 20px;
+    margin-bottom: 20px;
 
     a {
         text-decoration: none;
@@ -26,15 +24,46 @@
         }
     }
 
-    .utente {
-        a {
-            text-decoration: none;
-            color: white;
+    .navbar-toggler {
+        i {
             font-size: 25px;
+        }
 
-            &:hover {
-                text-decoration: underline;
+        &:focus {
+            box-shadow: none;
+            border: 3px solid white;
+        }
+    }
+
+    .navbar-nav {
+        padding: 0;
+        margin: 0;
+        .nav-item {
+
+            display: flex;
+            align-items: center;
+
+            .preferiti {
+                cursor: pointer;
+                font-size: 30px;
+            }
+
+            .imgProfile{
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+            }
+
+            a {
+                text-decoration: none;
+                color: white;
+                font-size: 25px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }
+
 }

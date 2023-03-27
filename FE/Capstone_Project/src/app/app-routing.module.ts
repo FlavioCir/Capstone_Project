@@ -10,6 +10,7 @@ import { ConcessionarioDashboardComponent } from './components/concessionario-da
 import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.component';
 import { ModificaUtenteOConcessionarioComponent } from './components/modifica-utente-oconcessionario/modifica-utente-oconcessionario.component';
 import { PreferitiComponent } from './components/preferiti/preferiti.component';
+import { ModificaPostComponent } from './components/modifica-post/modifica-post.component';
 
 const routes: Routes = [
     {
@@ -51,6 +52,10 @@ const routes: Routes = [
     {
         path: 'preferiti',
         component: PreferitiComponent
+    },
+    {
+        path: 'modifica-post',
+        component: ModificaPostComponent
     }
 ];
 

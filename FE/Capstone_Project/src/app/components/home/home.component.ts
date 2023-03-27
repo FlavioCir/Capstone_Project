@@ -128,16 +128,6 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    reset(): void {
-        this.searchMarca = '';
-        this.searchModello = '';
-        this.searchMinAnno = '';
-        this.searchMaxAnno = '';
-        this.searchMinKilometri = '';
-        this.searchMaxKilometri = '';
-        this.searchPrezzo = '';
-        this.getAnnuncio();
-    }
 
     getAnnuncioPerModello(): void {
         const modelloInput = document.getElementById('modello') as HTMLInputElement;
@@ -201,6 +191,17 @@ export class HomeComponent implements OnInit {
         } else {
             this.getAnnuncio();
         }
+    }
+
+    reset(): void {
+        this.searchMarca = '';
+        this.searchModello = '';
+        this.searchMinAnno = '';
+        this.searchMaxAnno = '';
+        this.searchMinKilometri = '';
+        this.searchMaxKilometri = '';
+        this.searchPrezzo = '';
+        this.getAnnuncio();
     }
 
 }

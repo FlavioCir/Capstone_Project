@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row concessionario-dashboard">
         <div class="utente">
             <p class="text-white text-center">Profilo utente</p>
             <hr>
             <div *ngIf="concessionarioLoggato">
-                <p class="text-center imgProfile"><i class="bi bi-person-circle text-white"></i></p>
+                <p class="text-center imgProfile"><img src="../../../assets/admin.png" alt="img_User"></p>
                 <p class="text-center utenteItem">Ragione sociale: {{ concessionarioLoggato.ragioneSociale }}</p>
                 <p class="text-center utenteItem">Partita IVA: {{ concessionarioLoggato.partitaIva }}</p>
                 <p class="text-center utenteItem">Indirizzo: {{ concessionarioLoggato.indirizzo }}</p>

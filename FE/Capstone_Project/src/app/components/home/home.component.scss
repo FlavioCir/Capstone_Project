@@ -1,119 +1,121 @@
-.ricerca {
-    margin: 120px 0 0 0;
-    padding: 0;
-    background-color: #0267C1;
-    height: 825px;
-    width: 500px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 30px #363537;
-
-    p {
-        font-size: 25px;
-        margin-top: 20px;
-    }
-
-    hr {
-        margin: 0 20px;
-        border-top: 5px solid white;
-        opacity: 100;
-    }
-
-    .ricercaItem {
-        font-size: 22px;
-        margin-bottom: 2px;
-        margin-top: 35px;
-    }
-
-    input {
-        padding: 10px;
-        border-radius: 10px;
-        border: none;
-        color: red;
-    }
-
-    .ricercaItemFirst {
-        font-size: 22px;
-        margin-bottom: 2px;
-    }
-
-
-    button {
-        border: 3px solid white;
+.home {
+    .ricerca {
+        padding: 0;
         background-color: #0267C1;
-        color: white;
-        padding: 9px;
+        height: 825px;
+        width: 500px;
         border-radius: 10px;
+        box-shadow: 10px 10px 30px #363537;
 
-        &:hover {
-            background-color: white;
-            color: #0267C1;
-        }
-    }
-}
-
-.annuncio {
-    margin: 120px 0 0 0;
-    padding: 0;
-    background-color: #0267C1;
-    height: 825px;
-    width: 1400px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 30px #363537;
-
-    overflow-y: scroll;
-
-    p {
-        font-size: 25px;
-        margin-top: 20px;
-    }
-
-    hr {
-        margin: 0 20px;
-        border-top: 5px solid white;
-        opacity: 100;
-    }
-
-    .card {
-
-        width: 100%;
-
-        .foto {
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        background-color: #0267C1;
-        border: 3px solid white;
-        color: white;
-        border-radius: 10px;
-
-        img {
-            height: 100%;
-        }
-
-        .card-text {
-            font-size: 20px;
-        }
-
-        .card-body-item {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .miPiace, .dettagli-post {
+        p {
             font-size: 25px;
+            margin-top: 20px;
         }
 
-        .miPiace {
-            color: white;
-            cursor: pointer;
+        hr {
+            margin: 0 20px;
+            border-top: 5px solid white;
+            opacity: 100;
         }
 
-        .preferito {
+        .ricercaItem {
+            font-size: 22px;
+            margin-bottom: 2px;
+            margin-top: 35px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
             color: red;
         }
 
+        .ricercaItemFirst {
+            font-size: 22px;
+            margin-bottom: 2px;
+        }
+
+
+        button {
+            border: 3px solid white;
+            background-color: #0267C1;
+            color: white;
+            padding: 9px;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: white;
+                color: #0267C1;
+            }
+        }
     }
+
+    .annuncio {
+        padding: 0;
+        background-color: #0267C1;
+        height: 825px;
+        width: 1400px;
+        border-radius: 10px;
+        box-shadow: 10px 10px 30px #363537;
+
+        overflow-y: scroll;
+
+        p {
+            font-size: 25px;
+            margin-top: 20px;
+        }
+
+        hr {
+            margin: 0 20px;
+            border-top: 5px solid white;
+            opacity: 100;
+        }
+
+        .card {
+
+            width: 100%;
+
+            .foto {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                background-size: cover;
+                background-position: center;
+            }
+
+            background-color: #0267C1;
+            border: 3px solid white;
+            color: white;
+            border-radius: 10px;
+
+            img {
+                height: 100%;
+            }
+
+            .card-text {
+                font-size: 20px;
+            }
+
+            .card-body-item {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .miPiace,
+            .dettagli-post {
+                font-size: 25px;
+            }
+
+            .miPiace {
+                color: white;
+                cursor: pointer;
+            }
+
+            .preferito {
+                color: red;
+            }
+
+        }
+    }
+
 }
