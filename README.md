@@ -40,9 +40,9 @@ I filtri che si possono fare sono per:
 ## Tecnologie usate
 
 La mia applicazione ha un'architettura full-stak:
-- Utilizzando ### Angular per il Front-End
-- ### Java o più nello specifico ### Spring Boot per il Back-End
-- E come data-base appoggiandomi a ### Postgres SQL
+- Utilizzando ANGULAR per il Front-End
+- JAVA o più nello specifico SPRING-BOOT per il Back-End
+- E come data-base appoggiandomi a PostgreSQL
 
 <hr>
 
