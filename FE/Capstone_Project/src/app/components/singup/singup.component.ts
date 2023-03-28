@@ -15,6 +15,7 @@ export class SingupComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    // Funzione per la registrazione di un utente
     async onsubmit(form: NgForm) {
         try {
             await this.asrv.registerUser(form.value).subscribe({

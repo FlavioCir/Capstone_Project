@@ -12,6 +12,8 @@ import { ModificaUtenteOConcessionarioComponent } from './components/modifica-ut
 import { PreferitiComponent } from './components/preferiti/preferiti.component';
 import { ModificaPostComponent } from './components/modifica-post/modifica-post.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const routes: Routes = [
     {
         path: '',
@@ -31,15 +33,18 @@ const routes: Routes = [
     },
     {
         path: 'userDashboard',
-        component: UserDashboardComponent
+        component: UserDashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'concessionarioDashboard',
-        component: ConcessionarioDashboardComponent
+        component: ConcessionarioDashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'addAnnuncio',
-        component: AddAnnuncioComponent
+        component: AddAnnuncioComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'dettagliPost/:id',
@@ -47,15 +52,18 @@ const routes: Routes = [
     },
     {
         path: 'editProfile',
-        component: ModificaUtenteOConcessionarioComponent
+        component: ModificaUtenteOConcessionarioComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'preferiti',
-        component: PreferitiComponent
+        component: PreferitiComponent,
+        canActivate: [AuthGuard]
     },
     {
-        path: 'modifica-post',
-        component: ModificaPostComponent
+        path: 'modifica-post/:id',
+        component: ModificaPostComponent,
+        canActivate: [AuthGuard]
     }
 ];
 

@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
+    // Funzione per il log dell'utente
     async onsubmit(form: NgForm) {
         try {
             await this.usrsrv.login(form.value).subscribe({

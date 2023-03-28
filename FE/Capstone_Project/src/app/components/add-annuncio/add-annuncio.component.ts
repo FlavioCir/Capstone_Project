@@ -45,18 +45,21 @@ export class AddAnnuncioComponent implements OnInit {
         this.getUser();
     }
 
+    // Funzione per il recupero dell'enum per lo stato del veicolo e lo associo alla variabile listaStatoVeicolo
     getStatoVeicolo(): void {
         this.sVsrv.getStatoVeicolo().subscribe(resp => {
             Object.assign(this.listaStatoVeicolo, resp);
         });
     }
 
+    // Funzione per il recupero dell'enum per la tipologia della moto e lo associo alla variabile listaTipoMoto
     getTipoMoto(): void {
         this.tMsrv.getTipoMoto().subscribe(resp => {
             Object.assign(this.listaTipoMoto, resp);
         });
     }
 
+    // Funzioen per il recupero dell'utente loggato per id
     getUser(): void {
         let userId = this.ssrv.getUser().id;
         this.usrv.getUtenteById(userId).subscribe(resp => {

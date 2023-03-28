@@ -1,46 +1,52 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
-    <div class="d-flex flex-row home">
-        <div class="ricerca">
+    <div class="home">
+        <div class="ricerca ms-sm-4">
             <p class="text-white text-center"><i class="bi bi-search"></i> Ricerca per</p>
             <hr>
             <p class="text-white ms-3 ricercaItemFirst">Marca:</p>
             <input name="marca" type="text" id="marca" placeholder="es. Yamaha" class="ms-3" [(ngModel)]="searchMarca">
-            <button type="button" class="mx-3" (click)="getAnnuncioPerMarca()">Cerca</button>
+            <button type="button" class="mx-lg-3 mx-md-3 ms-sm-0 me-sm-3" (click)="getAnnuncioPerMarca()">Cerca</button>
             <button type="button" (click)="reset()">Reset</button>
 
             <p class="text-white ms-3 ricercaItem">Modello:</p>
-            <input name="modello" type="text" id="modello" placeholder="es. yxf-r1" class="ms-3" [(ngModel)]="searchModello">
-            <button type="button" class="mx-3" (click)="getAnnuncioPerModello()">Cerca</button>
+            <input name="modello" type="text" id="modello" placeholder="es. yxf-r1" class="ms-3"
+                [(ngModel)]="searchModello">
+            <button type="button" class="mx-lg-3 mx-md-3 ms-sm-0 me-sm-3" (click)="getAnnuncioPerModello()">Cerca</button>
             <button type="button" (click)="reset()">Reset</button>
 
             <p class="text-white ms-3 ricercaItem">Anno:</p>
-            <input name="minAnno" type="text" id="minAnno" placeholder="es. 2015" class="ms-3" [(ngModel)]="searchMinAnno">
-            <input name="maxAnno" type="text" id="maxAnno" placeholder="es. 2020" class="ms-3" [(ngModel)]="searchMaxAnno">
-            <button type="button" class="mx-3 mt-3" (click)="getAnnuncioPerImmatricolazione()">Cerca</button>
+            <input name="minAnno" type="text" id="minAnno" placeholder="es. 2015" class="ms-3 mb-lg-3"
+                [(ngModel)]="searchMinAnno">
+            <input name="maxAnno" type="text" id="maxAnno" placeholder="es. 2020" class="ms-lg-3 ms-md-3 ms-sm-0"
+                [(ngModel)]="searchMaxAnno">
+            <button type="button" class="mx-3" (click)="getAnnuncioPerImmatricolazione()">Cerca</button>
             <button type="button" (click)="reset()">Reset</button>
 
             <p class="text-white ms-3 ricercaItem">Kilometri:</p>
-            <input name="minKilometri" type="number" id="minKilometri" placeholder="es. 5000" class="ms-3" [(ngModel)]="searchMinKilometri">
-            <input name="maxKilometri" type="number" id="maxKilometri" placeholder="es. 10000" class="ms-3" [(ngModel)]="searchMaxKilometri">
-            <button type="button" class="mx-3 mt-3" (click)="getAnnuncioPerKilometri()">Cerca</button>
+            <input name="minKilometri" type="number" id="minKilometri" placeholder="es. 5000" class="ms-3 mb-lg-3"
+                [(ngModel)]="searchMinKilometri">
+            <input name="maxKilometri" type="number" id="maxKilometri" placeholder="es. 10000" class="ms-lg-3 ms-md-3 ms-sm-0"
+                [(ngModel)]="searchMaxKilometri">
+            <button type="button" class="mx-3" (click)="getAnnuncioPerKilometri()">Cerca</button>
             <button type="button" (click)="reset()">Reset</button>
 
             <p class="text-white ms-3 ricercaItem">Prezzo:</p>
-            <input name="prezzo" type="number" id="prezzo" placeholder="es. 12.000€" class="ms-3" [(ngModel)]="searchPrezzo">
-            <button type="button" class="mx-3" (click)="getAnnuncioPerPrezzo()">Cerca</button>
+            <input name="prezzo" type="number" id="prezzo" placeholder="es. 12.000€" class="ms-3"
+                [(ngModel)]="searchPrezzo">
+            <button type="button" class="mx-lg-3 mx-md-3 ms-sm-0 me-sm-3" (click)="getAnnuncioPerPrezzo()">Cerca</button>
             <button type="button" (click)="reset()">Reset</button>
         </div>
         <div class="annuncio ms-4">
             <p class="text-white text-center">Annunci</p>
             <hr>
-            <div class="annunci-card mt-4 px-5">
+            <div class="annunci-card mt-4 px-4">
                 <div class="card mb-3" *ngFor="let annuncio of annunci">
                     <div class="row g-0">
-                        <div class="col-md-4 foto" style="background-image: url('{{annuncio.foto[0].url}}');">
+                        <div class="col-lg-4 foto" style="background-image: url('{{annuncio.foto[0].url}}');">
 
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <h3 class="card-title">{{ annuncio.marca }} {{ annuncio.modello }}</h3>
@@ -49,7 +55,8 @@
                                 </div>
                                 <h5 class="card-title">{{ annuncio.prezzo }} &euro;</h5>
                                 <div class="card-body-item mt-3">
-                                    <p class="card-text me-4"><i class="fa-solid fa-road"></i> {{ annuncio.kilometri }}
+                                    <p class="card-text me-4"><i class="fa-solid fa-road"></i> {{ annuncio.kilometri
+                                        }}
                                         Kw</p>
                                     <p class="card-text me-4"><i class="fa-regular fa-calendar"></i> {{
                                         annuncio.immatricolazione }}
@@ -64,10 +71,10 @@
                                     <p class="card-text"><i class="fa-solid fa-motorcycle"></i> {{
                                         annuncio.tipoMoto.tipoMoto }}</p>
                                 </div>
-                            </div>
-                            <div *ngIf="!isAdmin()" class="d-flex justify-content-end me-4 mb-4">
-                                <a class="miPiace" (click)="aggiungiPreferiti(annuncio)"
-                                    [ngClass]="{'preferito': annuncio.preferito}"><i class="fa-solid fa-heart"></i></a>
+                                <div *ngIf="!isAdmin()" class="d-flex justify-content-end me-3 mb-2">
+                                    <a class="miPiace" (click)="aggiungiPreferiti(annuncio)"
+                                        [ngClass]="{'preferito': annuncio.preferito}"><i class="fa-solid fa-heart"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>

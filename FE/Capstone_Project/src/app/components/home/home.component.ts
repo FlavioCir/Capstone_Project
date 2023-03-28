@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
         this.getAnnuncio();
     }
 
+    // Funzione per il recupero degli annunci presenti nella lista dei preferiti dell'utente loggato
     getAnnunciPreferiti(): void {
         let utenteLoggatoId = this.ssrv.getUser().id;
         this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
@@ -57,6 +58,7 @@ export class HomeComponent implements OnInit {
         });
     }
 
+    // Funzione per il recupero di tutti gli annunci
     getAnnuncio(): void {
         this.asrv.getAnnuncio().subscribe(resp => {
             this.annunci = resp;
@@ -65,10 +67,12 @@ export class HomeComponent implements OnInit {
         this.getAnnunciPreferiti();
     }
 
+    // Funzione per vedere se l'utente loggato è admin
     isAdmin(): boolean {
         return this.ssrv.isAdmin();
     }
 
+    // Funzione per la rimozione dell'annuncio dalla lista dei preferiti
     rimuoviPreferiti(annuncio: Annuncio): void {
         console.log(annuncio);
         let utenteLoggatoId = this.ssrv.getUser().id;
@@ -86,6 +90,7 @@ export class HomeComponent implements OnInit {
         });
     }
 
+    // Funzione per l'aggiunta di un annuncio alla lista dei preferiti
     aggiungiPreferiti(annuncio: Annuncio): void {
         if (!this.ssrv.isLoggedIn()) {
             this.router.navigate(['/login']);
@@ -111,8 +116,9 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    // FILTRI ----------------------------------------------------------------
+    // ------------------------- FILTRI PER: -------------------------
 
+    // MARCA
     getAnnuncioPerMarca(): void {
         const marcaInput = document.getElementById('marca') as HTMLInputElement;
 
@@ -128,7 +134,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
-
+    // MODELLO
     getAnnuncioPerModello(): void {
         const modelloInput = document.getElementById('modello') as HTMLInputElement;
 
@@ -144,6 +150,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    // ANNO D'IMMATRICOLAZIONE
     getAnnuncioPerImmatricolazione(): void {
         const annoMinInput = document.getElementById('minAnno') as HTMLInputElement;
         const annoMaxInput = document.getElementById('maxAnno') as HTMLInputElement;
@@ -161,6 +168,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    // KILOMETRI
     getAnnuncioPerKilometri(): void {
         const kilometriMinInput = document.getElementById('minKilometri') as HTMLInputElement;
         const kilometriMaxInput = document.getElementById('maxKilometri') as HTMLInputElement;
@@ -178,6 +186,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    // PREZZO
     getAnnuncioPerPrezzo(): void {
         const prezzoInput = document.getElementById('prezzo') as HTMLInputElement;
 
@@ -193,6 +202,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    // Funzione associata al bottone RESET che cancella il testo dentro gli input e ritorna tutti gli annunci
     reset(): void {
         this.searchMarca = '';
         this.searchModello = '';

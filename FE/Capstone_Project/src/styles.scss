@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     background-image: url('./assets/rettilineoPista.jpeg');
-    overflow-y: auto;
+    background-repeat: no-repeat;
     background-size: cover;
+    overflow-y: auto;
 }
 
 ::-webkit-scrollbar {

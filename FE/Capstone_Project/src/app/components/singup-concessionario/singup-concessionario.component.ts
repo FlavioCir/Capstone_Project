@@ -15,6 +15,7 @@ export class SingupConcessionarioComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    // Funzione per la registrazione di un concessionario
     async onsubmit(form: NgForm) {
         try {
             await this.asrv.registerConcessionario(form.value).subscribe({

@@ -22,6 +22,7 @@ export class PreferitiComponent implements OnInit {
         this.getUtente();
     }
 
+    // Funzione che ritorna l'utente loggato e i preferiti
     getUtente(): void {
         let userId = this.ssrv.getUser().id;
         this.usrv.getUtenteById(userId).subscribe(resp => {
@@ -30,10 +31,12 @@ export class PreferitiComponent implements OnInit {
         });
     }
 
+    // Funzione che mostra l'alert
     mostraAlert(titolo: string, descrizione: string) {
         alert(titolo + '\n\n' + descrizione);
     }
 
+    // Funzione per la rimossione di un annuncio dalla lista dei preferiti
     rimuoviPreferiti(annuncio: Annuncio): void {
         console.log(annuncio);
         let utenteLoggatoId = this.ssrv.getUser().id;
@@ -51,6 +54,7 @@ export class PreferitiComponent implements OnInit {
         });
     }
 
+    // Funzione per l'aggiunta di un annuncio alla lista dei preferiti
     aggiungiPreferiti(annuncio: Annuncio): void {
         console.log(annuncio);
         let utenteLoggatoId = this.ssrv.getUser().id;

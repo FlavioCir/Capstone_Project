@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
         }
     }
 
+    // Funzione che associa alla variabile nome e cognome il nome e cognome dell'utente loggato
     getUser(): void {
         const user = this.storagesrv.getUser();
         if(user && user.id) {
@@ -36,6 +37,7 @@ export class NavbarComponent implements OnInit {
         }
     }
 
+    // Funzione che associa alla vairbile ragioneSociale, la ragioneSociale dell'utente loggato
     getAdmin(): void {
         const user = this.storagesrv.getUser();
         if(user && user.id) {
@@ -43,14 +45,16 @@ export class NavbarComponent implements OnInit {
         }
     }
 
+    // Controllo se è admin
     isAdmin(): boolean {
         return this.storagesrv.isAdmin();
     }
 
+    // Funzione di logout
     logout(): void {
         window.sessionStorage.removeItem('auth-user');
         this.isLoggedIn = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
     }
 
 }

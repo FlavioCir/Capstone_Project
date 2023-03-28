@@ -67,3 +67,26 @@
     }
 
 }
+
+@media screen and (max-width: 992px) {
+
+    .navbar {
+        a {
+            font-size: 40px;
+        }
+
+        button {
+            font-size: 20px;
+        }
+
+        .navbar-nav {
+            .nav-item {
+                a {
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+
+}
+

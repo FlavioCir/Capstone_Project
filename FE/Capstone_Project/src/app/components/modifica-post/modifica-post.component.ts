@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AnnuncioService } from 'src/app/services/annuncio.service';
 import { Annuncio } from 'src/app/models/annuncio.interface';
 import { StorageService } from 'src/app/auth/storage.service';
@@ -34,7 +34,9 @@ export class ModificaPostComponent implements OnInit {
 
     annuncio: any | undefined;
 
-    constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService, private ups: UploadService, private fsrv: FotoService, private toast: NgToastService) { }
+    annuncioEdit: Annuncio | undefined;
+
+    constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService, private ups: UploadService, private fsrv: FotoService, private toast: NgToastService, private ar: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.getStatoVeicolo();
@@ -42,6 +44,7 @@ export class ModificaPostComponent implements OnInit {
         this.getTipoMoto();
         console.log(this.listaTipoMoto);
         this.getUser();
+        this.getAnnuncio();
     }
 
     getStatoVeicolo(): void {
@@ -134,6 +137,13 @@ export class ModificaPostComponent implements OnInit {
         } catch (error) {
             console.error(error)
         }
+    }
+
+    getAnnuncio(): void {
+        let x = this.ar.snapshot.params["id"];
+        this.asrv.getAnnuncioById(x).subscribe(resp => {
+            this.annuncioEdit = resp;
+        });
     }
 
 }

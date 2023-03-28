@@ -13,21 +13,21 @@
                 </ngx-dropzone>
             </div>
             <div class="container">
-                <form #form="ngForm" (ngSubmit)="onsubmit(form)">
+                <form #form="ngForm" (ngSubmit)="onsubmit(form)" *ngIf="annuncioEdit">
                     <div class="row">
                         <div class="col form-floating form-group">
-                            <input name="marca" type="text" class="form-control" id="marca" placeholder="marca" required
-                                ngModel>
+                            <input name="marca" type="text" class="form-control" id="marca" placeholder="marca"
+                                [(ngModel)]="annuncioEdit.marca">
                             <label for="marca">Marca</label>
                         </div>
                         <div class="col form-floating form-group">
                             <input name="modello" type="text" class="form-control" id="modello" placeholder="modello"
-                                required ngModel>
+                                [(ngModel)]="annuncioEdit.modello">
                             <label for="modello">Modello</label>
                         </div>
                         <div class="col form-floating form-group">
                             <select class="form-select" id="floatingSelect" aria-label="statoVeicolo"
-                                name="statoVeicolo" required ngModel>
+                                name="statoVeicolo" [(ngModel)]="annuncioEdit.statoVeicolo">
                                 <option *ngFor="let sV of listaStatoVeicolo" [value]="sV | json">{{ sV.statoVeicolo
                                     }}</option>
                             </select>
@@ -37,53 +37,54 @@
                     <div class="row mt-4">
                         <div class="col form-floating form-group">
                             <select class="form-select" id="floatingSelect" aria-label="tipoMoto" name="tipoMoto"
-                                required ngModel>
+                                [(ngModel)]="annuncioEdit.tipoMoto">
                                 <option *ngFor="let tM of listaTipoMoto" [value]="tM | json">{{ tM.tipoMoto }}</option>
                             </select>
                             <label for="floatingSelect">Seleziona la tipologia di moto</label>
                         </div>
                         <div class="col form-floating form-group">
                             <input name="cilindrata" type="number" class="form-control" id="cilindrata"
-                                placeholder="cilindrata" required ngModel>
+                                placeholder="cilindrata" [(ngModel)]="annuncioEdit.cilindrata">
                             <label for="cilindrata">Cilindrata</label>
                         </div>
                         <div class="col form-floating form-group">
                             <input name="cavalli" type="number" class="form-control" id="cavalli" placeholder="cavalli"
-                                required ngModel>
+                                [(ngModel)]="annuncioEdit.cavalli">
                             <label for="cavalli">Cavalli</label>
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col form-floating form-group">
                             <input name="kilometri" type="number" class="form-control" id="kilometri"
-                                placeholder="kilometri" required ngModel>
+                                placeholder="kilometri" [(ngModel)]="annuncioEdit.kilometri">
                             <label for="kilometri">Kilometri</label>
                         </div>
                         <div class="col form-floating form-group">
                             <input name="immatricolazione" type="text" class="form-control" id="immatricolazione"
-                                placeholder="immatricolazione" required ngModel>
+                                placeholder="immatricolazione" [(ngModel)]="annuncioEdit.immatricolazione">
                             <label for="immatricolazione">Anno d'immatricolazione</label>
                         </div>
                         <div class="col form-floating form-group">
                             <input name="localita" type="text" class="form-control" id="localita" placeholder="localita"
-                                required ngModel>
+                                [(ngModel)]="annuncioEdit.localita">
                             <label for="localita">Località</label>
                         </div>
                     </div>
                     <div class="row mt-4 justify-content-center">
                         <div class="col-4 form-floating form-group">
                             <input name="prezzo" type="number" class="form-control" id="prezzo" placeholder="prezzo"
-                                required ngModel>
+                                [(ngModel)]="annuncioEdit.prezzo">
                             <label for="prezzo">Prezzo €</label>
                         </div>
                         <div class="col-4 form-floating form-group">
                             <textarea name="descrizione" type="text" class="form-control" id="descrizione"
-                                placeholder="descrizione" required ngModel></textarea>
+                                placeholder="descrizione" [(ngModel)]="annuncioEdit.descrizione"></textarea>
                             <label for="descrizione">Descrizione</label>
                         </div>
                     </div>
                     <div class="d-flex justify-content-around">
-                        <button type="button" [routerLink]="['/concessionarioDashboard']"><i class="bi bi-arrow-left me-2"></i>Indietro</button>
+                        <button type="button" [routerLink]="['/concessionarioDashboard']"><i
+                                class="bi bi-arrow-left me-2"></i>Indietro</button>
                         <button type="submit" [disabled]="form.invalid">Modifica annuncio</button>
                     </div>
                 </form>

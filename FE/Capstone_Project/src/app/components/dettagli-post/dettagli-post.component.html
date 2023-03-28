@@ -94,7 +94,7 @@
             <div class="container mb-4 d-flex justify-content-around">
                 <button type="button" [routerLink]="['/']"><i class="bi bi-arrow-left"></i> Back</button>
                 <div *ngIf="isAdmin()">
-                    <button type="button" class="modifica" [routerLink]="['/modifica-post']">Modifica annuncio <i
+                    <button type="button" class="modifica" [routerLink]="['/modifica-post', annuncio?.id]">Modifica annuncio <i
                             class="fa-regular fa-pen-to-square ms-2"></i></button>
                 </div>
                 <div *ngIf="isAdmin()">

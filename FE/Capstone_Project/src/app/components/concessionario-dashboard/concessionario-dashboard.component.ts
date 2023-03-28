@@ -25,6 +25,7 @@ export class ConcessionarioDashboardComponent implements OnInit {
         this.getAnnuncio();
     }
 
+    // Funzione per il recupero del concessioanrio loggato
     getConcessionario(): void {
         let userId = this.ssrv.getUser().id;
         this.usrv.getUtenteById(userId).subscribe(resp => {
@@ -32,6 +33,7 @@ export class ConcessionarioDashboardComponent implements OnInit {
         });
     }
 
+    // Funzione per il recupero degli annunci associati al concessionario loggato
     getAnnuncio(): void {
         const userId = this.ssrv.getUser().id;
         this.asrv.getAnnuncio().subscribe(resp => {
@@ -39,6 +41,7 @@ export class ConcessionarioDashboardComponent implements OnInit {
         });
     }
 
+    // Funzione per l'eliminazione dell'annuncio
     eliminaAnnuncio(id: number): void {
         this.asrv.deleteAnnuncio(id).subscribe();
         alert("Annuncio eliminato con successo!");

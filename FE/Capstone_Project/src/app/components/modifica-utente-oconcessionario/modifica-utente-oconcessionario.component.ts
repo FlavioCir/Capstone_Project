@@ -30,43 +30,45 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
         }
     }
 
+    // Funzione per l'edit dell'annuncio
     async edit(form: NgForm) {
         let utenteLoggatoId = this.ssrv.getUser().id;
-        this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
-            this.utenteLoggato = resp;
-        })
-        let data = {
-            ragioneSociale: form.value.ragioneSociale,
-            partitaIva: form.value.partitaIva,
-            indirizzo: form.value.indirizzo,
-            cap: form.value.cap,
-            localita: form.value.localita,
-            telefono: form.value.telefono,
 
-            nome: form.value.nome,
-            cognome: form.value.cognome,
-
-            username: form.value.username,
-            email: form.value.email,
-            password: this.utenteLoggato?.password
-        }
         try {
-            this.usrv.updateUtente(data, utenteLoggatoId).subscribe({
-                next: data => {
-                    console.log(data);
-                    this.router.navigate(['/']);
-                    this.toast.info({detail: "Se hai modificato l'username", summary: "Ricordati di effettuare di nuovo il login", duration: 5000});
-                }
-            });
+            const resp = await this.usrv.getUtenteById(utenteLoggatoId).toPromise();
+            this.utenteLoggato = resp;
+
+            let data = {
+                ragioneSociale: form.value.ragioneSociale,
+                partitaIva: form.value.partitaIva,
+                indirizzo: form.value.indirizzo,
+                cap: form.value.cap,
+                localita: form.value.localita,
+                telefono: form.value.telefono,
+
+                nome: form.value.nome,
+                cognome: form.value.cognome,
+
+                username: form.value.username,
+                email: form.value.email,
+                password: this.utenteLoggato?.password
+            }
+
+            const result = await this.usrv.updateUtente(data, utenteLoggatoId).toPromise();
+            console.log(result);
+            this.router.navigate(['/']);
+            this.toast.info({ detail: "Se hai modificato l'username", summary: "Ricordati di effettuare di nuovo il login", duration: 5000 });
         } catch (error) {
             console.error(error)
         }
     }
 
+    // Controllo se è admin
     isAdmin(): boolean {
         return this.ssrv.isAdmin();
     }
 
+    // Funzione che associa alla variabile utenteLoggato l'utente loggato
     getUtente(): void {
         let utenteLoggatoId = this.ssrv.getUser().id;
         this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
@@ -75,6 +77,7 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
         });
     }
 
+    // Funzione di logout
     logout(): void {
         window.sessionStorage.removeItem('auth-user');
         this.isLoggedIn = false;

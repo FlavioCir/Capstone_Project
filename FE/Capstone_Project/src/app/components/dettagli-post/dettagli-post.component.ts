@@ -27,6 +27,7 @@ export class DettagliPostComponent implements OnInit {
         this.getAnnuncio();
     }
 
+    // Funzione per il constrollo se l'utente loggato è admin o no
     isAdmin(): boolean {
         this.utenteLoggato = this.ssrv.getUser().id;
         if(this.utenteLoggato === this.annuncio?.utente.id) {
@@ -36,6 +37,7 @@ export class DettagliPostComponent implements OnInit {
         return false;
     }
 
+    // recupero dell'annuncio selezionato per id
     getAnnuncio(): void {
         let x = this.ar.snapshot.params["id"];
         this.asrv.getAnnuncioById(x).subscribe(resp => {
@@ -44,6 +46,7 @@ export class DettagliPostComponent implements OnInit {
         });
     }
 
+    // Funzione per l'eliminazione dell'annuncio
     eliminaAnnuncio(id: number): void {
         this.asrv.deleteAnnuncio(id).subscribe();
         alert("Annuncio eliminato con successo!");

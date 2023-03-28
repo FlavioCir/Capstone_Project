@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 const USER_KEY = 'auth-user';
 
@@ -7,7 +8,7 @@ const USER_KEY = 'auth-user';
 })
 export class StorageService {
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     clear(): void {
         window.sessionStorage.clear();
@@ -44,6 +45,16 @@ export class StorageService {
         }
 
         return false;
+        // return this.router.createUrlTree(['/login']);
+    }
+
+    public isLogged_In() {
+        const user = window.sessionStorage.getItem(USER_KEY);
+        if (user) {
+            return true;
+        }
+
+        return this.router.createUrlTree(['/login']);
     }
 
     public isAdmin(): boolean {
