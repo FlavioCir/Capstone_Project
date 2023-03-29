@@ -1,19 +1,40 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
     <div class="d-flex justify-content-center">
-        <div class="creaAnnuncio">
+        <div class="editAnnuncio" *ngIf="annuncioEdit">
             <p class="text-white text-center title">Modifica Annuncio</p>
             <hr>
             <div class="foto">
-                <ngx-dropzone (change)="onSelect($event)">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button *ngFor="let foto of annuncioEdit.foto; let i = index" type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i" [class.active]="i===0" aria-current="true" title="Slide {{i+1}}"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let foto of annuncioEdit.foto; let i = index"
+                            [class.active]="i===0">
+                            <img src="{{foto.url}}" class="d-block w-100 h-100" alt="Foto {{i + 1}}">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span aria-hidden="true"><i class="bi bi-caret-left"></i></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span aria-hidden="true"><i class="bi bi-caret-right"></i></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <!-- <ngx-dropzone (change)="onSelect($event)">
                     <ngx-dropzone-label>Trascina o clicca per caricare le foto del tuo annuncio!</ngx-dropzone-label>
                     <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
                         [removable]="true" (removed)="onRemove(f)">
                     </ngx-dropzone-image-preview>
-                </ngx-dropzone>
+                </ngx-dropzone> -->
             </div>
             <div class="container">
-                <form #form="ngForm" (ngSubmit)="onsubmit(form)" *ngIf="annuncioEdit">
+                <form #form="ngForm" (ngSubmit)="edit(form)">
                     <div class="row">
                         <div class="col form-floating form-group">
                             <input name="marca" type="text" class="form-control" id="marca" placeholder="marca"
@@ -28,7 +49,7 @@
                         <div class="col form-floating form-group">
                             <select class="form-select" id="floatingSelect" aria-label="statoVeicolo"
                                 name="statoVeicolo" [(ngModel)]="annuncioEdit.statoVeicolo">
-                                <option *ngFor="let sV of listaStatoVeicolo" [value]="sV | json">{{ sV.statoVeicolo
+                                <option *ngFor="let sV of listaStatoVeicolo">{{ sV.statoVeicolo
                                     }}</option>
                             </select>
                             <label for="floatingSelect">Seleziona le condizioni della moto</label>
@@ -38,7 +59,7 @@
                         <div class="col form-floating form-group">
                             <select class="form-select" id="floatingSelect" aria-label="tipoMoto" name="tipoMoto"
                                 [(ngModel)]="annuncioEdit.tipoMoto">
-                                <option *ngFor="let tM of listaTipoMoto" [value]="tM | json">{{ tM.tipoMoto }}</option>
+                                <option *ngFor="let tM of listaTipoMoto">{{ tM.tipoMoto }}</option>
                             </select>
                             <label for="floatingSelect">Seleziona la tipologia di moto</label>
                         </div>

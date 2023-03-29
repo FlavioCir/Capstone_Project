@@ -86,8 +86,14 @@
                     font-size: 20px;
                 }
             }
-        }
 
+        }
+    }
+
+    .bottoni {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
 
         button {
             background-color: #0267C1;
@@ -111,4 +117,126 @@
             }
         }
     }
+}
+
+// ------------------------- RESPONSIVE -------------------------
+
+@media screen and (max-width: 1400px) {
+
+    .dettagliAnnuncio {
+        width: 1200px;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+
+    .dettagliAnnuncio {
+        width: 1000px;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+
+    .dettagliAnnuncio {
+        width: 800px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .dettagliAnnuncio {
+        width: 600px;
+
+        hr {
+            border-top: 3px solid white;
+        }
+
+        .foto {
+            height: 300px;
+            width: 500px;
+
+            .carousel-inner {
+                .carousel-item {
+                    height: 300px;
+                }
+            }
+
+            .carousel-control-prev,
+            .carousel-control-next {
+                i {
+                    font-size: 20px;
+                }
+            }
+
+        }
+
+        .container {
+            margin-top: 25px;
+
+            .infoDettaglio {
+                .dati {
+                    font-size: 23px;
+                }
+
+                .dettagli {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .bottoni {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0;
+
+            button {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .dettagliAnnuncio {
+        width: 500px;
+
+        hr {
+            border-top: 3px solid white;
+        }
+
+        .foto {
+            height: 300px;
+            width: 400px;
+
+            .carousel-inner {
+                .carousel-item {
+                    height: 300px;
+                }
+            }
+
+        }
+
+        .container {
+            margin-top: 25px;
+
+            .infoDettaglio {
+                .dati {
+                    font-size: 20px;
+                }
+
+                .dettagli {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
 }

@@ -20,7 +20,7 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
     isLoggedIn = false;
     roles: string[] = [];
 
-    constructor(private asrv: AuthService, private router: Router, private ssrv: StorageService, private usrv: UtenteService, private toast: NgToastService) { }
+    constructor(private asrv: AuthService, private router: Router, private ssrv: StorageService, private usrv: UtenteService) { }
 
     ngOnInit(): void {
         this.getUtente();
@@ -49,15 +49,15 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
                 nome: form.value.nome,
                 cognome: form.value.cognome,
 
-                username: form.value.username,
+                username: this.utenteLoggato?.username,
                 email: form.value.email,
-                password: this.utenteLoggato?.password
+                password: this.utenteLoggato?.password,
+                preferiti: this.utenteLoggato?.preferiti
             }
 
             const result = await this.usrv.updateUtente(data, utenteLoggatoId).toPromise();
             console.log(result);
             this.router.navigate(['/']);
-            this.toast.info({ detail: "Se hai modificato l'username", summary: "Ricordati di effettuare di nuovo il login", duration: 5000 });
         } catch (error) {
             console.error(error)
         }

@@ -1,4 +1,4 @@
-.creaAnnuncio {
+.editAnnuncio {
     margin-bottom: 20px;
     background-color: #0267C1;
     height: fit-content;
@@ -18,20 +18,36 @@
     }
 
     .foto {
-        height: 300px;
+        height: 400px;
         width: 600px;
         margin: auto;
-        border-radius: 10px;
 
-        ngx-dropzone {
-            height: 100%;
-            border: 2px dashed white;
-            background-color: #3079b9;
-            border-radius: 10px;
-            ngx-dropzone-label {
-                color: white;
+        .carousel-indicators button {
+            background-color: red;
+            border-color: 1px solid red;
+        }
+
+        .carousel-inner {
+            .carousel-item {
+                height: 400px;
+
+                img {
+                    height: 100%;
+                    width: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
             }
         }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            i {
+                font-size: 25px;
+                color: red;
+            }
+        }
+
     }
 
     .container {

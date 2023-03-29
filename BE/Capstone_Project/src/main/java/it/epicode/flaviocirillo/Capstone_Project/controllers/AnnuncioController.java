@@ -112,13 +112,14 @@ public class AnnuncioController {
 		ResponseEntity<Object> check = checkExists(annuncioObj);
 		if(check != null) return check;
 		
-		// rimuovi la l'annuncio con quell'id che sta anche nella lista dei preferiti di ogni utente
+		// rimuovi la l'annuncio con quell'id dentro la lista dei preferiti
 		List<Utente> utentiConPreferiti = us.getPreferitiAggiunti(annuncioObj.get());
 		for(Utente utente : utentiConPreferiti) {
 			utente.getPreferiti().remove(annuncioObj.get());
 			us.save(utente);
 		}
 		
+		// rimuvi anche le foto legate all'annuncio con quell'id specifico
 		List<Foto> fotoAnnuncio = fs.getFotoAnnuncio(annuncioObj.get());
 		for(Foto foto : fotoAnnuncio) {
 			fs.delete(foto);
@@ -131,38 +132,43 @@ public class AnnuncioController {
 		);
 	}
 	
-	//FILTRI
-	
-	@GetMapping("annunci/cercaMarca")
-	public List<Annuncio> getAllAnnunciByMarca(@RequestParam("marca") String marca) {
-		return as.findByMarca(marca);
-	}
-	
-	@GetMapping("annunci/cercaModello")
-	public List<Annuncio> getAllAnnunciByModello(@RequestParam("modello") String modello) {
-		return as.findByModello(modello);
-	}
-	
-	@GetMapping("annunci/cercaImmatricolazione")
-	public List<Annuncio> getAllAnnunciByAnnoImmatricolazione(@RequestParam("min") String min, @RequestParam("max") String max) {
-		return as.findByAnnoImmatricolazione(min, max);
-	}
-	
-	@GetMapping("annunci/cercaKilometri")
-	public List<Annuncio> getAllAnnunciByKilometri(@RequestParam("min") long min, @RequestParam("max") long max) {
-		return as.findByKilometri(min, max);
-	}
-	
-	@GetMapping("annunci/cercaPrezzo")
-	public List<Annuncio> getAllAnnunciByPrezzo(@RequestParam("prezzo") double prezzo) {
-		return as.findByPrezzo(prezzo);
-	}
-	
 	private ResponseEntity<Object> checkExists(Optional<Annuncio> obj) {
 		if( !obj.isPresent() ) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return null;
+	}
+	
+	// ------------------------- FILTRI PER: -------------------------
+	
+	// MARCA
+	@GetMapping("annunci/cercaMarca")
+	public List<Annuncio> getAllAnnunciByMarca(@RequestParam("marca") String marca) {
+		return as.findByMarca(marca);
+	}
+	
+	// MODELLO
+	@GetMapping("annunci/cercaModello")
+	public List<Annuncio> getAllAnnunciByModello(@RequestParam("modello") String modello) {
+		return as.findByModello(modello);
+	}
+	
+	// ANNO D'IMMATRICOLAZIONE
+	@GetMapping("annunci/cercaImmatricolazione")
+	public List<Annuncio> getAllAnnunciByAnnoImmatricolazione(@RequestParam("min") String min, @RequestParam("max") String max) {
+		return as.findByAnnoImmatricolazione(min, max);
+	}
+	
+	// KILOMETRI
+	@GetMapping("annunci/cercaKilometri")
+	public List<Annuncio> getAllAnnunciByKilometri(@RequestParam("min") long min, @RequestParam("max") long max) {
+		return as.findByKilometri(min, max);
+	}
+	
+	// PREZZO
+	@GetMapping("annunci/cercaPrezzo")
+	public List<Annuncio> getAllAnnunciByPrezzo(@RequestParam("prezzo") double prezzo) {
+		return as.findByPrezzo(prezzo);
 	}
 	
 }
