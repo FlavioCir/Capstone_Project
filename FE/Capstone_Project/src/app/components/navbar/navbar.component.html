@@ -20,7 +20,11 @@
                 <li class="nav-item my-2" *ngIf="isAdmin()">
                     <img src="../../../assets/admin.png" alt="img_User" class="imgProfile"
                         [routerLink]="['/concessionarioDashboard']">
-                    <a class="ms-2 me-3" [routerLink]="['/concessionarioDashboard']">{{ragioneSociale}}</a>
+                    <a class="ms-2 me-4" [routerLink]="['/concessionarioDashboard']">{{ragioneSociale}}</a>
+                </li>
+                <li class="nav-item my-2" *ngIf="isAdmin()">
+                    <i class="fa-solid fa-bell me-4 text-white notifiche"
+                    [routerLink]="['/notifiche']"></i>
                 </li>
                 <li class="nav-item my-2">
                     <button type="button" (click)="logout()" class="logout ">Logout<i

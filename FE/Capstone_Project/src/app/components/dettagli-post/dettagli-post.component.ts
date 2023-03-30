@@ -27,14 +27,19 @@ export class DettagliPostComponent implements OnInit {
         this.getAnnuncio();
     }
 
-    // Funzione per il constrollo se l'utente loggato è admin o no
-    isAdmin(): boolean {
+    // Funzione per il constrollo se l'utente loggato ha fatto il post
+    annuncioConcessionario(): boolean {
         this.utenteLoggato = this.ssrv.getUser().id;
         if(this.utenteLoggato === this.annuncio?.utente.id) {
             return true;
         }
 
         return false;
+    }
+
+    // Funzione per controllare se l'utente loggato è admin
+    isAdmin(): boolean {
+        return this.ssrv.isAdmin();
     }
 
     // recupero dell'annuncio selezionato per id

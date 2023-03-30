@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
     <div class="d-flex justify-content-center">
-        <div class="preferiti ms-4">
+        <div class="preferiti ms-lg-0">
             <div class="d-flex justify-content-around align-items-center">
                 <div>
                     <button type="button" class="back" [routerLink]="['/']"><i class="bi bi-arrow-left"></i> Indietro</button>
@@ -15,10 +15,10 @@
             <div class="annunci-card mt-4 px-5">
                 <div class="card mb-3" *ngFor="let preferito of preferitiUtente">
                     <div class="row g-0">
-                        <div class="col-md-4 foto" style="background-image: url('{{preferito.foto[0].url}}');">
+                        <div class="col-lg-4 foto" style="background-image: url('{{preferito.foto[0].url}}');">
 
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <h3 class="card-title">{{ preferito.marca }} {{ preferito.modello }}</h3>

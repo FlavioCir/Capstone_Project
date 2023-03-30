@@ -1,7 +1,6 @@
 .utente {
     padding: 0;
     background-color: #0267C1;
-    height: fit-content;
     width: 700px;
     border-radius: 10px;
     box-shadow: 10px 10px 30px #363537;
@@ -43,6 +42,78 @@
             background-color: white;
             color: #0267C1;
         }
+    }
+
+}
+
+// ------------------------- RESPONSIVE -------------------------
+
+@media screen and (max-width: 1400px) {
+
+    .utente {
+        margin-bottom: 20px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .utente {
+        width: 600px;
+
+        p {
+            font-size: 23px;
+        }
+
+        hr {
+            border-top: 3px solid white;
+        }
+
+        .infoUtente {
+            margin-bottom: 40px;
+        }
+
+        .imgProfile {
+            margin-top: 30px;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        button {
+            font-size: 18px;
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .utente {
+        width: 500px;
+
+        p {
+            font-size: 20px;
+        }
+
+        .infoUtente {
+            margin-bottom: 30px;
+        }
+
+        .imgProfile {
+            margin-top: 30px;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        button {
+            font-size: 15px;
+        }
+
     }
 
 }

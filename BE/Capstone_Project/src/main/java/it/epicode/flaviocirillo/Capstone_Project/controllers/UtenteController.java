@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,11 +63,11 @@ public class UtenteController {
 		return new ResponseEntity<>(utenti, HttpStatus.OK);
 	}
 	
-	// Metodo per criptare la password dell'utente creato nel main
+	// Metodo per criptare la password dell'utente creato nel main usando Postman
 	@GetMapping("auth/update_user_pw")
 	@ResponseBody
 	public String auth_update_user_pw() {
-		int id = 3;
+		int id = 1;
 		
 		Utente u = us.getById(id).get();
 		String pw = u.getPassword();

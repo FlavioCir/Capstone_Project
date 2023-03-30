@@ -109,6 +109,9 @@
             .miPiace {
                 color: white;
                 cursor: pointer;
+                &:hover {
+                    transform: rotate(20deg);
+                }
             }
 
             .preferito {

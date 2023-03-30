@@ -64,3 +64,55 @@
         }
     }
 }
+
+// ------------------------- RESPONSIVE -------------------------
+
+@media screen and (max-width: 1400px) {
+
+    .creaAnnuncio {
+        width: 1200px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .creaAnnuncio {
+        .foto {
+            height: 250px;
+            width: 500px;
+        }
+
+        .container {
+            form {
+
+                button {
+                    font-size: 18px;
+                }
+
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .creaAnnuncio {
+        .foto {
+            height: 200px;
+            width: 400px;
+        }
+
+        .container {
+            form {
+
+                button {
+                    font-size: 15px;
+                }
+
+            }
+        }
+    }
+
+}

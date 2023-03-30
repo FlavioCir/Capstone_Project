@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.epicode.flaviocirillo.Capstone_Project.entities.StatoDelVeicolo;
-import it.epicode.flaviocirillo.Capstone_Project.entities.TipologiaMoto;
 import it.epicode.flaviocirillo.Capstone_Project.services.StatoDelVeicoloService;
-import it.epicode.flaviocirillo.Capstone_Project.services.TipologiaMotoService;
 
 @RestController
 @RequestMapping("/")

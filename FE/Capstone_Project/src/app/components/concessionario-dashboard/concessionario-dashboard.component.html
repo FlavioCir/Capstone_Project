@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
-    <div class="d-flex flex-row concessionario-dashboard">
-        <div class="utente">
+    <div class="concessionario-dashboard">
+        <div class="utente ms-0 ms-md-0 ms-sm-4 mb-0 mb-md-0 mb-sm-4">
             <p class="text-white text-center">Profilo utente</p>
             <hr>
             <div *ngIf="concessionarioLoggato">
@@ -32,10 +32,10 @@
             <div class="annunci-card my-4 px-5">
                 <div class="card mb-3" *ngFor="let annuncio of annunci">
                     <div class="row g-0">
-                        <div class="col-md-4 foto" style="background-image: url('{{annuncio.foto[0].url}}');">
+                        <div class="col-lg-4 foto" style="background-image: url('{{annuncio.foto[0].url}}');">
 
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <h3 class="card-title">{{ annuncio.marca }} {{ annuncio.modello }}</h3>
@@ -59,10 +59,10 @@
                                     <p class="card-text"><i class="fa-solid fa-motorcycle"></i> {{
                                         annuncio.tipoMoto.tipoMoto }}</p>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-end me-4 mb-4">
-                                <a class="elimina" (click)="eliminaAnnuncio(annuncio.id)"><i
-                                        class="fa-solid fa-trash"></i></a>
+                                <div class="d-flex justify-content-end me-3 mb-2">
+                                    <a class="elimina" (click)="eliminaAnnuncio(annuncio.id)"><i
+                                            class="fa-solid fa-trash"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>

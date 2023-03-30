@@ -47,23 +47,6 @@ public class Beans {
 				.build();
 	}
 	
-//	@Bean
-//	@Scope("prototype")
-//	public Annuncio annuncio(String marca, String modello, int cilindrata, int cavalli, long kilometri, String immatricolazione, String localita, double prezzo, String descrizione, Utente utente) {
-//		return Annuncio.builder()
-//				.marca(marca)
-//				.modello(modello)
-//				.cilindrata(cilindrata)
-//				.cavalli(cavalli)
-//				.kilometri(kilometri)
-//				.immatricolazione(immatricolazione)
-//				.localita(localita)
-//				.prezzo(prezzo)
-//				.descrizione(descrizione)
-//				.utente(utente)
-//				.build();
-//	}
-	
 	@Bean
 	@Scope("prototype")
 	public Ruolo ruolo(TipoRuolo tr) {

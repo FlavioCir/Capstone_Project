@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.annotation.RequestScope;
 
 import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Foto;

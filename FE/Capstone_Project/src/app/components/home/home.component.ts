@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
                     console.log(resp);
                 });
             }
-            this.toast.warning({detail: "Annungio rimosso dai preferiti", summary: "Annuncio rimosso dalla lista dei preferiti!", duration: 5000});
+            this.toast.warning({ detail: "Annungio rimosso dai preferiti", summary: "Annuncio rimosso dalla lista dei preferiti!", duration: 5000 });
             annuncio.preferito = false;
         });
     }
@@ -109,11 +109,22 @@ export class HomeComponent implements OnInit {
                     this.usrv.updateUtente(utente, utenteLoggatoId).subscribe(resp => {
                         console.log(resp);
                     });
-                    this.toast.success({detail: "Annungio aggiunto ai preferiti", summary: "Ottima scelta!", duration: 5000});
+                    this.toast.success({ detail: "Annungio aggiunto ai preferiti", summary: "Ottima scelta!", duration: 5000 });
                     annuncio.preferito = true;
                 }
             });
         }
+    }
+
+    risultato(): void {
+        this.annunci = [];
+        const messaggio = document.createElement('p');
+        messaggio.textContent = '0 risultati trovati...';
+        messaggio.style.color = 'white';
+        messaggio.style.textAlign = 'center';
+        messaggio.style.fontSize = '20px';
+        let annunciDiv = document.getElementById('annunci');
+        annunciDiv!.appendChild(messaggio);
     }
 
     // ------------------------- FILTRI PER: -------------------------
@@ -124,10 +135,15 @@ export class HomeComponent implements OnInit {
 
         const marca = marcaInput.value;
 
-        if(marca) {
+        if (marca) {
             this.asrv.getAnnuncioPerMarca(marca).subscribe(resp => {
-                this.annunci = [];
-                this.annunci = resp
+                if (resp.length > 0) {
+                    this.annunci = [];
+                    this.annunci = resp;
+                    this.getAnnunciPreferiti();
+                } else {
+                    this.risultato();
+                }
             });
         } else {
             this.getAnnuncio();
@@ -140,10 +156,15 @@ export class HomeComponent implements OnInit {
 
         const modello = modelloInput.value;
 
-        if(modello) {
+        if (modello) {
             this.asrv.getAnnuncioPerModello(modello).subscribe(resp => {
-                this.annunci = [];
-                this.annunci = resp
+                if (resp.length > 0) {
+                    this.annunci = [];
+                    this.annunci = resp;
+                    this.getAnnunciPreferiti();
+                } else {
+                    this.risultato();
+                }
             });
         } else {
             this.getAnnuncio();
@@ -158,10 +179,15 @@ export class HomeComponent implements OnInit {
         const annoMin = annoMinInput.value;
         const annoMax = annoMaxInput.value;
 
-        if(annoMin && annoMax) {
+        if (annoMin && annoMax) {
             this.asrv.getAnnuncioPerImmatricolazione(annoMin, annoMax).subscribe(resp => {
-                this.annunci = [];
-                this.annunci = resp;
+                if (resp.length > 0) {
+                    this.annunci = [];
+                    this.annunci = resp;
+                    this.getAnnunciPreferiti();
+                } else {
+                    this.risultato();
+                }
             });
         } else {
             this.getAnnuncio();
@@ -176,10 +202,15 @@ export class HomeComponent implements OnInit {
         const kilometriMin = parseInt(kilometriMinInput.value);
         const kilometriMax = parseInt(kilometriMaxInput.value);
 
-        if(kilometriMin && kilometriMax) {
+        if (kilometriMin && kilometriMax) {
             this.asrv.getAnnuncioPerKilometri(kilometriMin, kilometriMax).subscribe(resp => {
-                this.annunci = [];
-                this.annunci = resp;
+                if (resp.length > 0) {
+                    this.annunci = [];
+                    this.annunci = resp;
+                    this.getAnnunciPreferiti();
+                } else {
+                    this.risultato();
+                }
             });
         } else {
             this.getAnnuncio();
@@ -192,10 +223,15 @@ export class HomeComponent implements OnInit {
 
         const prezzo = parseInt(prezzoInput.value);
 
-        if(prezzo) {
+        if (prezzo) {
             this.asrv.getAnnuncioPerPrezzo(prezzo).subscribe(resp => {
-                this.annunci = [];
-                this.annunci = resp;
+                if (resp.length > 0) {
+                    this.annunci = [];
+                    this.annunci = resp;
+                    this.getAnnunciPreferiti();
+                } else {
+                    this.risultato();
+                }
             });
         } else {
             this.getAnnuncio();
@@ -212,6 +248,14 @@ export class HomeComponent implements OnInit {
         this.searchMaxKilometri = '';
         this.searchPrezzo = '';
         this.getAnnuncio();
+        this.getAnnunciPreferiti();
+        let annunciDiv = document.getElementById('annunci');
+        if (annunciDiv) {
+            let messaggio = annunciDiv.querySelector('p');
+            if (messaggio) {
+                annunciDiv.removeChild(messaggio);
+            }
+        }
     }
 
 }

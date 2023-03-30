@@ -24,3 +24,13 @@
         }
     }
 }
+
+// ------------------------- RESPONSIVE -------------------------
+
+@media screen and (max-width: 576px) {
+
+    .btn-danger {
+        padding: 5px;
+    }
+
+}

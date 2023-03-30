@@ -50,12 +50,6 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 	private RuoloService rs;
 	
 	@Autowired
-	private AnnuncioService as;
-	
-	@Autowired
-	private FotoService fs;
-	
-	@Autowired
 	private TipologiaMotoService ts;
 	
 	@Autowired
@@ -110,36 +104,6 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 		ts.save(t5);
 		ts.save(t6);
 		ts.save(t7);
-		
-//		Annuncio a1 = (Annuncio)ctx.getBean("annuncio", "Yamaha", "yzf-r1", 1000, 150, 12000L, "2022", "Roma", 10000.00, "Descrizione Prova 1", u3);
-//		Annuncio a2 = (Annuncio)ctx.getBean("annuncio", "Suzuki", "gsx-r", 600, 100, 15000L, "2022", "Milano", 6000.00, "Descrizione Prova 2", u3);
-//		
-//		as.save(a1);
-//		as.save(a2);
-//		
-//		Foto f1 = (Foto)ctx.getBean("foto", "url1");
-//		Foto f2 = (Foto)ctx.getBean("foto", "url2");
-//		Foto f3 = (Foto)ctx.getBean("foto", "url3");
-//		
-//		f1.setAnnuncio(a1);
-//		f2.setAnnuncio(a1);
-//		f3.setAnnuncio(a2);
-//		
-//		fs.save(f1);
-//		fs.save(f2);
-//		fs.save(f3);
-//		
-//		a1.setFoto(new HashSet<>() {{
-//			add(f1);
-//			add(f2);
-//		}});
-//		
-//		a2.setFoto(new HashSet<>() {{
-//			add(f3);
-//		}});
-//		
-//		as.save(a1);
-//		as.save(a2);
 		
 		System.out.println("Db popolato");
 		

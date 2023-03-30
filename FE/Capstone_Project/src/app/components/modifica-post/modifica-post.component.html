@@ -48,8 +48,8 @@
                         </div>
                         <div class="col form-floating form-group">
                             <select class="form-select" id="floatingSelect" aria-label="statoVeicolo"
-                                name="statoVeicolo" [(ngModel)]="annuncioEdit.statoVeicolo">
-                                <option *ngFor="let sV of listaStatoVeicolo">{{ sV.statoVeicolo
+                                name="statoVeicolo" [(ngModel)]="annuncioEdit.statoVeicolo.id">
+                                <option *ngFor="let sV of listaStatoVeicolo" [value]="sV.id">{{ sV.statoVeicolo
                                     }}</option>
                             </select>
                             <label for="floatingSelect">Seleziona le condizioni della moto</label>
@@ -58,8 +58,8 @@
                     <div class="row mt-4">
                         <div class="col form-floating form-group">
                             <select class="form-select" id="floatingSelect" aria-label="tipoMoto" name="tipoMoto"
-                                [(ngModel)]="annuncioEdit.tipoMoto">
-                                <option *ngFor="let tM of listaTipoMoto">{{ tM.tipoMoto }}</option>
+                                [(ngModel)]="annuncioEdit.tipoMoto.id">
+                                <option *ngFor="let tM of listaTipoMoto" [value]="tM.id">{{ tM.tipoMoto }}</option>
                             </select>
                             <label for="floatingSelect">Seleziona la tipologia di moto</label>
                         </div>

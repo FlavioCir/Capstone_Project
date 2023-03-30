@@ -11,6 +11,8 @@ import { DettagliPostComponent } from './components/dettagli-post/dettagli-post.
 import { ModificaUtenteOConcessionarioComponent } from './components/modifica-utente-oconcessionario/modifica-utente-oconcessionario.component';
 import { PreferitiComponent } from './components/preferiti/preferiti.component';
 import { ModificaPostComponent } from './components/modifica-post/modifica-post.component';
+import { NotificheComponent } from './components/notifiche/notifiche.component';
+import { MessaggioComponent } from './components/messaggio/messaggio.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -48,7 +50,13 @@ const routes: Routes = [
     },
     {
         path: 'dettagliPost/:id',
-        component: DettagliPostComponent
+        component: DettagliPostComponent,
+        children: [
+            {
+                path: 'messaggio',
+                component: MessaggioComponent
+            }
+        ]
     },
     {
         path: 'editProfile',
@@ -63,6 +71,11 @@ const routes: Routes = [
     {
         path: 'modifica-post/:id',
         component: ModificaPostComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'notifiche',
+        component: NotificheComponent,
         canActivate: [AuthGuard]
     }
 ];

@@ -63,49 +63,15 @@ export class ModificaPostComponent implements OnInit {
         });
     }
 
-    // // UPLOAD foto annunci
-    // onSelect(event: any) {
-    //     console.log(event);
-    //     this.files.push(...event.addedFiles);
-    // }
-
-    // onRemove(event: any) {
-    //     console.log(event);
-    //     this.files.splice(this.files.indexOf(event), 1);
-    // }
-
-    // onUpload(annuncio: Annuncio) {
-    //     for (let i = 0; i < this.files.length; i++) {
-    //         const data = new FormData();
-    //         data.append('file', this.files[i]);
-    //         data.append('upload_preset', 'RideResale');
-    //         data.append('cloud_name', 'do3bktftk');
-
-    //         this.ups.uploadImage(data).subscribe(response => {
-    //             if (response) {
-    //                 console.log(response);
-    //                 this.urlImg = response.secure_url;
-    //                 const nuovaFoto: Partial<Foto> = {
-    //                     url: this.urlImg,
-    //                     annuncio: annuncio
-    //                 }
-    //                 this.fsrv.addFoto(nuovaFoto).subscribe(resp => {
-    //                     console.log("foto aggiunta con successo", resp)
-    //                 });
-    //             }
-    //         });
-    //     }
-    // }
-
     // Funzione per la modifica dell'annuncio
     async edit(form: NgForm) {
-        let statoDelVeicolo: StatoVeicolo = JSON.parse(form.value.statoVeicolo);
-        let tipoDiMoto: TipoMoto = JSON.parse(form.value.tipoMoto);
         let data = {
             marca: form.value.marca,
             modello: form.value.modello,
-            statoVeicolo: statoDelVeicolo,
-            tipoMoto: tipoDiMoto,
+            // statoVeicolo: parseInt(form.value.statoVeicolo),
+            // tipoMoto: parseInt(form.value.tipoMoto),
+            statoVeicolo: this.annuncioEdit?.statoVeicolo,
+            tipoMoto: this.annuncioEdit?.tipoMoto,
             cilindrata: form.value.cilindrata,
             cavalli: form.value.cavalli,
             kilometri: form.value.kilometri,
@@ -116,17 +82,16 @@ export class ModificaPostComponent implements OnInit {
             utente: this.utenteLoggato,
             foto: this.annuncioEdit?.foto
         }
-        console.log(data);
-        // try {
-        //     let annuncioId = this.ar.snapshot.params["id"];
-        //     this.asrv.updateAnnuncio(data, annuncioId).subscribe(resp => {
-        //         console.log(resp);
-        //         this.router.navigate(['/concessionarioDaschboard']);
-        //         this.toast.success({ detail: "Annungio moditicato corretamente!", summary: "Hai modificato correttamete il tuo annuncio", duration: 5000 });
-        //     });
-        // } catch (error) {
-        //     console.error(error)
-        // }
+        try {
+            let annuncioId = this.ar.snapshot.params["id"];
+            this.asrv.updateAnnuncio(data, annuncioId).subscribe(resp => {
+                console.log(resp);
+                this.toast.success({ detail: "Annungio moditicato corretamente!", summary: "Hai modificato correttamete il tuo annuncio", duration: 5000 });
+                this.router.navigate(['/concessionarioDaschboard']);
+            });
+        } catch(error) {
+            console.error(error);
+        }
     }
 
     getAnnuncio(): void {

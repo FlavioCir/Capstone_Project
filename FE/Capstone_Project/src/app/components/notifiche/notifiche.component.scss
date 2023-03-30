@@ -1,0 +1,46 @@
+.notifiche {
+    padding: 0;
+    background-color: #0267C1;
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px #363537;
+
+    p {
+        font-size: 25px;
+        margin-top: 20px;
+        color: white;
+    }
+
+    hr {
+        margin: 0 20px;
+        border-top: 5px solid white;
+        opacity: 100;
+    }
+
+    #notifiche-item {
+
+        .card {
+            background-color: #0267C1;
+            border: 3px solid white;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+            .card-header {
+                background-color: #014e92;
+
+                p {
+                    font-size: 22px;
+                    font-weight: bolder;
+                    margin: 5px 0 5px 0;
+                }
+            }
+
+            .card-text {
+                font-size: 21px;
+                margin: 0;
+            }
+        }
+    }
+
+}
