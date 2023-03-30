@@ -93,7 +93,9 @@
             <hr>
             <div class="bottoni">
                 <button type="button" [routerLink]="['/']"><i class="bi bi-arrow-left me-2"></i> Indietro</button>
-                <button type="button" [routerLink]="['messaggio']"><i class="fa-solid fa-phone me-2"></i> Contatta venditore</button>
+                <div *ngIf="!isAdmin()">
+                    <button type="button" [routerLink]="['messaggio']"><i class="fa-solid fa-phone me-2"></i> Contatta venditore</button>
+                </div>
                 <div *ngIf="annuncioConcessionario()">
                     <button type="button" class="modifica" [routerLink]="['/modifica-post', annuncio?.id]">Modifica annuncio <i
                             class="fa-regular fa-pen-to-square ms-2"></i></button>
