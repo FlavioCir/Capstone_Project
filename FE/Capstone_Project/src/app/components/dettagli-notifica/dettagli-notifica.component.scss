@@ -1,0 +1,64 @@
+.dettagliNotifiche {
+    padding: 0;
+    background-color: #0267C1;
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px #363537;
+    margin-bottom: 20px;
+
+    p {
+        font-size: 25px;
+        color: white;
+        margin-top: 20px;
+    }
+
+    hr {
+        margin: 0 20px;
+        border-top: 5px solid white;
+        opacity: 100;
+    }
+
+    .titolo {
+        text-decoration: underline;
+    }
+
+    .notifica {
+        p {
+            font-size: 22px;
+            font-weight: bolder;
+            text-align: center;
+            margin-top: -5px;
+        }
+
+    }
+
+    .foto {
+        width: 500px;
+        height: 300px;
+        background-position: center;
+        background-size: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .secondLine {
+        margin: 0 20px;
+        border-top: 2px solid white;
+        opacity: 100;
+    }
+
+    button {
+        background-color: #0267C1;
+        border: 3px solid white;
+        color: white;
+        padding: 7px 15px;
+        font-size: 20px;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: white;
+            color: #0267C1;
+        }
+    }
+
+}

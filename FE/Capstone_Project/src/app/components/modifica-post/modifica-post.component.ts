@@ -86,7 +86,7 @@ export class ModificaPostComponent implements OnInit {
             let annuncioId = this.ar.snapshot.params["id"];
             this.asrv.updateAnnuncio(data, annuncioId).subscribe(resp => {
                 console.log(resp);
-                this.toast.success({ detail: "Annungio moditicato corretamente!", summary: "Hai modificato correttamete il tuo annuncio", duration: 5000 });
+                this.toast.success({ detail: "Annungio moditicato!", summary: "Hai modificato correttamete l'annuncio", duration: 5000 });
                 this.router.navigate(['/concessionarioDaschboard']);
             });
         } catch(error) {

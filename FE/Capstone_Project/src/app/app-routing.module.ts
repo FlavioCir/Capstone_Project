@@ -13,6 +13,8 @@ import { PreferitiComponent } from './components/preferiti/preferiti.component';
 import { ModificaPostComponent } from './components/modifica-post/modifica-post.component';
 import { NotificheComponent } from './components/notifiche/notifiche.component';
 import { MessaggioComponent } from './components/messaggio/messaggio.component';
+import { DettagliNotificaComponent } from './components/dettagli-notifica/dettagli-notifica.component';
+import { RispostaComponent } from './components/risposta/risposta.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -53,8 +55,9 @@ const routes: Routes = [
         component: DettagliPostComponent,
         children: [
             {
-                path: 'messaggio',
-                component: MessaggioComponent
+                path: 'messaggio/:id',
+                component: MessaggioComponent,
+                canActivate: [AuthGuard]
             }
         ]
     },
@@ -77,6 +80,18 @@ const routes: Routes = [
         path: 'notifiche',
         component: NotificheComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'dettagliNotifica/:id',
+        component: DettagliNotificaComponent,
+        canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'risposta/:id',
+                component: RispostaComponent,
+                canActivate: [AuthGuard]
+            }
+        ]
     }
 ];
 

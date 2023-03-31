@@ -27,6 +27,8 @@ import { NgToastModule } from 'ng-angular-popup';
 import { ModificaPostComponent } from './components/modifica-post/modifica-post.component';
 import { NotificheComponent } from './components/notifiche/notifiche.component';
 import { MessaggioComponent } from './components/messaggio/messaggio.component';
+import { DettagliNotificaComponent } from './components/dettagli-notifica/dettagli-notifica.component';
+import { RispostaComponent } from './components/risposta/risposta.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +46,9 @@ import { MessaggioComponent } from './components/messaggio/messaggio.component';
         PreferitiComponent,
         ModificaPostComponent,
         NotificheComponent,
-        MessaggioComponent
+        MessaggioComponent,
+        DettagliNotificaComponent,
+        RispostaComponent
     ],
     imports: [
         BrowserModule,

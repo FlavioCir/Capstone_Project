@@ -1,0 +1,42 @@
+hr {
+    margin: 0 20px 20px 20px;
+    border-top: 2px solid white;
+    opacity: 100;
+}
+
+.container-fluid {
+    margin-top: 25px;
+
+    .risposta {
+        .dati {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        #messaggio {
+            width: 60%;
+            height: 150px;
+            padding: 20px;
+            border: 3px solid #363537;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #0267C1;
+            border: 3px solid white;
+            color: white;
+            padding: 7px 15px;
+            font-size: 20px;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: white;
+                color: #0267C1;
+            }
+        }
+    }
+}

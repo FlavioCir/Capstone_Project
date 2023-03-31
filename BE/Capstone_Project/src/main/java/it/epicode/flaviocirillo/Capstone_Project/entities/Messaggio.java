@@ -1,5 +1,6 @@
 package it.epicode.flaviocirillo.Capstone_Project.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,9 +35,16 @@ public class Messaggio {
 	
 	private String messaggio;
 	
-	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "annuncio_id")
 	private Annuncio annuncio;
+	
+	@ManyToOne
+	@JoinColumn(name = "utente_id")
+	private Utente utente;
+	
+	@ManyToOne
+	@JoinColumn(name = "concessionario_id", nullable = true)
+	private Utente concessionario;
 	
 }

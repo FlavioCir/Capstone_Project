@@ -94,7 +94,7 @@
             <div class="bottoni">
                 <button type="button" [routerLink]="['/']"><i class="bi bi-arrow-left me-2"></i> Indietro</button>
                 <div *ngIf="!isAdmin()">
-                    <button type="button" [routerLink]="['messaggio']"><i class="fa-solid fa-phone me-2"></i> Contatta venditore</button>
+                    <button type="button" [routerLink]="['messaggio', annuncio?.id]"><i class="fa-solid fa-phone me-2"></i> Contatta venditore</button>
                 </div>
                 <div *ngIf="annuncioConcessionario()">
                     <button type="button" class="modifica" [routerLink]="['/modifica-post', annuncio?.id]">Modifica annuncio <i

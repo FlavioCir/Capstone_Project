@@ -4,13 +4,41 @@
         <div class="notifiche">
             <p class="text-white text-center">Notifiche</p>
             <hr>
-            <div class="mt-4 px-4" id="notifiche-item">
-                <div class="card text-center">
+            <div class="mt-4 px-4" id="notifiche-item" *ngIf="isAdmin()">
+                <div class="card text-center" *ngFor="let notifica of notificheAdmin">
                     <div class="card-header">
-                        <p>Annuncio aggiunto ai preferiti</p>
+                        <p>Notifica di messaggio</p>
                     </div>
-                    <div class="card-body d-flex align-items-center">
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <div class="card-body d-flex align-items-center flex-column">
+                        <p class="card-text"><span>{{ notifica.utente.nome }} {{ notifica.utente.cognome }}</span> ti ha
+                            mandato un messaggio...</p>
+                        <p class="card-text mt-3">Articolo: </p>
+                        <p class="card-text">{{ notifica.annuncio.marca }} - {{ notifica.annuncio.modello }}</p>
+                        <p class="card-text mt-3">Messaggio: </p>
+                        <p class="card-text fw-bolder">{{ notifica.messaggio }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" [routerLink]="['/dettagliNotifica', notifica.id]">Dettagli<i
+                            class="bi bi-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 px-4" id="notifiche-item" *ngIf="!isAdmin()">
+                <div class="card text-center" *ngFor="let notifica of notificheUtente">
+                    <div class="card-header">
+                        <p>Notifica di messaggio</p>
+                    </div>
+                    <div class="card-body d-flex align-items-center flex-column">
+                        <p class="card-text"><span>{{ notifica.concessionario.ragioneSociale }}</span> ti ha
+                            mandato un messaggio...</p>
+                        <p class="card-text mt-3">Articolo: </p>
+                        <p class="card-text">{{ notifica.annuncio.marca }} - {{ notifica.annuncio.modello }}</p>
+                        <p class="card-text mt-3">Messaggio: </p>
+                        <p class="card-text fw-bolder">{{ notifica.messaggio }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" [routerLink]="['/dettagliNotifica', notifica.id]">Dettagli<i
+                            class="bi bi-arrow-right ms-2"></i></button>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <div class="dettagliNotifiche" *ngIf="notifica">
+            <p class="text-white text-center">Dettaglio notifica</p>
+            <hr>
+            <p class="text-center titolo">Tipo di notifica:</p>
+            <div class="notifica">
+                <p>Messaggio di contatto</p>
+            </div>
+            <hr class="secondLine">
+            <p class="text-center titolo">Mittente:</p>
+            <div class="notifica" *ngIf="isAdmin()">
+                <p>{{ notifica.utente.nome }} {{ notifica.utente.cognome }}</p>
+            </div>
+            <div class="notifica" *ngIf="!isAdmin()">
+                <p>{{ notifica.concessionario.ragioneSociale }}</p>
+            </div>
+            <hr class="secondLine">
+            <p class="text-center titolo">Post di riferimento:</p>
+            <div class="notifica">
+                <p>{{ notifica.annuncio.marca }} - {{ notifica.annuncio.modello }}</p>
+                <p>{{ notifica.annuncio.prezzo }} &euro;</p>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="foto" style="background-image: url('{{notifica.annuncio.foto[0].url}}');">
+
+                </div>
+            </div>
+            <hr class="secondLine">
+            <p class="text-center titolo">Messaggio:</p>
+            <div class="notifica">
+                <p>{{ notifica.messaggio }}</p>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-around my-4">
+                <button type="button" [routerLink]="['/notifiche']"><i
+                    class="bi bi-arrow-left me-2"></i> Indietro</button>
+                <button type="button" [routerLink]="['risposta', notifica.id]">Rispondi <i
+                    class="fa-regular fa-pen-to-square ms-2"></i></button>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
