@@ -22,9 +22,17 @@
                         [routerLink]="['/concessionarioDashboard']">
                     <a class="ms-2 me-4" [routerLink]="['/concessionarioDashboard']">{{ragioneSociale}}</a>
                 </li>
-                <li class="nav-item my-2">
-                    <i class="fa-solid fa-bell me-4 text-white notifiche"
+                <li class="nav-item my-2" *ngIf="isAdmin()">
+                    <i class="fa-solid fa-bell text-white notifiche"
                     [routerLink]="['/notifiche']"></i>
+                    <a class="ms-2 me-3" *ngIf="notificheAdmin && notificheAdmin.length > 0" [routerLink]="['/notifiche']">{{ notificheAdmin.length }}</a>
+                    <a class="ms-2 me-3" *ngIf="notificheAdmin && notificheAdmin.length === 0" [routerLink]="['/notifiche']">{{ numNotifiche }}</a>
+                </li>
+                <li class="nav-item my-2" *ngIf="!isAdmin()">
+                    <i class="fa-solid fa-bell text-white notifiche"
+                    [routerLink]="['/notifiche']"></i>
+                    <a class="ms-2 me-3" *ngIf="notificheUtente && notificheUtente.length > 0" [routerLink]="['/notifiche']">{{ notificheUtente.length }}</a>
+                    <a class="ms-2 me-3" *ngIf="notificheUtente && notificheUtente.length === 0" [routerLink]="['/notifiche']">{{ numNotifiche }}</a>
                 </li>
                 <li class="nav-item my-2">
                     <button type="button" (click)="logout()" class="logout ">Logout<i

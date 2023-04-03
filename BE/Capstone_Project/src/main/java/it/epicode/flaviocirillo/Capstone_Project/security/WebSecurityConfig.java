@@ -46,9 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userService).passwordEncoder(this.passwordEncoder());
 	}
 	
-	// inserire eventualmente queste path in antMatchers per evitare di fare il login
-	// "/utenti", "/utenti_page", "/utenti/**", "/annunci_page", "/annunci/**"
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthHandler).and()

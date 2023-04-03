@@ -80,3 +80,55 @@
         }
     }
 }
+
+// ------------------------- RESPONSIVE -------------------------
+
+@media screen and (max-width: 1400px) {
+
+    .editAnnuncio {
+        width: 1200px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .editAnnuncio {
+        .foto {
+            height: 250px;
+            width: 500px;
+        }
+
+        .container {
+            form {
+
+                button {
+                    font-size: 18px;
+                }
+
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .editAnnuncio {
+        .foto {
+            height: 200px;
+            width: 400px;
+        }
+
+        .container {
+            form {
+
+                button {
+                    font-size: 15px;
+                }
+
+            }
+        }
+    }
+
+}

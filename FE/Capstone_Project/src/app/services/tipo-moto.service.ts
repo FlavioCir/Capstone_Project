@@ -14,6 +14,10 @@ export class TipoMotoService {
         return this.http.get<TipoMoto[]>('http://localhost:8080/tipo_moto');
     }
 
+    getTipoMotoById(id: number): Observable<TipoMoto> {
+        return this.http.get<TipoMoto>(`http://localhost:8080/tipo_moto/${id}`);
+    }
+
     deleteTipoMoto(id: number): Observable<Object> {
         return this.http.delete(`http://localhost:8080/tipo_moto/${id}`);
     }

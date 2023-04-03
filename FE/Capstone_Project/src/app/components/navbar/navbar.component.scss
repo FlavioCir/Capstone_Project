@@ -48,10 +48,10 @@
 
             display: flex;
             align-items: center;
+            cursor: pointer;
 
             .preferiti,
             .notifiche {
-                cursor: pointer;
                 font-size: 30px;
                 &:hover {
                     transform: rotate(15deg);
@@ -59,7 +59,6 @@
             }
 
             .imgProfile {
-                cursor: pointer;
                 width: 30px;
                 height: 30px;
                 &:hover {

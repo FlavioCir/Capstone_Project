@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.epicode.flaviocirillo.Capstone_Project.entities.Annuncio;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Foto;
+import it.epicode.flaviocirillo.Capstone_Project.entities.Messaggio;
 import it.epicode.flaviocirillo.Capstone_Project.entities.Utente;
 import it.epicode.flaviocirillo.Capstone_Project.services.AnnuncioService;
 import it.epicode.flaviocirillo.Capstone_Project.services.FotoService;
+import it.epicode.flaviocirillo.Capstone_Project.services.MessaggioService;
 import it.epicode.flaviocirillo.Capstone_Project.services.UtenteService;
 
 @RestController
@@ -38,6 +40,9 @@ public class AnnuncioController {
 	
 	@Autowired
 	private FotoService fs;
+	
+	@Autowired
+	private MessaggioService ms;
 	
 	@GetMapping("annunci")
 	public ResponseEntity<List<Annuncio>> getAnnunci() {
@@ -122,6 +127,12 @@ public class AnnuncioController {
 		List<Foto> fotoAnnuncio = fs.getFotoAnnuncio(annuncioObj.get());
 		for(Foto foto : fotoAnnuncio) {
 			fs.delete(foto);
+		}
+		
+		// rimuovi anche le notifiche legate all'annuncio con quell'id
+		List<Messaggio> messaggioAnnuncio = ms.getMessaggioAnnuncio(annuncioObj.get());
+		for(Messaggio messaggio : messaggioAnnuncio) {
+			ms.delete(messaggio);
 		}
 		
 		as.delete(annuncioObj.get());

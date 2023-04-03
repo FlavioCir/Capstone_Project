@@ -37,14 +37,16 @@ export class NotificheComponent implements OnInit {
     // Funzione che mi ritorna i messaggi legati al conessionario loggato
     getMessaggiAdmin(): void {
         this.getUtenteLoggato();
+        this.notificheAdmin = [];
         this.msrv.getMessaggio().subscribe(resp => {
             this.notificheAdmin = resp.filter(messaggio => messaggio.annuncio.utente.id === this.utenteLoggato?.id && !messaggio.concessionario || messaggio.concessionario.id !== this.utenteLoggato?.id).reverse();
         });
     }
 
-    // Funzione che mi ritorna i messaggi legati all'utente loggato non admin
+    // Funzione che mi ritorna i messaggi legati all'utente loggato
     getMessaggiUtente(): void {
         this.getUtenteLoggato();
+        this.notificheUtente = [];
         this.msrv.getMessaggio().subscribe(resp => {
             this.notificheUtente = resp.filter(messaggio => messaggio.utente.id === this.utenteLoggato?.id && messaggio.concessionario !== null).reverse();
         });

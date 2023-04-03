@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, ObservedValueOf } from 'rxjs';
 import { StatoVeicolo } from '../models/stato-veicolo.interface';
 
 @Injectable({
@@ -12,6 +12,10 @@ export class StatoVeicoloService {
 
     getStatoVeicolo(): Observable<StatoVeicolo[]> {
         return this.http.get<StatoVeicolo[]>('http://localhost:8080/stato_veicolo');
+    }
+
+    getStatoVeicoloById(id: number): Observable<StatoVeicolo> {
+        return this.http.get<StatoVeicolo>(`http://localhost:8080/stato_veicolo/${id}`);
     }
 
     deleteStatoVeicolo(id: number): Observable<Object> {

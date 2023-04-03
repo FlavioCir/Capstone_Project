@@ -36,6 +36,9 @@ export class ModificaPostComponent implements OnInit {
 
     annuncioEdit: Annuncio | undefined;
 
+    tipoMoto: TipoMoto | undefined;
+    statoVeicolo!: StatoVeicolo | undefined;
+
     constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService, private ups: UploadService, private fsrv: FotoService, private toast: NgToastService, private ar: ActivatedRoute) { }
 
     ngOnInit(): void {
@@ -65,13 +68,17 @@ export class ModificaPostComponent implements OnInit {
 
     // Funzione per la modifica dell'annuncio
     async edit(form: NgForm) {
+        const statoVeicoloId = form.value.statoVeicolo;
+       this.statoVeicolo = await this.sVsrv.getStatoVeicoloById(statoVeicoloId).toPromise();
+
+        const tipoMotoId = form.value.tipoMoto;
+        this.tipoMoto = await this.tMsrv.getTipoMotoById(tipoMotoId).toPromise();
+
         let data = {
             marca: form.value.marca,
             modello: form.value.modello,
-            // statoVeicolo: parseInt(form.value.statoVeicolo),
-            // tipoMoto: parseInt(form.value.tipoMoto),
-            statoVeicolo: this.annuncioEdit?.statoVeicolo,
-            tipoMoto: this.annuncioEdit?.tipoMoto,
+            statoVeicolo: this.statoVeicolo,
+            tipoMoto: this.tipoMoto,
             cilindrata: form.value.cilindrata,
             cavalli: form.value.cavalli,
             kilometri: form.value.kilometri,
@@ -87,7 +94,7 @@ export class ModificaPostComponent implements OnInit {
             this.asrv.updateAnnuncio(data, annuncioId).subscribe(resp => {
                 console.log(resp);
                 this.toast.success({ detail: "Annungio moditicato!", summary: "Hai modificato correttamete l'annuncio", duration: 5000 });
-                this.router.navigate(['/concessionarioDaschboard']);
+                this.router.navigate(['/concessionarioDashboard']);
             });
         } catch(error) {
             console.error(error);
