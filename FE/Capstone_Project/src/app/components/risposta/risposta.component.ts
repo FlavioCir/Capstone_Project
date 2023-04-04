@@ -20,11 +20,15 @@ export class RispostaComponent implements OnInit {
     concessionarioLoggato: Utente | undefined;
     notifica: Messaggio | undefined;
 
+    data: string | undefined;
+    ora: string | undefined;
+
     constructor(private msrv: MessaggioService, private ssrv: StorageService, private router: Router, private ar: ActivatedRoute, private usrv: UtenteService, private asrv: AnnuncioService, private toast: NgToastService) { }
 
     ngOnInit(): void {
         this.getConcessionarioLoggato();
         this.getNotifica();
+        this.getDataOra();
     }
 
     getConcessionarioLoggato(): void {
@@ -48,6 +52,8 @@ export class RispostaComponent implements OnInit {
 
         let data = {
             messaggio: messaggio,
+            data: this.data,
+            ora: this.ora,
             annuncio: this.notifica?.annuncio,
             utente: this.notifica?.utente,
             concessionario: this.concessionarioLoggato
@@ -70,6 +76,8 @@ export class RispostaComponent implements OnInit {
 
         let data = {
             messaggio: messaggio,
+            data: this.data,
+            ora: this.ora,
             annuncio: this.notifica?.annuncio,
             utente: this.notifica?.utente
         }
@@ -87,6 +95,23 @@ export class RispostaComponent implements OnInit {
     // Controllo se l'utente loggato è admin
     isAdmin(): boolean {
         return this.ssrv.isAdmin();
+    }
+
+    getDataOra(): void {
+        const data: Date = new Date();
+        let giorno: number = data.getDate();
+        let mese: number = data.getMonth() + 1;
+        let anno: number = data.getFullYear();
+
+        let ora: number = data.getHours();
+        let minuti: number = data.getMinutes();
+
+        this.data = `${giorno}/${mese}/${anno}`;
+        if(minuti < 10) {
+            this.ora = `${ora}:0${minuti}`;
+        } else {
+            this.ora = `${ora}:${minuti}`;
+        }
     }
 
 }

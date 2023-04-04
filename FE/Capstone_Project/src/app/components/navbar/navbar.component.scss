@@ -52,10 +52,13 @@
 
             .preferiti,
             .notifiche {
-                font-size: 30px;
                 &:hover {
                     transform: rotate(15deg);
                 }
+            }
+
+            .preferiti, .notifiche, .home {
+                font-size: 30px;
             }
 
             .imgProfile {

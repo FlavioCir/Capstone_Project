@@ -8,19 +8,22 @@
                 <div *ngIf="notificheAdmin && notificheAdmin.length > 0">
                     <div class="card text-center" *ngFor="let notifica of notificheAdmin">
                         <div class="card-header">
-                            <p>Notifica di messaggio</p>
+                            <p class="fw-bold">Notifica di messaggio</p>
                         </div>
                         <div class="card-body d-flex align-items-center flex-column">
-                            <p class="card-text"><span>{{ notifica.utente.nome }} {{ notifica.utente.cognome }}</span> ti ha
+                            <p class="card-text"><span>{{ notifica.utente.nome }} {{ notifica.utente.cognome }}</span>
+                                ti ha
                                 mandato un messaggio...</p>
                             <p class="card-text mt-3">Articolo: </p>
                             <p class="card-text">{{ notifica.annuncio.marca }} - {{ notifica.annuncio.modello }}</p>
                             <p class="card-text mt-3">Messaggio: </p>
                             <p class="card-text fw-bolder">{{ notifica.messaggio }}</p>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <p class="dataOra">{{ notifica.data }}</p>
                             <button type="button" [routerLink]="['/dettagliNotifica', notifica.id]">Dettagli<i
-                                class="bi bi-arrow-right ms-2"></i></button>
+                                    class="bi bi-arrow-right ms-2"></i></button>
+                            <p class="dataOra">{{ notifica.ora }}</p>
                         </div>
                     </div>
                 </div>
@@ -32,7 +35,7 @@
                 <div *ngIf="notificheUtente && notificheUtente.length > 0">
                     <div class="card text-center" *ngFor="let notifica of notificheUtente">
                         <div class="card-header">
-                            <p>Notifica di messaggio</p>
+                            <p class="fw-bold">Notifica di messaggio</p>
                         </div>
                         <div class="card-body d-flex align-items-center flex-column">
                             <p class="card-text"><span>{{ notifica.concessionario.ragioneSociale }}</span> ti ha
@@ -42,9 +45,11 @@
                             <p class="card-text mt-3">Messaggio: </p>
                             <p class="card-text fw-bolder">{{ notifica.messaggio }}</p>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <p class="dataOra">{{ notifica.data }}</p>
                             <button type="button" [routerLink]="['/dettagliNotifica', notifica.id]">Dettagli<i
-                                class="bi bi-arrow-right ms-2"></i></button>
+                                    class="bi bi-arrow-right ms-2"></i></button>
+                            <p class="dataOra">{{ notifica.ora }}</p>
                         </div>
                     </div>
                 </div>

@@ -32,6 +32,11 @@
             <div class="notifica">
                 <p>{{ notifica.messaggio }}</p>
             </div>
+            <hr class="secondLine">
+            <p class="text-center titolo">Inviato:</p>
+            <div class="notifica">
+                <p><span class="fw-normal">Il giorno: </span>{{ notifica.data }} <span class="fw-normal">alle ora: </span>{{ notifica.ora }}</p>
+            </div>
             <hr>
             <div class="d-flex justify-content-around my-4">
                 <button type="button" [routerLink]="['/notifiche']"><i

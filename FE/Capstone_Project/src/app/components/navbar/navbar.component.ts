@@ -26,16 +26,13 @@ export class NavbarComponent implements OnInit {
     notificheAdmin: Messaggio[] | undefined;
     notificheUtente: Messaggio[] | undefined;
 
-    numNotifiche = 0;
-
     constructor(private router: Router, private storagesrv: StorageService, private usrv: UtenteService, private msrv: MessaggioService) { }
 
     ngOnInit(): void {
         if (this.storagesrv.isLoggedIn()) {
             this.isLoggedIn = true;
             this.roles = this.storagesrv.getUser().roles;
-            this.getUser();
-            this.getAdmin();
+            this.updateNavbar();
         }
     }
 
@@ -80,15 +77,15 @@ export class NavbarComponent implements OnInit {
 
     // Funzione che mi ritorna i messaggi
     getMessaggi(): void {
-        if(this.isAdmin()) {
+        if (this.isAdmin()) {
             this.notificheAdmin = [];
         } else {
             this.notificheUtente = [];
         }
 
         this.msrv.getMessaggio().subscribe(resp => {
-            if(resp.length > 0) {
-                if(this.isAdmin()) {
+            if (resp.length > 0) {
+                if (this.isAdmin()) {
                     this.notificheAdmin = resp.filter(messaggio => messaggio.annuncio.utente.id === this.utenteLoggato?.id && !messaggio.concessionario || messaggio.concessionario.id !== this.utenteLoggato?.id);
                 } else {
                     this.notificheUtente = resp.filter(messaggio => messaggio.utente.id === this.utenteLoggato?.id && messaggio.concessionario !== null);
@@ -99,6 +96,11 @@ export class NavbarComponent implements OnInit {
         }, error => {
             console.log("Error", error);
         });
+    }
+
+    updateNavbar(): void {
+        this.getUser();
+        this.getAdmin();
     }
 
 }

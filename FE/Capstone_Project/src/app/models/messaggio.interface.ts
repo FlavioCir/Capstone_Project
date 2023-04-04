@@ -5,6 +5,8 @@ export interface Messaggio {
 
     id: number,
     messaggio: string,
+    data: string,
+    ora: string,
     annuncio: Annuncio
     utente: Utente,
     concessionario: Utente

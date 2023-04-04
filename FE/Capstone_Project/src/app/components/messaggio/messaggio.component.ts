@@ -19,11 +19,15 @@ export class MessaggioComponent implements OnInit {
     utenteLoggato: Utente | undefined;
     annuncio: Annuncio | undefined;
 
+    data: string | undefined;
+    ora: string | undefined;
+
     constructor(private msrv: MessaggioService, private ssrv: StorageService, private router: Router, private ar: ActivatedRoute, private usrv: UtenteService, private asrv: AnnuncioService, private toast: NgToastService) { }
 
     ngOnInit(): void {
         this.getUtenteLoggato();
         this.getAnnuncio();
+        this.getDataOra();
     }
 
     getUtenteLoggato(): void {
@@ -48,6 +52,8 @@ export class MessaggioComponent implements OnInit {
 
         let data = {
             messaggio: messaggio,
+            data: this.data,
+            ora: this.ora,
             annuncio: this.annuncio,
             utente: this.utenteLoggato
         }
@@ -59,6 +65,23 @@ export class MessaggioComponent implements OnInit {
             });
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    getDataOra(): void {
+        const data: Date = new Date();
+        let giorno: number = data.getDate();
+        let mese: number = data.getMonth() + 1;
+        let anno: number = data.getFullYear();
+
+        let ora: number = data.getHours();
+        let minuti: number = data.getMinutes();
+
+        this.data = `${giorno}/${mese}/${anno}`;
+        if(minuti < 10) {
+            this.ora = `${ora}:0${minuti}`;
+        } else {
+            this.ora = `${ora}:${minuti}`;
         }
     }
 

@@ -94,12 +94,14 @@
 @media screen and (max-width: 768px) {
 
     .editAnnuncio {
+
         .foto {
             height: 250px;
             width: 500px;
         }
 
         .container {
+            margin-top: 200px;
             form {
 
                 button {
@@ -121,6 +123,7 @@
         }
 
         .container {
+            margin-top: 250px;
             form {
 
                 button {
