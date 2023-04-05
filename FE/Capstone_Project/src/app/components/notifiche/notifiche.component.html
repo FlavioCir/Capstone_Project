@@ -9,6 +9,7 @@
                     <div class="card text-center" *ngFor="let notifica of notificheAdmin">
                         <div class="card-header">
                             <p class="fw-bold">Notifica di messaggio</p>
+                            <p class="dataOra mt-2">Inviata il giorno {{ notifica.data }} alle ore {{ notifica.ora }}</p>
                         </div>
                         <div class="card-body d-flex align-items-center flex-column">
                             <p class="card-text"><span>{{ notifica.utente.nome }} {{ notifica.utente.cognome }}</span>
@@ -19,11 +20,9 @@
                             <p class="card-text mt-3">Messaggio: </p>
                             <p class="card-text fw-bolder">{{ notifica.messaggio }}</p>
                         </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <p class="dataOra">{{ notifica.data }}</p>
+                        <div class="card-footer">
                             <button type="button" [routerLink]="['/dettagliNotifica', notifica.id]">Dettagli<i
                                     class="bi bi-arrow-right ms-2"></i></button>
-                            <p class="dataOra">{{ notifica.ora }}</p>
                         </div>
                     </div>
                 </div>
@@ -36,6 +35,7 @@
                     <div class="card text-center" *ngFor="let notifica of notificheUtente">
                         <div class="card-header">
                             <p class="fw-bold">Notifica di messaggio</p>
+                            <p class="dataOra">Inviata il giorno {{ notifica.data }} alle ore {{ notifica.ora }}</p>
                         </div>
                         <div class="card-body d-flex align-items-center flex-column">
                             <p class="card-text"><span>{{ notifica.concessionario.ragioneSociale }}</span> ti ha
@@ -45,11 +45,9 @@
                             <p class="card-text mt-3">Messaggio: </p>
                             <p class="card-text fw-bolder">{{ notifica.messaggio }}</p>
                         </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <p class="dataOra">{{ notifica.data }}</p>
+                        <div class="card-footer">
                             <button type="button" [routerLink]="['/dettagliNotifica', notifica.id]">Dettagli<i
                                     class="bi bi-arrow-right ms-2"></i></button>
-                            <p class="dataOra">{{ notifica.ora }}</p>
                         </div>
                     </div>
                 </div>

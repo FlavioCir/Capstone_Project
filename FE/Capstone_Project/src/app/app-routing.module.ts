@@ -15,6 +15,7 @@ import { NotificheComponent } from './components/notifiche/notifiche.component';
 import { MessaggioComponent } from './components/messaggio/messaggio.component';
 import { DettagliNotificaComponent } from './components/dettagli-notifica/dettagli-notifica.component';
 import { RispostaComponent } from './components/risposta/risposta.component';
+import { CookiesComponent } from './components/cookies/cookies.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -92,6 +93,10 @@ const routes: Routes = [
                 canActivate: [AuthGuard]
             }
         ]
+    },
+    {
+        path: 'cookie',
+        component: CookiesComponent
     }
 ];
 

@@ -3,8 +3,11 @@
     padding: 0;
     background-color: #0267C1;
     width: 700px;
+    height: 800px;
     border-radius: 10px;
     box-shadow: 10px 10px 30px #363537;
+
+    overflow-y: scroll;
 
     p {
         font-size: 25px;
@@ -42,7 +45,8 @@
             border-radius: 10px;
             margin-bottom: 20px;
 
-            .card-header, .card-footer {
+            .card-header,
+            .card-footer {
                 background-color: #014e92;
 
                 p {
@@ -66,13 +70,14 @@
                 }
 
                 .dataOra {
-                    font-size: 20px;
+                    font-size: 18px;
                 }
             }
 
             .card-text {
                 font-size: 20px;
                 margin: 0;
+
                 span {
                     text-decoration: underline;
                 }

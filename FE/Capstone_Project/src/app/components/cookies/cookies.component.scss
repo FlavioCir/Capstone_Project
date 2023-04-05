@@ -1,0 +1,55 @@
+.navbar {
+    background-color: red;
+    height: 200px;
+
+    h1 {
+        text-decoration: underline;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 50px;
+        cursor: pointer;
+
+        img {
+            &:hover {
+                transform: rotate(-10deg);
+            }
+        }
+    }
+}
+
+.body {
+    background-color: white;
+
+    h4, h5, h6, p, li {
+        color: rgb(53, 53, 53);
+    }
+
+    a {
+        color: red;
+    }
+}
+
+// ------------------------- RESPONSIVE -------------------------
+
+@media screen and (max-width: 576px) {
+
+    .navbar {
+        a {
+            font-size: 40px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .navbar {
+        a {
+            font-size: 30px;
+        }
+    }
+
+}
