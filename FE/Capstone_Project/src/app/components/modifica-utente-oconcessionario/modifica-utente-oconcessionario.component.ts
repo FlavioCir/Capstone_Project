@@ -20,7 +20,7 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
     isLoggedIn = false;
     roles: string[] = [];
 
-    constructor(private asrv: AuthService, private router: Router, private ssrv: StorageService, private usrv: UtenteService) { }
+    constructor(private asrv: AuthService, private router: Router, private ssrv: StorageService, private usrv: UtenteService, private toast: NgToastService) { }
 
     ngOnInit(): void {
         this.getUtente();
@@ -30,37 +30,70 @@ export class ModificaUtenteOConcessionarioComponent implements OnInit {
         }
     }
 
-    // Funzione per l'edit dell'annuncio
-    async edit(form: NgForm) {
+    // Funzione per l'edit dell'utente
+    async editUtente(form: NgForm) {
         let utenteLoggatoId = this.ssrv.getUser().id;
 
-        try {
-            const resp = await this.usrv.getUtenteById(utenteLoggatoId).toPromise();
-            this.utenteLoggato = resp;
+        if (!this.utenteLoggato?.nome || !this.utenteLoggato?.cognome|| !this.utenteLoggato?.email) {
+            this.toast.error({ detail: "Errore!", summary: "Compilare correttamente tutti i campi!", duration: 5000 });
+        } else {
+            try {
+                const resp = await this.usrv.getUtenteById(utenteLoggatoId).toPromise();
+                this.utenteLoggato = resp;
 
-            let data = {
-                ragioneSociale: form.value.ragioneSociale,
-                partitaIva: form.value.partitaIva,
-                indirizzo: form.value.indirizzo,
-                cap: form.value.cap,
-                localita: form.value.localita,
-                telefono: form.value.telefono,
+                let data = {
+                    nome: form.value.nome,
+                    cognome: form.value.cognome,
+                    username: this.utenteLoggato?.username,
+                    email: form.value.email,
+                    password: this.utenteLoggato?.password,
+                    preferiti: this.utenteLoggato?.preferiti
+                }
 
-                nome: form.value.nome,
-                cognome: form.value.cognome,
+                const result = await this.usrv.updateUtente(data, utenteLoggatoId).toPromise();
+                console.log(result);
+                this.router.navigate(['/']);
 
-                username: this.utenteLoggato?.username,
-                email: form.value.email,
-                password: this.utenteLoggato?.password,
-                preferiti: this.utenteLoggato?.preferiti
+            } catch (error) {
+                console.error(error)
             }
-
-            const result = await this.usrv.updateUtente(data, utenteLoggatoId).toPromise();
-            console.log(result);
-            this.router.navigate(['/']);
-        } catch (error) {
-            console.error(error)
         }
+
+    }
+
+    // Funzione per l'edit del concessioanrio
+    async editConcessionario(form: NgForm) {
+        let utenteLoggatoId = this.ssrv.getUser().id;
+
+        if (!this.utenteLoggato?.ragioneSociale || !this.utenteLoggato?.partitaIva|| !this.utenteLoggato?.indirizzo || !this.utenteLoggato?.cap || !this.utenteLoggato?.localita || !this.utenteLoggato?.telefono || !this.utenteLoggato?.email) {
+            this.toast.error({ detail: "Errore!", summary: "Compilare correttamente tutti i campi!", duration: 5000 });
+        } else {
+            try {
+                const resp = await this.usrv.getUtenteById(utenteLoggatoId).toPromise();
+                this.utenteLoggato = resp;
+
+                let data = {
+                    ragioneSociale: form.value.ragioneSociale,
+                    partitaIva: form.value.partitaIva,
+                    indirizzo: form.value.indirizzo,
+                    cap: form.value.cap,
+                    localita: form.value.localita,
+                    telefono: form.value.telefono,
+                    username: this.utenteLoggato?.username,
+                    email: form.value.email,
+                    password: this.utenteLoggato?.password,
+                    preferiti: this.utenteLoggato?.preferiti
+                }
+
+                const result = await this.usrv.updateUtente(data, utenteLoggatoId).toPromise();
+                console.log(result);
+                this.router.navigate(['/']);
+
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
     }
 
     // Controllo se è admin

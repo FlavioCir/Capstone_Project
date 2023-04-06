@@ -50,22 +50,29 @@ export class MessaggioComponent implements OnInit {
 
         const messaggio = messaggioInput.value;
 
-        let data = {
-            messaggio: messaggio,
-            data: this.data,
-            ora: this.ora,
-            annuncio: this.annuncio,
-            utente: this.utenteLoggato
+        if(messaggio === "") {
+            messaggioInput.style.border = "3px solid red";
+
+            this.toast.error({ detail: "Errore!", summary: "Scrivi un messaggio prima di inviarlo", duration: 5000 });
+        } else {
+            let data = {
+                messaggio: messaggio,
+                data: this.data,
+                ora: this.ora,
+                annuncio: this.annuncio,
+                utente: this.utenteLoggato
+            }
+            try {
+                this.msrv.addMessaggio(data).subscribe(resp => {
+                    console.log(resp);
+                    this.toast.success({ detail: "Invio messaggio!", summary: "Messaggio inviato correttamente", duration: 5000 });
+                    messaggioInput.value = '';
+                });
+            } catch (error) {
+                console.error(error);
+            }
         }
-        try {
-            this.msrv.addMessaggio(data).subscribe(resp => {
-                console.log(resp);
-                this.toast.success({ detail: "Invio messaggio!", summary: "Messaggio inviato correttamente", duration: 5000 });
-                messaggioInput.value = '';
-            });
-        } catch (error) {
-            console.error(error);
-        }
+
     }
 
     getDataOra(): void {

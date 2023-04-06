@@ -147,6 +147,7 @@ export class HomeComponent implements OnInit {
             });
         } else {
             this.getAnnuncio();
+            this.toast.warning({ detail: "Attenzione!", summary: "Nessun valore inserito per la ricerca", duration: 5000 });
         }
     }
 
@@ -168,6 +169,7 @@ export class HomeComponent implements OnInit {
             });
         } else {
             this.getAnnuncio();
+            this.toast.warning({ detail: "Attenzione!", summary: "Nessun valore inserito per la ricerca", duration: 5000 });
         }
     }
 
@@ -191,6 +193,7 @@ export class HomeComponent implements OnInit {
             });
         } else {
             this.getAnnuncio();
+            this.toast.warning({ detail: "Attenzione!", summary: "Nessun valore inserito per la ricerca", duration: 5000 });
         }
     }
 
@@ -214,6 +217,7 @@ export class HomeComponent implements OnInit {
             });
         } else {
             this.getAnnuncio();
+            this.toast.warning({ detail: "Attenzione!", summary: "Nessun valore inserito per la ricerca", duration: 5000 });
         }
     }
 
@@ -235,6 +239,7 @@ export class HomeComponent implements OnInit {
             });
         } else {
             this.getAnnuncio();
+            this.toast.warning({ detail: "Attenzione!", summary: "Nessun valore inserito per la ricerca", duration: 5000 });
         }
     }
 

@@ -3,7 +3,7 @@
         <div class="card-body text-danger">
             <h1 class="card-title mb-4 fw-bold">Impostazioni <i class="bi bi-gear ms-3"></i></h1>
             <hr class="border border-secondary mb-4">
-            <form #form="ngForm" (ngSubmit)="edit(form)" *ngIf="utenteLoggato">
+            <form #form="ngForm" (ngSubmit)="editUtente(form)" *ngIf="utenteLoggato">
                 <div class="form-floating form-group mb-3">
                     <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" [(ngModel)]="utenteLoggato.nome">
                     <label for="nome"><i class="bi bi-person"></i> Nome</label>
@@ -33,7 +33,7 @@
         <div class="card-body text-danger">
             <h1 class="card-title mb-4 fw-bold">Impostazioni <i class="bi bi-gear ms-3"></i></h1>
             <hr class="border border-secondary mb-4">
-            <form #form="ngForm" *ngIf="utenteLoggato" (ngSubmit)="edit(form)">
+            <form #form="ngForm" *ngIf="utenteLoggato" (ngSubmit)="editConcessionario(form)">
                 <div class="d-flex flex-row">
                     <div class="form-floating form-group mb-3 me-3">
                         <input name="ragioneSociale" type="text" class="form-control" id="ragioneSociale" placeholder="Ragione Sociale" [(ngModel)]="utenteLoggato.ragioneSociale">

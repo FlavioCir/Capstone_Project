@@ -33,13 +33,13 @@
                 <div *ngIf="annunci && annunci.length > 0">
                     <div class="card mb-3" *ngFor="let annuncio of annunci">
                         <div class="row g-0">
-                            <div class="col-lg-4 foto" style="background-image: url('{{annuncio.foto[0].url}}');">
+                            <div class="col-lg-4 foto" style="background-image: url('{{annuncio.foto[0].url}}');" [routerLink]="['/dettagliPost', annuncio.id]">
 
                             </div>
                             <div class="col-lg-8">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <h3 class="card-title">{{ annuncio.marca }} {{ annuncio.modello }}</h3>
+                                        <h3 class="card-title" [routerLink]="['/dettagliPost', annuncio.id]">{{ annuncio.marca }} {{ annuncio.modello }}</h3>
                                         <a class="dettagli-post me-3" [routerLink]="['/dettagliPost', annuncio.id]"><i
                                                 class="bi bi-arrow-right text-white"></i></a>
                                     </div>

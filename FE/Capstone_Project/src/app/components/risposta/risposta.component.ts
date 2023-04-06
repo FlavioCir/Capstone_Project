@@ -4,7 +4,6 @@ import { StorageService } from 'src/app/auth/storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Utente } from 'src/app/models/utente.interface';
 import { UtenteService } from 'src/app/services/utente.service';
-import { Annuncio } from 'src/app/models/annuncio.interface';
 import { AnnuncioService } from 'src/app/services/annuncio.service';
 
 import { NgToastService } from 'ng-angular-popup';
@@ -50,23 +49,30 @@ export class RispostaComponent implements OnInit {
 
         const messaggio = messaggioInput.value;
 
-        let data = {
-            messaggio: messaggio,
-            data: this.data,
-            ora: this.ora,
-            annuncio: this.notifica?.annuncio,
-            utente: this.notifica?.utente,
-            concessionario: this.concessionarioLoggato
+        if(messaggio === "") {
+            this.toast.error({ detail: "Errore!", summary: "Scrivi un messaggio prima di inviarlo", duration: 5000 });
+
+            messaggioInput.style.border = "3px solid red";
+        } else {
+            let data = {
+                messaggio: messaggio,
+                data: this.data,
+                ora: this.ora,
+                annuncio: this.notifica?.annuncio,
+                utente: this.notifica?.utente,
+                concessionario: this.concessionarioLoggato
+            }
+            try {
+                this.msrv.addMessaggio(data).subscribe(resp => {
+                    console.log(resp);
+                    this.toast.success({ detail: "Invio risposta!", summary: "Risposta inviata correttamente", duration: 5000 });
+                    messaggioInput.value = '';
+                });
+            } catch (error) {
+                console.error(error);
+            }
         }
-        try {
-            this.msrv.addMessaggio(data).subscribe(resp => {
-                console.log(resp);
-                this.toast.success({ detail: "Invio risposta!", summary: "Risposta inviata correttamente", duration: 5000 });
-                messaggioInput.value = '';
-            });
-        } catch (error) {
-            console.error(error);
-        }
+
     }
 
     rispondiUtente(): void {
@@ -74,22 +80,29 @@ export class RispostaComponent implements OnInit {
 
         const messaggio = messaggioInput.value;
 
-        let data = {
-            messaggio: messaggio,
-            data: this.data,
-            ora: this.ora,
-            annuncio: this.notifica?.annuncio,
-            utente: this.notifica?.utente
+        if(messaggio === "") {
+            this.toast.error({ detail: "Errore!", summary: "Scrivi un messaggio prima di inviarlo", duration: 5000 });
+
+            messaggioInput.style.border = "3px solid red";
+        } else {
+            let data = {
+                messaggio: messaggio,
+                data: this.data,
+                ora: this.ora,
+                annuncio: this.notifica?.annuncio,
+                utente: this.notifica?.utente
+            }
+            try {
+                this.msrv.addMessaggio(data).subscribe(resp => {
+                    console.log(resp);
+                    this.toast.success({ detail: "Invio risposta!", summary: "Risposta inviata correttamente", duration: 5000 });
+                    messaggioInput.value = '';
+                });
+            } catch (error) {
+                console.error(error);
+            }
         }
-        try {
-            this.msrv.addMessaggio(data).subscribe(resp => {
-                console.log(resp);
-                this.toast.success({ detail: "Invio risposta!", summary: "Risposta inviata correttamente", duration: 5000 });
-                messaggioInput.value = '';
-            });
-        } catch (error) {
-            console.error(error);
-        }
+
     }
 
     // Controllo se l'utente loggato è admin

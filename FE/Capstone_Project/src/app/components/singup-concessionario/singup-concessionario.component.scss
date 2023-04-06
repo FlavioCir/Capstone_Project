@@ -6,6 +6,7 @@
 .card {
     width: fit-content;
     min-width: 400px;
+    border-radius: 10px;
 
     .text-danger {
         color: #FF101F !important;
@@ -23,5 +24,10 @@
                 text-decoration: underline;
             }
         }
+    }
+
+    .obbligo {
+        margin: 0;
+        font-size: 15px;
     }
 }

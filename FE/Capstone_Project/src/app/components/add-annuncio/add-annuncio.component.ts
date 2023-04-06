@@ -35,6 +35,18 @@ export class AddAnnuncioComponent implements OnInit {
 
     annuncio: any | undefined;
 
+    marca = '';
+    modello = '';
+    statoVeicolo = '';
+    tipoMoto = '';
+    cilindrata = '';
+    cavalli = '';
+    kilometri = '';
+    immatricolazione = '';
+    localita = '';
+    prezzo = '';
+    descrizione = '';
+
     constructor(private asrv: AnnuncioService, private router: Router, private ssrv: StorageService, private sVsrv: StatoVeicoloService, private tMsrv: TipoMotoService, private usrv: UtenteService, private ups: UploadService, private fsrv: FotoService, private toast: NgToastService) { }
 
     ngOnInit(): void {
@@ -104,40 +116,47 @@ export class AddAnnuncioComponent implements OnInit {
 
     // Funzione per l'aggiunta di un annuncio
     async onsubmit(form: NgForm) {
-        let statoDelVeicolo: StatoVeicolo = JSON.parse(form.value.statoVeicolo);
-        let tipoDiMoto: TipoMoto = JSON.parse(form.value.tipoMoto);
-        let data = {
-            marca: form.value.marca,
-            modello: form.value.modello,
-            statoVeicolo: statoDelVeicolo,
-            tipoMoto: tipoDiMoto,
-            cilindrata: form.value.cilindrata,
-            cavalli: form.value.cavalli,
-            kilometri: form.value.kilometri,
-            immatricolazione: form.value.immatricolazione,
-            localita: form.value.localita,
-            prezzo: form.value.prezzo,
-            descrizione: form.value.descrizione,
-            utente: this.utenteLoggato,
-            foto: this.urlImg
-        }
-        try {
-            if (this.files.length < 1) {
-                alert('Inserisci almeno una foto prima di continuare');
-                return;
-            } else {
-                this.asrv.addAnnunci(data).subscribe({
-                    next: newAnnuncio => {
-                        console.log(newAnnuncio);
-                        this.annuncio = newAnnuncio;
-                        this.onUpload(this.annuncio);
-                        this.toast.success({detail: "Annungio inserito corretamente!", summary: "Torna indietro per visualizzarlo!", duration: 5000});
-                    }
-                });
+
+        if (!this.marca || !this.modello || !this.statoVeicolo || !this.tipoMoto || !this.cilindrata || !this.cavalli || !this.kilometri || !this.immatricolazione || !this.localita || !this.prezzo || !this.descrizione) {
+            this.toast.error({ detail: "Errore!", summary: "Tutti i campi sono obbligatori", duration: 5000 });
+        } else {
+            let statoDelVeicolo: StatoVeicolo = JSON.parse(form.value.statoVeicolo);
+            let tipoDiMoto: TipoMoto = JSON.parse(form.value.tipoMoto);
+
+            let data = {
+                marca: form.value.marca,
+                modello: form.value.modello,
+                statoVeicolo: statoDelVeicolo,
+                tipoMoto: tipoDiMoto,
+                cilindrata: form.value.cilindrata,
+                cavalli: form.value.cavalli,
+                kilometri: form.value.kilometri,
+                immatricolazione: form.value.immatricolazione,
+                localita: form.value.localita,
+                prezzo: form.value.prezzo,
+                descrizione: form.value.descrizione,
+                utente: this.utenteLoggato,
+                foto: this.urlImg
             }
-        } catch (error) {
-            console.error(error)
+            try {
+                if (this.files.length < 1) {
+                    alert('Inserisci almeno una foto prima di continuare');
+                    return;
+                } else {
+                    this.asrv.addAnnunci(data).subscribe({
+                        next: newAnnuncio => {
+                            console.log(newAnnuncio);
+                            this.annuncio = newAnnuncio;
+                            this.onUpload(this.annuncio);
+                            this.toast.success({ detail: "Annungio inserito corretamente!", summary: "Torna indietro per visualizzarlo!", duration: 5000 });
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error(error)
+            }
         }
+
     }
 
 }

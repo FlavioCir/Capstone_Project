@@ -16,13 +16,13 @@
                 <div *ngIf="preferitiUtente && preferitiUtente.length > 0">
                     <div class="card mb-3" *ngFor="let preferito of preferitiUtente">
                         <div class="row g-0">
-                            <div class="col-lg-4 foto" style="background-image: url('{{preferito.foto[0].url}}');">
+                            <div class="col-lg-4 foto" style="background-image: url('{{preferito.foto[0].url}}');" [routerLink]="['/dettagliPost', preferito.id]">
 
                             </div>
                             <div class="col-lg-8">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <h3 class="card-title">{{ preferito.marca }} {{ preferito.modello }}</h3>
+                                        <h3 class="card-title" [routerLink]="['/dettagliPost', preferito.id]">{{ preferito.marca }} {{ preferito.modello }}</h3>
                                         <a class="dettagli-post me-3" [routerLink]="['/dettagliPost', preferito.id]"><i
                                                 class="bi bi-arrow-right text-white"></i></a>
                                     </div>

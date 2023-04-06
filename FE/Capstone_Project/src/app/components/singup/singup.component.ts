@@ -21,7 +21,7 @@ export class SingupComponent implements OnInit {
             await this.asrv.registerUser(form.value).subscribe({
                 next: data => {
                     console.log(data);
-                    this.router.navigate(['/login'])
+                    this.router.navigate(['/login']);
                 }
             })
         } catch (error) {
