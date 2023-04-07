@@ -50,3 +50,19 @@ La mia applicazione ha un'architettura full-stak:
 
 L'obiettivo per il quale ho sviluppato questa applicazione, è per rendere la vendita delle moto più semplice, dinamica e perchè no divertente.
 Mettendo davanti agli occhi dell'utente una applicazione con un design accattivante e funzionalità all'apparenza banali, ma coincise per l'utilizzo.
+
+<hr>
+
+##Per avviare l'applicazione
+
+Per aprire il mio progetto bisogna seguire questi passaggi:
+<ul>
+  <li>Scaricare il progetto</li>
+  <li>Aprire i file, BE e FE</li>
+  <li>Crearti un database in locale, ed inserire tutte le direttive del file application.properties del BE</li>
+  <li>Aprire il main del BE e scommentare il popolaDb() e runnare l'applicazione</li>
+  <li>Criptare la password degli utenti creati con il popolaDb() usando Postman</li>
+  <li>Avviare anche il progetto Angular (ng serve) o (ng serve -o) per farlo aprire automaticamente nel browser</li>
+</ul>
+
+Ora puoi divertirti con le funzionalità offerte dalla mia applicazione!
