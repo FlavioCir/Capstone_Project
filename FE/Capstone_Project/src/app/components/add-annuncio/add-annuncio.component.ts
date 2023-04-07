@@ -76,18 +76,15 @@ export class AddAnnuncioComponent implements OnInit {
         let userId = this.ssrv.getUser().id;
         this.usrv.getUtenteById(userId).subscribe(resp => {
             this.utenteLoggato = resp;
-            console.log(this.utenteLoggato);
         });
     }
 
     // UPLOAD foto annunci
     onSelect(event: any) {
-        console.log(event);
         this.files.push(...event.addedFiles);
     }
 
     onRemove(event: any) {
-        console.log(event);
         this.files.splice(this.files.indexOf(event), 1);
     }
 
@@ -100,14 +97,13 @@ export class AddAnnuncioComponent implements OnInit {
 
             this.ups.uploadImage(data).subscribe(response => {
                 if (response) {
-                    console.log(response);
                     this.urlImg = response.secure_url;
                     const nuovaFoto: Partial<Foto> = {
                         url: this.urlImg,
                         annuncio: annuncio
                     }
                     this.fsrv.addFoto(nuovaFoto).subscribe(resp => {
-                        console.log("foto aggiunta con successo", resp)
+                        console.log("foto aggiunta con successo", resp);
                     });
                 }
             });
@@ -145,7 +141,6 @@ export class AddAnnuncioComponent implements OnInit {
                 } else {
                     this.asrv.addAnnunci(data).subscribe({
                         next: newAnnuncio => {
-                            console.log(newAnnuncio);
                             this.annuncio = newAnnuncio;
                             this.onUpload(this.annuncio);
                             this.toast.success({ detail: "Annungio inserito corretamente!", summary: "Torna indietro per visualizzarlo!", duration: 5000 });
