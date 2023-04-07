@@ -28,8 +28,8 @@ export class NotificheComponent implements OnInit {
 
     // Funzione che ritorna l'utente loggato
     getUtenteLoggato(): void {
-        let utenteLoggatId = this.ssrv.getUser().id;
-        this.usrv.getUtenteById(utenteLoggatId).subscribe(resp => {
+        let utenteLoggatoId = this.ssrv.getUser().id;
+        this.usrv.getUtenteById(utenteLoggatoId).subscribe(resp => {
             this.utenteLoggato = resp
         })
     }
