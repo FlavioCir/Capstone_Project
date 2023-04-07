@@ -53,7 +53,7 @@ Mettendo davanti agli occhi dell'utente una applicazione con un design accattiva
 
 <hr>
 
-##Per avviare l'applicazione
+## Per avviare l'applicazione
 
 Per aprire il mio progetto bisogna seguire questi passaggi:
 <ul>
