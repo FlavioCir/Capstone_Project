@@ -43,6 +43,7 @@ public interface AnnuncioRepo extends JpaRepository<Annuncio, Integer> {
 		)
 	List<Annuncio> findByKilometri(@Param("min") long min, @Param("max") long max);
 	
+	
 	// filtra gli annunci che hanno il prezzo minore e uguale a quello inserito
 	@Query(
 			nativeQuery = true,

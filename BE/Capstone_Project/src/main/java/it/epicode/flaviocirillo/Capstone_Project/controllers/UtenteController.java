@@ -67,7 +67,7 @@ public class UtenteController {
 	@GetMapping("auth/update_user_pw")
 	@ResponseBody
 	public String auth_update_user_pw() {
-		int id = 1;
+		int id = 4;
 		
 		Utente u = us.getById(id).get();
 		String pw = u.getPassword();
