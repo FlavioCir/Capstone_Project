@@ -2,6 +2,7 @@ package it.epicode.flaviocirillo.Capstone_Project.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -54,6 +55,8 @@ public class Annuncio {
 	private String immatricolazione;
 	private String localita;
 	private double prezzo;
+	
+	@Column(length = 1000)
 	private String descrizione;
 	
 	 @ManyToOne
